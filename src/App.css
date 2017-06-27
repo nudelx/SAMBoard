@@ -23,8 +23,8 @@
   -webkit-box-pack:  justify;
       -ms-flex-pack:  justify;
           justify-content:  space-between;
-  -webkit-box-shadow: black 0px 2px 15px 13px;
-          box-shadow: black 0px 2px 15px 13px;
+  -webkit-box-shadow: black  0px 2px 17px 6px;
+          box-shadow: black  0px 2px 17px 6px;
   border: 1px solid #2E2E2E;
 }
 
