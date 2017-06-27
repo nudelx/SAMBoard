@@ -17,32 +17,41 @@
   height: 60px;
   padding: 20px;
   color: #61DAFB;
-  display: -webkit-box;
+  /*display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack:  justify;
       -ms-flex-pack:  justify;
-          justify-content:  space-between;
+          justify-content:  space-between;*/
   -webkit-box-shadow: black  0px 2px 17px 6px;
           box-shadow: black  0px 2px 17px 6px;
   border: 1px solid #2E2E2E;
 }
 
 .logo-holder, .side-right {
-  display: -webkit-box;
+  position: absolute;
+  /*display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex;*/
 }
+.logo-holder {
+  left: 0px;
+}
+
 
 .side-right {
   margin-top: 0px;
   padding: 10px;
+  right: 0px;
+  width: 170px;
 }
 
 .brand {
   font-size: 40px;
   margin: 0px;
   padding-top: 10px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .App-intro {
@@ -62,7 +71,7 @@
 
 
 .simple-board {
-  padding: 40px;
+  padding: 50px;
   min-height: 900px;
   height: 100%;
   background-color: #2E2E2E;
@@ -71,6 +80,7 @@
 .date , .time{
   font: 15px helvetica,arial, sans-serif;
   width: 150px;
+  display: inline-block;
 }
 
 .time{
@@ -79,14 +89,16 @@
 
 .card {
   color: #D6D6D6;
-  border: 3px solid #2E2E2E;
+
   display: inline-block;
   width: 500px;
   height: 250px;
   margin: 10px 5px 10px 0;
   position: relative;
-  -webkit-box-shadow: black  0px 2px 17px 6px;;
-          box-shadow: black  0px 2px 17px 6px;;
+  -webkit-box-shadow: black 0px 2px 4px 1px;
+          box-shadow: black 0px 2px 4px 1px;
+  border: 3px solid #2E2E2E;
+
 }
 
 .card-header {
