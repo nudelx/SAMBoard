@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: helvetica,arial, sans-serif;
 }
 
 .App-logo {
@@ -43,15 +44,7 @@
   to { transform: rotate(360deg); }
 }
 
-.card {
-  border: 3px solid #2E2E2E;
-  display: inline-block;
-  width: 600px;
-  height: 300px;
-  margin: 10px 5px 10px 0;
-  position: relative;
-  box-shadow: black 0px 0px 10px 0px;
-}
+
 
 .simple-board {
   padding: 20px;
@@ -67,4 +60,52 @@
 
 .time{
   font-size: 25px;
+}
+
+.card {
+  color: #E3E3E3;
+  border: 3px solid #2E2E2E;
+  display: inline-block;
+  width: 600px;
+  height: 300px;
+  margin: 10px 5px 10px 0;
+  position: relative;
+  box-shadow: black 0px 0px 10px 0px;
+}
+
+.card-header {
+  line-height: 40px;
+  height: 40px;
+  text-transform: uppercase;
+  font-size: 25px;
+  text-align: left;
+  padding-left: 10px;
+  border-bottom: 1px solid #262626;
+}
+
+.card-body {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  height: 65%;
+  text-align: left;
+}
+
+.card-body ul {
+  padding: 0px;
+  margin: 25px 0px 0px 0px;
+  list-style: none;
+}
+
+.card-body li {
+  margin-bottom: 10px;
+  line-height: 30px;
+  font-size: 23px;
+}
+
+.card-body li > span {
+  margin-right: 10px;
+  min-width: 60px;
+  display: inline-block;
 }
