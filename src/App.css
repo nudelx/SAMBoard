@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  position: relative;
+  height: 100px;
+  padding: 20px;
+  color: #61DAFB;
+  display: flex;
+  justify-content:  space-between;
+  box-shadow: black 0px 2px 15px 13px;
+  border: 1px solid #2E2E2E;
+}
+
+.logo-holder, .side-right {
+  display: flex;
+}
+
+.side-right {
+  margin-top: 5px;
+  padding: 20px;
+}
+
+.brand {
+  font-size: 40px;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card {
+  border: 3px solid #2E2E2E;
+  display: inline-block;
+  width: 600px;
+  height: 300px;
+  margin: 10px 5px 10px 0;
+  position: relative;
+  box-shadow: black 0px 0px 10px 0px;
+}
+
+.simple-board {
+  padding: 20px;
+  min-height: 800px;
+  height: 100%;
+  background-color: #2E2E2E;
+}
+
+.date , .time{
+  font: 15px helvetica,arial, sans-serif;
+  width: 150px;
+}
+
+.time{
+  font-size: 25px;
+}
