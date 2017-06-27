@@ -17,7 +17,6 @@ class Card extends Component {
     const { env , type } = this.props
     if (!type && !env) { return; }
     var db = firebase.database().ref().child(type);
-    console.log(db)
     db.on('value', snap => {
       var data = snap.val()
       if (!data ) { return }
