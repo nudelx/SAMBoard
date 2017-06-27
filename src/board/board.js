@@ -9,10 +9,11 @@ const Board = () => {
   return (
     <div className="simple-board">
       <Card type="deploys" env='build'/>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card type="deploys" env='review'/>
+      <Card type="deploys" env='team'/>
+
+      <Card type="Tests" env='dev10'/>
+      <Card type="Tests" env='dev12'/>
     </div>
   )
 }

@@ -15,12 +15,14 @@ class Card extends Component {
   componentDidMount () {
     const { env , type } = this.props
     if (!type && !env) { return; }
-    var deploys = firebase.database().ref().child(type);
-    deploys.on('value', snap => {
-      var deploys = snap.val()
+    var db = firebase.database().ref().child(type);
+    console.log(db)
+    db.on('value', snap => {
+      var data = snap.val()
+      if (!data ) { return }
       this.setState({
-        user: deploys[env].user || 'n/a',
-        date: deploys[env].date || 'n/a'
+        user: data[env] && data[env].user || 'n/a',
+        date: data[env] && data[env].date || 'n/a'
       })
     })
   }
