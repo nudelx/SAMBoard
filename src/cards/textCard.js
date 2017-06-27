@@ -8,7 +8,8 @@ class Card extends Component {
     super(props)
     this.state = {
       user: '--',
-      date: '--'
+      date: '--',
+      branch: '--'
     }
   }
 
@@ -22,14 +23,15 @@ class Card extends Component {
       if (!data ) { return }
       this.setState({
         user: data[env] && data[env].user || 'n/a',
-        date: data[env] && data[env].date || 'n/a'
+        date: data[env] && data[env].date || 'n/a',
+        branch: data[env] && data[env].branch || 'n/a'
       })
     })
   }
 
   render () {
     const { env , type } = this.props
-    const { user, date } = this.state
+    const { user, date, branch } = this.state
     return  (
       <div className="card">
         <div className="card-header">
@@ -38,6 +40,7 @@ class Card extends Component {
         <div className="card-body">
           <ul>
             <li><span className="list-key">User:</span><span className="list-val">{user}</span></li>
+            <li><span className="list-key">Branch:</span><span className="list-val">{branch}</span></li>
             <li><span className="list-key">Date:</span><span className="list-val">{date}</span></li>
           </ul>
         </div>

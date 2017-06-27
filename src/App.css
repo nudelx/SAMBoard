@@ -7,12 +7,14 @@
   -webkit-animation: App-logo-spin infinite 20s linear;
           animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  position: relative;
+  top: -6px;
 }
 
 .App-header {
   background-color: #222;
   position: relative;
-  height: 100px;
+  height: 60px;
   padding: 20px;
   color: #61DAFB;
   display: -webkit-box;
@@ -33,14 +35,14 @@
 }
 
 .side-right {
-  margin-top: 5px;
-  padding: 20px;
+  margin-top: 0px;
+  padding: 10px;
 }
 
 .brand {
   font-size: 40px;
   margin: 0px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .App-intro {
@@ -79,8 +81,8 @@
   color: #D6D6D6;
   border: 3px solid #2E2E2E;
   display: inline-block;
-  width: 600px;
-  height: 300px;
+  width: 500px;
+  height: 250px;
   margin: 10px 5px 10px 0;
   position: relative;
   -webkit-box-shadow: black 0px 0px 10px 0px;
@@ -123,4 +125,8 @@
   margin-right: 10px;
   min-width: 60px;
   display: inline-block;
+}
+
+span.list-key {
+  width:80px;
 }
