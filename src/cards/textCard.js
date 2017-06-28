@@ -52,7 +52,7 @@ class Card extends Component {
           <ul>
             <li><span className="list-key">User:</span><span className="list-val">{user}</span></li>
             <li><span className="list-key">Branch:</span><span className="list-val">{branch}</span></li>
-            <li><span className="list-key">Executed:</span><span className="list-val">{`${this.calculateTime(timestamp)}`}</span></li>
+            <li><span className="list-key">Updated:</span><span className="list-val">{`${this.calculateTime(timestamp)}`}</span></li>
             <li><span className="list-key">Date:</span><span className="list-val">{date}</span></li>
           </ul>
         </div>
