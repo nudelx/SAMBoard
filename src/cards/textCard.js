@@ -12,7 +12,9 @@ class Card extends Component {
       branch: '--',
       tag: '--',
       version: '--',
-      timestamp: 0
+      timestamp: 0,
+      failed: '--',
+      passed: '--'
     }
   }
 
@@ -59,20 +61,24 @@ class Card extends Component {
     this.timeAgoTimer()
   }
 
+  buildTimeStr(timestamp) {
+    const delta = new Date().getTime() / 1000 - timestamp
+    const days = Math.floor(delta / (3600 * 24))
+    const hrs = Math.floor(delta / 3600)
+    const mnts = Math.floor((delta - hrs * 3600) / 60)
+    const secs = Math.floor(delta - hrs * 3600 - mnts * 60)
+    return `${days ? `${days}d` : ''} ${hrs ? `${hrs}h` : ''} ${mnts
+      ? `${mnts}m`
+      : ''} ${secs ? `${secs}s` : ''} ago`
+  }
+
   calculateTime() {
     const { timestamp } = this.state
     if (!timestamp) {
       this.setState({ timeAgo: '--' })
       return
     }
-    const delta = new Date().getTime() / 1000 - timestamp
-    const days = Math.floor(delta / (3600 * 24))
-    const hrs = Math.floor(delta / 3600)
-    const mnts = Math.floor((delta - hrs * 3600) / 60)
-    const secs = Math.floor(delta - hrs * 3600 - mnts * 60)
-    const timeAgo = `${days ? `${days}d` : ''} ${hrs ? `${hrs}h` : ''} ${mnts
-      ? `${mnts}m`
-      : ''} ${secs ? `${secs}s` : ''} ago`
+    const timeAgo = this.buildTimeStr(timestamp)
     this.setState({ timeAgo })
   }
 
@@ -103,33 +109,7 @@ class Card extends Component {
           {`${type} :: ${env}`}
         </div>
         <div className="card-body">
-          <ul>
-            {this.renderFields()}
-            {/* <li>
-              <span className="list-key">User:</span>
-              <span className="list-val"><User user={user} /></span>
-            </li>
-            <li>
-              <span className="list-key">Branch:</span>
-              <span className="list-val">{branch}</span>
-            </li>
-            <li>
-              <span className="list-key">Tag:</span>
-              <span className="list-val">{tag}</span>
-            </li>
-            <li>
-              <span className="list-key">Version:</span>
-              <span className="list-val">{version}</span>
-            </li>
-            <li>
-              <span className="list-key">Updated:</span>
-              <span className="list-val">{timeAgo}</span>
-            </li>
-            <li>
-              <span className="list-key">Date:</span>
-              <span className="list-val">{date}</span>
-            </li> */}
-          </ul>
+          <ul>{this.renderFields()}</ul>
         </div>
         {/* <div className="card-footer"> </div> */}
       </div>

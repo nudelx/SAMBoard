@@ -136,6 +136,7 @@
 
 span.list-key {
   width:80px;
+  text-transform: capitalize;
 }
 
 .card-footer {
