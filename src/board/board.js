@@ -12,8 +12,8 @@ const Board = () => {
       <Card type="deploys" env='review'/>
       <Card type="installation" env='dev10'/>
 
-      <Card type="Tests" env='review'/>
-      <Card type="Tests" env='dev12'/>
+      <Card type="tests" env='review'/>
+      <Card type="tests" env='dev12'/>
     </div>
   )
 }
