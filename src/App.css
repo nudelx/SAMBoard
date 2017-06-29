@@ -85,7 +85,7 @@
   color: #D6D6D6;
   display: inline-block;
   width: 420px;
-  height: 200px;
+  height: 230px;
   margin: 20px 20px 0px 0px;
   position: relative;
   -webkit-box-shadow: black 0px 2px 4px 1px;
@@ -109,7 +109,7 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 30px;
+  padding-top: 20px;
   text-align: left;
 }
 
@@ -140,4 +140,14 @@ span.list-key {
   bottom: 0px;
   width: 100%;
   font-size: 10px;
+}
+
+
+.image-holder , .name-holder {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.image-holder {
+  margin-right: 10px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css';
 import * as firebase from 'firebase'
+import User from './user'
 
 class Card extends Component {
 
@@ -10,6 +11,7 @@ class Card extends Component {
       user: '--',
       date: '--',
       branch: '--',
+      tag: '--',
       timestamp: 0
     }
   }
@@ -52,7 +54,7 @@ class Card extends Component {
 
   render () {
     const { env, type } = this.props
-    const { user, date, branch, timeAgo } = this.state
+    const { user, date, branch, timeAgo, tag } = this.state
     return  (
       <div className="card">
         <div className="card-header">
@@ -60,8 +62,9 @@ class Card extends Component {
         </div>
         <div className="card-body">
           <ul>
-            <li><span className="list-key">User:</span><span className="list-val">{user}</span></li>
+            <li><span className="list-key">User:</span><span className="list-val"><User user={user} /></span></li>
             <li><span className="list-key">Branch:</span><span className="list-val">{branch}</span></li>
+            <li><span className="list-key">Tag:</span><span className="list-val">{tag}</span></li>
             <li><span className="list-key">Updated:</span><span className="list-val">{timeAgo}</span></li>
             <li><span className="list-key">Date:</span><span className="list-val">{date}</span></li>
           </ul>
