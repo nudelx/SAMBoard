@@ -12,6 +12,7 @@ class Card extends Component {
       date: '--',
       branch: '--',
       tag: '--',
+      version: '--',
       timestamp: 0
     }
   }
@@ -33,7 +34,8 @@ class Card extends Component {
         user: data[env] && data[env].user || 'n/a',
         date: data[env] && data[env].date || 'n/a',
         branch: data[env] && data[env].branch || 'n/a',
-        timestamp: data[env] && data[env].timestamp || 0
+        timestamp: data[env] && data[env].timestamp || 0,
+        version: data[env] && data[env].version || 'n/a'
       })
 
     })
@@ -54,7 +56,7 @@ class Card extends Component {
 
   render () {
     const { env, type } = this.props
-    const { user, date, branch, timeAgo, tag } = this.state
+    const { user, date, branch, timeAgo, tag, version } = this.state
     return  (
       <div className="card">
         <div className="card-header">
@@ -65,6 +67,7 @@ class Card extends Component {
             <li><span className="list-key">User:</span><span className="list-val"><User user={user} /></span></li>
             <li><span className="list-key">Branch:</span><span className="list-val">{branch}</span></li>
             <li><span className="list-key">Tag:</span><span className="list-val">{tag}</span></li>
+            <li><span className="list-key">Version:</span><span className="list-val">{version}</span></li>
             <li><span className="list-key">Updated:</span><span className="list-val">{timeAgo}</span></li>
             <li><span className="list-key">Date:</span><span className="list-val">{date}</span></li>
           </ul>

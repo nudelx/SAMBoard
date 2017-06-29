@@ -10,7 +10,7 @@ const Board = () => {
     <div className="simple-board">
       <Card type="deploys" env='build'/>
       <Card type="deploys" env='review'/>
-      <Card type="deploys" env='team'/>
+      <Card type="installation" env='dev10'/>
 
       <Card type="Tests" env='review'/>
       <Card type="Tests" env='dev12'/>
