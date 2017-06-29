@@ -14,6 +14,12 @@ class Card extends Component {
     }
   }
 
+  timeAgoTimer () {
+    setInterval( () => {
+      this.calculateTime()
+    },1000)
+  }
+
   componentDidMount () {
     const { env , type } = this.props
     if (!type && !env) { return; }
@@ -27,22 +33,26 @@ class Card extends Component {
         branch: data[env] && data[env].branch || 'n/a',
         timestamp: data[env] && data[env].timestamp || 0
       })
+
     })
+    this.timeAgoTimer()
   }
 
-  calculateTime (timestamp) {
-    if (!timestamp) return '--'
+  calculateTime () {
+    const { timestamp } = this.state
+    if (!timestamp) { this.setState({ timeAgo: '--' }); return }
     const delta  = new Date().getTime()/1000 - timestamp
     var days = Math.floor(delta / (3600*24));
     var hrs  = Math.floor(delta / 3600);
     var mnts = Math.floor((delta - (hrs * 3600)) / 60);
     var secs = Math.floor(delta - (hrs * 3600) - (mnts * 60));
-    return `${(days ? `${days}d`: '')} ${(hrs ? `${hrs}h`: '')} ${(mnts ? `${mnts}m`: '')} ${(secs ? `${secs}s`: '')} ago`
+    const timeAgo = `${(days ? `${days}d`: '')} ${(hrs ? `${hrs}h`: '')} ${(mnts ? `${mnts}m`: '')} ${(secs ? `${secs}s`: '')} ago`;
+    this.setState({ timeAgo });
   }
 
   render () {
     const { env, type } = this.props
-    const { user, date, branch, timestamp } = this.state
+    const { user, date, branch, timeAgo } = this.state
     return  (
       <div className="card">
         <div className="card-header">
@@ -52,7 +62,7 @@ class Card extends Component {
           <ul>
             <li><span className="list-key">User:</span><span className="list-val">{user}</span></li>
             <li><span className="list-key">Branch:</span><span className="list-val">{branch}</span></li>
-            <li><span className="list-key">Updated:</span><span className="list-val">{`${this.calculateTime(timestamp)}`}</span></li>
+            <li><span className="list-key">Updated:</span><span className="list-val">{timeAgo}</span></li>
             <li><span className="list-key">Date:</span><span className="list-val">{date}</span></li>
           </ul>
         </div>
