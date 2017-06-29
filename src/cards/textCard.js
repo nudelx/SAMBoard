@@ -35,7 +35,7 @@ class Card extends Component {
         date: data[env] && data[env].date || 'n/a',
         branch: data[env] && data[env].branch || 'n/a',
         timestamp: data[env] && data[env].timestamp || 0,
-        version: data[env] && data[env].version || 'n/a'
+        version: data[env] && data[env].version || 'n/a',
         tag: data[env] && data[env].version || 'n/a'
       })
 
