@@ -5,7 +5,11 @@ import '../App.css';
 class TimeCard extends Component {
   constructor (props) {
     super(props)
-    this.state = {
+    this.state = this.createTimeObject()
+  }
+
+  createTimeObject () {
+    return {
       date: new Date().toString().split(' ').splice(0,3).join(' '),
       time: new Date().toString().split(' ')[4]
     }
@@ -13,10 +17,7 @@ class TimeCard extends Component {
 
   componentDidMount () {
     setInterval( () => {
-      this.setState({
-        date: new Date().toString().split(' ').splice(0,3).join(' '),
-        time: new Date().toString().split(' ')[4]
-      })
+      this.setState(this.createTimeObject())
     }, 1000);
   }
 
