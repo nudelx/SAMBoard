@@ -112,7 +112,7 @@ class Card extends Component {
       <div className="st-triangle">
         <div className={`arrow-up-${status}`}>
           <div className="symbol">
-            {status === 'fail' ? 'X' : '√'}
+            {status === 'fail' ? 'X' : '✓'}
           </div>
         </div>
       </div>
