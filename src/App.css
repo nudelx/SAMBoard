@@ -1,3 +1,6 @@
+html {
+  background-color: #2E2E2E;
+}
 .App {
   text-align: center;
   font-family: helvetica,arial, sans-serif;
@@ -68,7 +71,7 @@
   padding: 50px;
   min-height: 900px;
   height: 100%;
-  background-color: #2E2E2E;
+  /*background-color: #2E2E2E;*/
 }
 
 .date , .time{
@@ -132,6 +135,41 @@
   margin-right: 10px;
   min-width: 60px;
   display: inline-block;
+}
+
+.card-body .st-triangle {
+  /*border: 1px solid red;*/
+  position: absolute;
+  top: 90px;
+  right: 60px;
+  width: 80px;
+  height: 60px;
+
+
+}
+
+.arrow-up-pass, .arrow-up-fail {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 60px solid #289E00;
+  position: relative;
+}
+
+.arrow-up-fail { border-bottom: 60px solid #F5003D; }
+
+.symbol{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  color: #2E2E2E;
+  font-size: 30px;
+  line-height: 30px;
+  right: -20px;
+  top: 24px;
+  font-weight: bold;
+  font-family: monospace;
 }
 
 span.list-key {

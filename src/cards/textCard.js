@@ -100,6 +100,16 @@ class Card extends Component {
     )
   }
 
+  renderTestsStatus( status ) {
+      return  (
+        <div className="st-triangle">
+          <div className={`arrow-up-${status}`}>
+            <div className="symbol">{status === 'fail' ? 'X' : '√'}</div>
+          </div>
+        </div>
+      )
+  }
+
   render() {
     const { env, type } = this.props
     const { user, date, branch, timeAgo, tag, version } = this.state
@@ -110,6 +120,7 @@ class Card extends Component {
         </div>
         <div className="card-body">
           <ul>{this.renderFields()}</ul>
+          {type === 'tests' ? this.renderTestsStatus('fail') : null}
         </div>
         {/* <div className="card-footer"> </div> */}
       </div>
