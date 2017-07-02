@@ -63,10 +63,13 @@ class Card extends Component {
 
   buildTimeStr(timestamp) {
     const delta = new Date().getTime() / 1000 - timestamp
-    const days = Math.floor(delta / (3600 * 24))
-    const hrs = Math.floor(delta / 3600)
-    const mnts = Math.floor((delta - hrs * 3600) / 60)
-    const secs = Math.floor(delta - hrs * 3600 - mnts * 60)
+    var days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+    var hrs = Math.floor(delta / 3600) % 24;
+    delta -= hrs * 3600;
+    var mnts = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+    var secs = delta % 60;
     return `${days ? `${days}d` : ''} ${hrs ? `${hrs}h` : ''} ${mnts
       ? `${mnts}m`
       : ''} ${secs ? `${secs}s` : ''} ago`
@@ -128,7 +131,7 @@ class Card extends Component {
           <ul>
             {this.renderFields()}
           </ul>
-          {type === 'tests' ? this.renderTestsStatus('fail') : null}
+          {type === 'tests' ? this.renderTestsStatus('pass') : null}
         </div>
         {/* <div className="card-footer"> </div> */}
       </div>
