@@ -106,6 +106,7 @@ html {
   box-shadow: black 0px 2px 4px 1px;
   border: 1px solid #2e2e2e;
   overflow: auto;
+  vertical-align: bottom;
 }
 
 .card-header {
