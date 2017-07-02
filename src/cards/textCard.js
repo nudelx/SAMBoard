@@ -14,7 +14,8 @@ class Card extends Component {
       version: '--',
       timestamp: 0,
       failed: '--',
-      passed: '--'
+      passed: '--',
+      threads: {}
     }
   }
 
@@ -22,7 +23,7 @@ class Card extends Component {
     return {
       deploys: ['user', 'branch', 'tag', 'updated', 'date'],
       installation: ['user', 'branch', 'tag', 'version', 'updated', 'date'],
-      tests: ['date', 'updated', 'failed', 'passed']
+      tests: ['date', 'updated', 'thread-1', 'thread-2', 'thread-3', 'thread-4']
     }
   }
 
@@ -49,13 +50,23 @@ class Card extends Component {
       if (!data) {
         return
       }
+    const parseThreadField = function (threadsObject) {
+      if ( !threadsObject ) return {}
+      const newObj = {}
+      debugger
+      Object.keys(threadsObject).map(
+        f => newObj[`thread-${f.replace(/[^0-9]/g, '')}`] = threadsObject[f] / 2
+      )
+      return newObj
+    }
       this.setState({
         user: (data[env] && data[env].user) || 'n/a',
         date: (data[env] && data[env].date) || 'n/a',
         branch: (data[env] && data[env].branch) || 'n/a',
         timestamp: (data[env] && data[env].timestamp) || 0,
         version: (data[env] && data[env].version) || 'n/a',
-        tag: (data[env] && data[env].tag) || 'n/a'
+        tag: (data[env] && data[env].tag) || 'n/a',
+        threads: (data[env] && parseThreadField(data[env].threads)) || {}
       })
     })
     this.timeAgoTimer()
@@ -88,6 +99,7 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
+    if (field.indexOf('thread') != -1) return this.state.threads[field] || 0
     return this.state[field]
   }
 
@@ -121,7 +133,8 @@ class Card extends Component {
 
   render() {
     const { env, type } = this.props
-    const { user, date, branch, timeAgo, tag, version } = this.state
+    const { user, date, branch, timeAgo, tag, version, threads } = this.state
+    debugger
     return (
       <div className="card">
         <div className="card-header">
