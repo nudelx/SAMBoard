@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
 import Board from './board/board'
 import TimeCard from './cards/timeCard'
 
@@ -21,8 +21,8 @@ class App extends Component {
           <Board />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,11 +1,14 @@
+html {
+  background-color: #2e2e2e;
+}
 .App {
   text-align: center;
-  font-family: helvetica,arial, sans-serif;
+  font-family: helvetica, arial, sans-serif;
 }
 
 .App-logo {
   -webkit-animation: App-logo-spin infinite 20s linear;
-          animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 20s linear;
   height: 50px;
   position: relative;
   top: -6px;
@@ -16,13 +19,14 @@
   position: relative;
   height: 35px;
   padding: 20px;
-  color: #61DAFB;
-  -webkit-box-shadow: black  0px 2px 17px 6px;
-          box-shadow: black  0px 2px 17px 6px;
-  border: 1px solid #2E2E2E;
+  color: #61dafb;
+  -webkit-box-shadow: black 0px 2px 17px 6px;
+  box-shadow: black 0px 2px 17px 6px;
+  border: 1px solid #2e2e2e;
 }
 
-.logo-holder, .side-right {
+.logo-holder,
+.side-right {
   position: absolute;
   /*display: -webkit-box;
   display: -ms-flexbox;
@@ -31,7 +35,6 @@
 .logo-holder {
   left: 0px;
 }
-
 
 .side-right {
   margin-top: 0px;
@@ -53,49 +56,60 @@
 }
 
 @-webkit-keyframes App-logo-spin {
-  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
-  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes App-logo-spin {
-  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
-  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
-
-
 
 .simple-board {
   padding: 50px;
   min-height: 900px;
   height: 100%;
-  background-color: #2E2E2E;
+  /*background-color: #2E2E2E;*/
 }
 
-.date , .time{
-  font: 15px helvetica,arial, sans-serif;
+.date,
+.time {
+  font: 15px helvetica, arial, sans-serif;
   width: 150px;
   display: inline-block;
 }
 
-.time{
+.time {
   font-size: 20px;
 }
 
 .card {
-  color: #D6D6D6;
+  color: #d6d6d6;
   display: inline-block;
   width: 420px;
-  height: 255px;
+  height: 260px;
   margin: 20px 20px 0px 0px;
   position: relative;
   -webkit-box-shadow: black 0px 2px 4px 1px;
-          box-shadow: black 0px 2px 4px 1px;
-  border: 1px solid #2E2E2E;
-
+  box-shadow: black 0px 2px 4px 1px;
+  border: 1px solid #2e2e2e;
+  overflow: auto;
 }
 
 .card-header {
-  color: #FF794D;
+  color: #ff794d;
   /*color: #FF5C85;*/
   /*color: #DBA400;*/
   line-height: 40px;
@@ -133,8 +147,45 @@
   display: inline-block;
 }
 
+.card-body .st-triangle {
+  /*border: 1px solid red;*/
+  position: absolute;
+  top: 90px;
+  right: 60px;
+  width: 80px;
+  height: 60px;
+}
+
+.arrow-up-pass,
+.arrow-up-fail {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 60px solid #289e00;
+  position: relative;
+}
+
+.arrow-up-fail {
+  border-bottom: 60px solid #f5003d;
+}
+
+.symbol {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  color: #2e2e2e;
+  font-size: 30px;
+  line-height: 30px;
+  right: -20px;
+  top: 24px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
 span.list-key {
-  width:80px;
+  width: 80px;
+  text-transform: capitalize;
 }
 
 .card-footer {
@@ -144,8 +195,8 @@ span.list-key {
   font-size: 10px;
 }
 
-
-.image-holder , .name-holder {
+.image-holder,
+.name-holder {
   display: inline-block;
   vertical-align: top;
 }
