@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import Card from '../cards/textCard'
-import '../App.css';
+import '../App.css'
 import fbConnect from '../firebase/fb_config'
 
 const Board = () => {
@@ -8,14 +8,14 @@ const Board = () => {
 
   return (
     <div className="simple-board">
-      <Card type="deploys" env='build'/>
-      <Card type="deploys" env='review'/>
-      <Card type="installation" env='dev10'/>
+      <Card type="deploys" env="build" />
+      <Card type="deploys" env="review" />
+      <Card type="installation" env="dev10" />
 
-      <Card type="tests" env='review'/>
-      <Card type="tests" env='dev12'/>
+      <Card type="tests" env="review" />
+      <Card type="tests" env="dev12" />
     </div>
   )
 }
 
-export default Board;
+export default Board

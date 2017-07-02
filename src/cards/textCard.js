@@ -94,20 +94,26 @@ class Card extends Component {
     if (!fields) return <li>no such type</li>
     return fields.map(f =>
       <li key={f}>
-        <span className="list-key">{f}:</span>
-        <span className="list-val">{this.getValue(f)}</span>
+        <span className="list-key">
+          {f}:
+        </span>
+        <span className="list-val">
+          {this.getValue(f)}
+        </span>
       </li>
     )
   }
 
-  renderTestsStatus( status ) {
-      return  (
-        <div className="st-triangle">
-          <div className={`arrow-up-${status}`}>
-            <div className="symbol">{status === 'fail' ? 'X' : '√'}</div>
+  renderTestsStatus(status) {
+    return (
+      <div className="st-triangle">
+        <div className={`arrow-up-${status}`}>
+          <div className="symbol">
+            {status === 'fail' ? 'X' : '√'}
           </div>
         </div>
-      )
+      </div>
+    )
   }
 
   render() {
@@ -119,7 +125,9 @@ class Card extends Component {
           {`${type} :: ${env}`}
         </div>
         <div className="card-body">
-          <ul>{this.renderFields()}</ul>
+          <ul>
+            {this.renderFields()}
+          </ul>
           {type === 'tests' ? this.renderTestsStatus('fail') : null}
         </div>
         {/* <div className="card-footer"> </div> */}
