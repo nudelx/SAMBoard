@@ -81,6 +81,7 @@ html {
   padding: 50px;
   min-height: 900px;
   height: 100%;
+  max-width: 1850px;
   /*background-color: #2E2E2E;*/
 }
 
