@@ -161,7 +161,7 @@ html {
   position: absolute;
   display: block;
   text-align: center;
-  /*border: 1px solid red;*/
+  font-weight: bold;
   width: 100%;
   text-transform: uppercase;
   padding-top: 5px;
@@ -191,7 +191,7 @@ html {
 .fail {
   color: #f5003d;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 .arrow-up-fail {
   border-bottom: 60px solid #f5003d;
