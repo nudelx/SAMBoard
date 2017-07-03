@@ -14,7 +14,8 @@ class Card extends Component {
       version: '--',
       timestamp: 0,
       failed: '--',
-      passed: '--'
+      passed: '--',
+      threads: {}
     }
   }
 
@@ -22,7 +23,7 @@ class Card extends Component {
     return {
       deploys: ['user', 'branch', 'tag', 'updated', 'date'],
       installation: ['user', 'branch', 'tag', 'version', 'updated', 'date'],
-      tests: ['date', 'updated', 'failed', 'passed']
+      tests: ['date', 'updated', 'thread-1', 'thread-2', 'thread-3', 'thread-4']
     }
   }
 
@@ -49,13 +50,27 @@ class Card extends Component {
       if (!data) {
         return
       }
+      const parseThreadField = function(threadsObject) {
+        if (!threadsObject) return {}
+        const newObj = {}
+        Object.keys(threadsObject).map(
+          f =>
+            (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] =
+              threadsObject[f] / 2)
+        )
+        return newObj
+      }
+      const therads = (data[env] && parseThreadField(data[env].threads)) || {}
+      const isPass = Object.keys(therads).length ? 'fail' : 'pass'
       this.setState({
         user: (data[env] && data[env].user) || 'n/a',
         date: (data[env] && data[env].date) || 'n/a',
         branch: (data[env] && data[env].branch) || 'n/a',
         timestamp: (data[env] && data[env].timestamp) || 0,
         version: (data[env] && data[env].version) || 'n/a',
-        tag: (data[env] && data[env].tag) || 'n/a'
+        tag: (data[env] && data[env].tag) || 'n/a',
+        threads: therads,
+        isPass
       })
     })
     this.timeAgoTimer()
@@ -63,13 +78,13 @@ class Card extends Component {
 
   buildTimeStr(timestamp) {
     var delta = new Date().getTime() / 1000 - timestamp
-    var days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-    var hrs = Math.floor(delta / 3600) % 24;
-    delta -= hrs * 3600;
-    var mnts = Math.floor(delta / 60) % 60;
-    delta -= mnts * 60;
-    var secs = Math.floor(delta % 60);
+    var days = Math.floor(delta / 86400)
+    delta -= days * 86400
+    var hrs = Math.floor(delta / 3600) % 24
+    delta -= hrs * 3600
+    var mnts = Math.floor(delta / 60) % 60
+    delta -= mnts * 60
+    var secs = Math.floor(delta % 60)
     return `${days ? `${days}d` : ''} ${hrs ? `${hrs}h` : ''} ${mnts
       ? `${mnts}m`
       : ''} ${secs ? `${secs}s` : ''} ago`
@@ -88,6 +103,12 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
+    if (field.indexOf('thread') != -1)
+      return this.state.threads[field]
+        ? <span className="fail">
+            {this.state.threads[field]}
+          </span>
+        : <span className="pass">✓</span>
     return this.state[field]
   }
 
@@ -112,16 +133,29 @@ class Card extends Component {
       <div className="st-triangle">
         <div className={`arrow-up-${status}`}>
           <div className="symbol">
-            {status === 'fail' ? 'X' : '√'}
+            {status === 'fail' ? 'X' : '✓'}
           </div>
         </div>
+        <span className={`st-status-${status}`}>
+          {status}
+        </span>
       </div>
     )
   }
 
   render() {
     const { env, type } = this.props
-    const { user, date, branch, timeAgo, tag, version } = this.state
+    const {
+      user,
+      date,
+      branch,
+      timeAgo,
+      tag,
+      version,
+      threads,
+      isPass
+    } = this.state
+
     return (
       <div className="card">
         <div className="card-header">
@@ -131,7 +165,7 @@ class Card extends Component {
           <ul>
             {this.renderFields()}
           </ul>
-          {type === 'tests' ? this.renderTestsStatus('pass') : null}
+          {type === 'tests' ? this.renderTestsStatus(isPass) : null}
         </div>
         {/* <div className="card-footer"> </div> */}
       </div>
