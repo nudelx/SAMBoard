@@ -53,7 +53,6 @@ class Card extends Component {
       const parseThreadField = function(threadsObject) {
         if (!threadsObject) return {}
         const newObj = {}
-        debugger
         Object.keys(threadsObject).map(
           f =>
             (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] =
@@ -61,6 +60,8 @@ class Card extends Component {
         )
         return newObj
       }
+      const therads = (data[env] && parseThreadField(data[env].threads)) || {}
+      const isPass = Object.keys(therads).length ? 'fail' : 'pass'
       this.setState({
         user: (data[env] && data[env].user) || 'n/a',
         date: (data[env] && data[env].date) || 'n/a',
@@ -68,7 +69,8 @@ class Card extends Component {
         timestamp: (data[env] && data[env].timestamp) || 0,
         version: (data[env] && data[env].version) || 'n/a',
         tag: (data[env] && data[env].tag) || 'n/a',
-        threads: (data[env] && parseThreadField(data[env].threads)) || {}
+        threads: therads,
+        isPass
       })
     })
     this.timeAgoTimer()
@@ -101,7 +103,12 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
-    if (field.indexOf('thread') != -1) return this.state.threads[field] || 0
+    if (field.indexOf('thread') != -1)
+      return this.state.threads[field]
+        ? <span className="fail">
+            {this.state.threads[field]}
+          </span>
+        : <span className="pass">✓</span>
     return this.state[field]
   }
 
@@ -129,14 +136,26 @@ class Card extends Component {
             {status === 'fail' ? 'X' : '✓'}
           </div>
         </div>
+        <span className={`st-status-${status}`}>
+          {status}
+        </span>
       </div>
     )
   }
 
   render() {
     const { env, type } = this.props
-    const { user, date, branch, timeAgo, tag, version, threads } = this.state
-    debugger
+    const {
+      user,
+      date,
+      branch,
+      timeAgo,
+      tag,
+      version,
+      threads,
+      isPass
+    } = this.state
+
     return (
       <div className="card">
         <div className="card-header">
@@ -146,7 +165,7 @@ class Card extends Component {
           <ul>
             {this.renderFields()}
           </ul>
-          {type === 'tests' ? this.renderTestsStatus('pass') : null}
+          {type === 'tests' ? this.renderTestsStatus(isPass) : null}
         </div>
         {/* <div className="card-footer"> </div> */}
       </div>
