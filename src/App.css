@@ -141,12 +141,14 @@ html {
   margin-bottom: 10px;
   line-height: 20px;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .card-body li > span {
   margin-right: 10px;
   min-width: 60px;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .card-body .st-triangle {
