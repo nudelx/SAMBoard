@@ -54,6 +54,19 @@ class Card extends Component {
     }, 1000)
   }
 
+  createStateObj (data, env, therads, isPass) {
+    return {
+      user: (data[env] && data[env].user) || 'n/a',
+      date: (data[env] && data[env].date) || 'n/a',
+      branch: (data[env] && data[env].branch) || 'n/a',
+      timestamp: (data[env] && data[env].timestamp) || 0,
+      version: (data[env] && data[env].version) || 'n/a',
+      tag: (data[env] && data[env].tag) || 'n/a',
+      threads: therads,
+      isPass
+    }
+  }
+
   componentDidMount() {
     const { env, type } = this.props
     if (!type && !env) {
@@ -67,16 +80,7 @@ class Card extends Component {
       const therads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof therads === 'object')
         isPass = Object.keys(therads).length ? 'fail' : 'pass'
-      this.setState({
-        user: (data[env] && data[env].user) || 'n/a',
-        date: (data[env] && data[env].date) || 'n/a',
-        branch: (data[env] && data[env].branch) || 'n/a',
-        timestamp: (data[env] && data[env].timestamp) || 0,
-        version: (data[env] && data[env].version) || 'n/a',
-        tag: (data[env] && data[env].tag) || 'n/a',
-        threads: therads,
-        isPass
-      })
+      this.setState(this.createStateObj(data, env, therads, isPass))
     })
     this.timeAgoTimer()
   }
