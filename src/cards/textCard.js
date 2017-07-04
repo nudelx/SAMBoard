@@ -2,6 +2,21 @@ import React, { Component } from 'react'
 import '../App.css'
 import * as firebase from 'firebase'
 import User from './user'
+import spinner from '../spinner.svg'
+
+
+
+const parseThreadField = function(threadsObject) {
+  if (!threadsObject || typeof threadsObject === 'string')
+    return 'running'
+  const newObj = {}
+  Object.keys(threadsObject).map(
+    f =>
+      (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] =
+        threadsObject[f] / 2)
+  )
+  return newObj
+}
 
 class Card extends Component {
   constructor(props) {
@@ -46,22 +61,12 @@ class Card extends Component {
     }
     var db = firebase.database().ref().child(type)
     db.on('value', snap => {
-      var data = snap.val()
-      if (!data) {
-        return
-      }
-      const parseThreadField = function(threadsObject) {
-        if (!threadsObject) return {}
-        const newObj = {}
-        Object.keys(threadsObject).map(
-          f =>
-            (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] =
-              threadsObject[f] / 2)
-        )
-        return newObj
-      }
+      let data = snap.val()
+      let isPass = 'running'
+      if (!data) return
       const therads = (data[env] && parseThreadField(data[env].threads)) || {}
-      const isPass = Object.keys(therads).length ? 'fail' : 'pass'
+      if (typeof therads === 'object')
+        isPass = Object.keys(therads).length ? 'fail' : 'pass'
       this.setState({
         user: (data[env] && data[env].user) || 'n/a',
         date: (data[env] && data[env].date) || 'n/a',
@@ -103,12 +108,16 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
-    if (field.indexOf('thread') != -1)
+    if (field.indexOf('thread') != -1) {
       return this.state.threads[field]
         ? <span className="fail">
             {this.state.threads[field]}
           </span>
-        : <span className="pass">✓</span>
+        : <span className="pass">
+            {this.state.threads[field] === undefined ? <img className="spinner" src={spinner}/> : '✓'}
+          </span>
+    }
+
     return this.state[field]
   }
 
@@ -133,7 +142,7 @@ class Card extends Component {
       <div className="st-triangle">
         <div className={`arrow-up-${status}`}>
           <div className="symbol">
-            {status === 'fail' ? 'X' : '✓'}
+            {status === 'fail' ? 'X' : status === 'running' ? '➠' : '✓'}
           </div>
         </div>
         <span className={`st-status-${status}`}>
@@ -155,7 +164,6 @@ class Card extends Component {
       threads,
       isPass
     } = this.state
-
     return (
       <div className="card">
         <div className="card-header">
