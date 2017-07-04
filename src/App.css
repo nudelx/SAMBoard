@@ -135,6 +135,7 @@ html {
   padding: 0px;
   margin: 5px 0px 0px 0px;
   list-style: none;
+  overflow: hidden;
 }
 
 .card-body li {

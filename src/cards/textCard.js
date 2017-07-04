@@ -54,7 +54,7 @@ class Card extends Component {
     }, 1000)
   }
 
-  createStateObj (data, env, therads, isPass) {
+  createStateObj (data, env, threads, isPass) {
     return {
       user: (data[env] && data[env].user) || 'n/a',
       date: (data[env] && data[env].date) || 'n/a',
@@ -62,7 +62,7 @@ class Card extends Component {
       timestamp: (data[env] && data[env].timestamp) || 0,
       version: (data[env] && data[env].version) || 'n/a',
       tag: (data[env] && data[env].tag) || 'n/a',
-      threads: therads,
+      threads: threads,
       isPass
     }
   }
@@ -77,10 +77,10 @@ class Card extends Component {
       let data = snap.val()
       let isPass = 'running'
       if (!data) return
-      const therads = (data[env] && parseThreadField(data[env].threads)) || {}
-      if (typeof therads === 'object')
-        isPass = Object.keys(therads).length >= 4 ? 'fail' : 'pass'
-      this.setState(this.createStateObj(data, env, therads, isPass))
+      const threads = (data[env] && parseThreadField(data[env].threads)) || {}
+      if (typeof threads === 'object')
+        isPass = Object.keys(threads).some( t => parseInt(threads[t]) > 1) ? 'fail' : 'pass'
+      this.setState(this.createStateObj(data, env, threads, isPass))
     })
     this.timeAgoTimer()
   }
