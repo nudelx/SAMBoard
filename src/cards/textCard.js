@@ -79,7 +79,7 @@ class Card extends Component {
       if (!data) return
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof threads === 'object')
-        isPass = Object.keys(threads).some( t => parseInt(threads[t]) > 1) ? 'fail' : 'pass'
+        isPass = Object.keys(threads).some( t => parseInt(threads[t]) > 0) ? 'fail' : 'pass'
       this.setState(this.createStateObj(data, env, threads, isPass))
     })
     this.timeAgoTimer()
