@@ -4,7 +4,16 @@ import './App.css'
 import Board from './board/board'
 import TimeCard from './cards/timeCard'
 
+const activateSelfReboot = () => {
+  setTimeout(function () {
+    window.location.reload();
+  }, 86400000)
+}
+
 class App extends Component {
+  componentDidMount() {
+    activateSelfReboot()
+  }
   render() {
     return (
       <div className="App">
