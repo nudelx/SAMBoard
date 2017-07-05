@@ -113,7 +113,7 @@ class Card extends Component {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
     if (field.indexOf('thread') != -1) {
-      return this.state.threads[field]
+      return parseFloat(this.state.threads[field])
         ? <span className="fail">
             {this.state.threads[field]}
           </span>
