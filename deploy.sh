@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+git checkout gh-pages
+git merge master
 rm -rf static/
 yarn build
 cp -r build/* .
@@ -12,3 +14,4 @@ rm static/js/t.js
 git add .
 git commit -am "new deploy $(date)"
 git push
+git checkout master 
