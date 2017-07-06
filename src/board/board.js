@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../cards/textCard'
+import Card from '../cards/Card'
 import '../App.css'
 import fbConnect from '../firebase/fb_config'
 
