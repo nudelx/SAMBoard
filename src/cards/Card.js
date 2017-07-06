@@ -10,6 +10,7 @@ import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { buildTimeStr } from '../tools/timeStampParser'
 import { testState } from '../tools/constants'
+import TestThreads from './testThreads'
 
 
 class Card extends Component {
@@ -115,15 +116,36 @@ class Card extends Component {
     )
   }
 
+  renderDeploysContent () {
+    return (
+      <div>
+        {this.renderFields()}
+      </div>
+    )
+  }
+  renderTestContent () {
+    const { isPass } = this.state
+    return (
+      <div>
+        {this.renderFields()}
+        {<TestStatus status={isPass} />}
+      </div>
+    )
+  }
+
   render() {
     const { env, type } = this.props
-    const { isPass } = this.state
+    const { isPass, threads } = this.state
     return (
       <div className="card">
         <CardHeader type={type} env={env} />
         <CardBody isPass={isPass} type={type}>
-          {this.renderFields()}
-          {type === 'tests' && <TestStatus status={isPass} />}
+          {
+            type === 'tests'
+            ? this.renderTestContent()
+            : this.renderDeploysContent()
+          }
+          <TestThreads threads={threads}/>
         </CardBody>
       </div>
     )
