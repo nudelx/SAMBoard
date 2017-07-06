@@ -4,16 +4,11 @@ import * as firebase from 'firebase'
 import User from './user'
 import spinner from '../spinner.svg'
 
-
-
 const parseThreadField = function(threadsObject) {
-  if (!threadsObject || typeof threadsObject === 'string')
-    return 'running'
+  if (!threadsObject || typeof threadsObject === 'string') return 'running'
   const newObj = {}
   Object.keys(threadsObject).map(
-    f =>
-      (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] =
-        threadsObject[f])
+    f => (newObj[`t-${f.replace(/[^0-9]/g, '')}`] = threadsObject[f])
   )
   return newObj
 }
@@ -38,7 +33,18 @@ class Card extends Component {
     return {
       deploys: ['user', 'branch', 'tag', 'updated', 'date'],
       installation: ['user', 'branch', 'tag', 'version', 'updated', 'date'],
-      tests: ['date', 'updated', 'thread-1', 'thread-2', 'thread-3', 'thread-4']
+      tests: [
+        'date',
+        'updated',
+        't-1',
+        't-2',
+        't-3',
+        't-4',
+        't-5',
+        't-6',
+        't-7',
+        't-8'
+      ]
     }
   }
 
@@ -54,7 +60,7 @@ class Card extends Component {
     }, 1000)
   }
 
-  createStateObj (data, env, threads, isPass) {
+  createStateObj(data, env, threads, isPass) {
     return {
       user: (data[env] && data[env].user) || 'n/a',
       date: (data[env] && data[env].date) || 'n/a',
@@ -79,7 +85,9 @@ class Card extends Component {
       if (!data) return
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof threads === 'object')
-        isPass = Object.keys(threads).some( t => parseFloat(threads[t]) > 0) ? 'fail' : 'pass'
+        isPass = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
+          ? 'fail'
+          : 'pass'
       this.setState(this.createStateObj(data, env, threads, isPass))
     })
     this.timeAgoTimer()
@@ -112,13 +120,15 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
-    if (field.indexOf('thread') != -1) {
+    if (field.indexOf('t-') != -1) {
       return parseFloat(this.state.threads[field])
         ? <span className="fail">
             {this.state.threads[field]}
           </span>
         : <span className="pass">
-            {this.state.threads[field] === undefined ? <img className="spinner" src={spinner}/> : '✓'}
+            {this.state.threads[field] === undefined
+              ? <img className="spinner" src={spinner} />
+              : '✓'}
           </span>
     }
 
@@ -129,15 +139,19 @@ class Card extends Component {
     const fields = this.fieldsOrder()
     const { state } = this
     if (!fields) return <li>no such type</li>
-    return fields.map(f =>
-      <li key={f}>
-        <span className="list-key">
-          {f}:
-        </span>
-        <span className="list-val">
-          {this.getValue(f)}
-        </span>
-      </li>
+    return (
+      <ul>
+        {fields.map(f =>
+          <li key={f}>
+            <span className="list-key">
+              {f}:
+            </span>
+            <span className="list-val">
+              {this.getValue(f)}
+            </span>
+          </li>
+        )}
+      </ul>
     )
   }
 
@@ -158,28 +172,16 @@ class Card extends Component {
 
   render() {
     const { env, type } = this.props
-    const {
-      user,
-      date,
-      branch,
-      timeAgo,
-      tag,
-      version,
-      threads,
-      isPass
-    } = this.state
+    const { user, date, branch, timeAgo, tag, version, isPass } = this.state
     return (
       <div className="card">
         <div className="card-header">
           {`${type} :: ${env}`}
         </div>
         <div className="card-body">
-          <ul>
-            {this.renderFields()}
-          </ul>
+          {this.renderFields()}
           {type === 'tests' ? this.renderTestsStatus(isPass) : null}
         </div>
-        {/* <div className="card-footer"> </div> */}
       </div>
     )
   }
