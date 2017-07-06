@@ -9,6 +9,8 @@ import TestStatus from './testStatus'
 import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { buildTimeStr } from '../tools/timeStampParser'
+import { testState } from '../tools/constants'
+
 
 class Card extends Component {
   constructor(props) {
@@ -53,13 +55,13 @@ class Card extends Component {
     var db = firebase.database().ref().child(type)
     db.on('value', snap => {
       let data = snap.val()
-      let isPass = 'running'
+      let isPass = testState.RUN
       if (!data) return
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof threads === 'object')
         isPass = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
-          ? 'fail'
-          : 'pass'
+          ? testState.FAIL
+          : testState.PASS
       this.setState(this.createStateObj(data, env, threads, isPass))
     })
     this.timeAgoTimer()
