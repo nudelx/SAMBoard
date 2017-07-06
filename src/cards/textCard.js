@@ -3,6 +3,8 @@ import '../App.css'
 import * as firebase from 'firebase'
 import User from './user'
 import spinner from '../spinner.svg'
+import CardHeader from './cardHeader'
+import CardBody from './cardBody'
 
 
 
@@ -170,16 +172,13 @@ class Card extends Component {
     } = this.state
     return (
       <div className="card">
-        <div className="card-header">
-          {`${type} :: ${env}`}
-        </div>
-        <div className="card-body">
-          <ul>
-            {this.renderFields()}
-          </ul>
+        <CardHeader type={type} env={env} />
+        <CardBody isPass={isPass} type={type} >
+
+          <ul>{this.renderFields()}</ul>
           {type === 'tests' ? this.renderTestsStatus(isPass) : null}
-        </div>
-        {/* <div className="card-footer"> </div> */}
+        </CardBody>
+
       </div>
     )
   }
