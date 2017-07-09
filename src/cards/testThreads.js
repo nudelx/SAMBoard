@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TestThreads = ({ threads }) => {
+const TestThreads = ({ threads }) => {        
   if (!threads) return null
   console.log(threads)
   return (
