@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
 import * as firebase from 'firebase'
-import User from './user'
-import spinner from '../spinner.svg'
 import CardHeader from './cardHeader'
 import CardBody from './cardBody'
 import TestStatus from './testStatus'
@@ -78,53 +76,6 @@ class Card extends Component {
     this.setState({ timeAgo })
   }
 
-  getValue(field) {
-    if (field === 'updated') return this.state.timeAgo
-    if (field === 'user') return <User user={this.state.user} />
-
-    if (field.indexOf('thread') !== -1) {
-      return parseFloat(this.state.threads[field])
-        ? <span className="fail">
-            {this.state.threads[field]}
-          </span>
-        : <span className="pass">
-            {this.state.threads[field] === undefined
-              ? <img alt="spinner" className="spinner" src={spinner} />
-              : '✓'}
-          </span>
-    }
-
-    return this.state[field]
-  }
-
-  renderFields() {
-    const { type } = this.props
-    const fields = getFields(type)
-    if (!fields) return <li>no such type</li>
-    return (
-      <ul>
-        {fields.map(f =>
-          <li key={f}>
-            <span className="list-key">
-              {f}:
-            </span>
-            <span className="list-val">
-              {this.getValue(f)}
-            </span>
-          </li>
-        )}
-      </ul>
-    )
-  }
-
-  renderDeploysContent() {
-    return (
-      <div>
-        {this.renderFields()}
-      </div>
-    )
-  }
-
   extractDataFromState(type) {
     const fieldsData = getFields(type) || []
     const { timeAgo, threads  } = this.state
@@ -135,30 +86,20 @@ class Card extends Component {
 
   }
 
-  renderTestContent() {
-    const { isPass } = this.state
-    const { type } = this.props
-    const data = this.extractDataFromState(type)
-    return (
-      <div>
-        {/* {this.renderFields()} */}
-        <FieldsList type={type} data={data} />
-        {<TestStatus status={isPass} />}
-      </div>
-    )
-  }
-
   render() {
     const { env, type } = this.props
     const { isPass, threads } = this.state
+    const data = this.extractDataFromState(type)
     return (
       <div className="card">
         <CardHeader type={type} env={env} />
         <CardBody isPass={isPass} type={type}>
-          {type === 'tests'
-            ? this.renderTestContent()
-            : this.renderDeploysContent()}
-          {/* <TestThreads threads={threads}/> */}
+          <FieldsList type={type} data={data} />
+          {
+            type === 'tests'
+            ? <TestStatus status={isPass} />
+            : null
+          }
         </CardBody>
       </div>
     )

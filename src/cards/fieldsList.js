@@ -4,21 +4,20 @@ import User from './user'
 import spinner from '../spinner.svg'
 
 const getValue = (field, data) => {
-    if (field === 'updated') return data.timeAgo
-    if (field === 'user') return <User user={data.user} />
-    if (field.indexOf('thread') !== -1) {
-      return parseFloat(data.threads[field])
-        ? <span className="fail">
-            {data.threads[field]}
-          </span>
-        : <span className="pass">
-            {data.threads[field] === undefined
-              ? <img alt="spinner" className="spinner" src={spinner} />
-              : '✓'}
-          </span>
-    }
-
-    return data[field]
+  if (field === 'updated') return data.timeAgo
+  if (field === 'user') return <User user={data.user} />
+  if (field.indexOf('thread') !== -1) {
+    return parseFloat(data.threads[field])
+      ? <span className="fail">
+          {data.threads[field]}
+        </span>
+      : <span className="pass">
+          {data.threads[field] === undefined
+            ? <img alt="spinner" className="spinner" src={spinner} />
+            : '✓'}
+        </span>
+  }
+  return data[field]
 }
 
 const FieldsList = ( { type, data }) => {
