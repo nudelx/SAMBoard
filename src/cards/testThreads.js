@@ -6,7 +6,7 @@ const TestThreads = ({ threads }) => {
   return (
     <div>
       <ul>
-        {Object.keys(threads).map((t,i) =>
+        {Object.keys(threads).map((t, i) =>
           <li>
             <span>
               {t}

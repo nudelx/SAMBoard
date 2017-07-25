@@ -20,24 +20,28 @@ const getValue = (field, data) => {
   return data[field]
 }
 
-const FieldsList = ( { type, data }) => {
+const FieldsList = ({ type, data }) => {
   const fields = getFields(type)
-  if (!fields) return <ul><li>no such type</li></ul>
+  if (!fields)
+    return (
+      <ul>
+        <li>no such type</li>
+      </ul>
+    )
   return (
     <ul>
-      { fields.map(f =>
+      {fields.map(f =>
         <li key={f}>
           <span className="list-key">
             {f}:
           </span>
-        <span className="list-val">
-          {getValue(f, data)}
-        </span>
-      </li>
+          <span className="list-val">
+            {getValue(f, data)}
+          </span>
+        </li>
       )}
     </ul>
   )
 }
-
 
 export default FieldsList

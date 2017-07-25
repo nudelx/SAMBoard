@@ -4,6 +4,6 @@ export const FIELDS = {
   tests: ['date', 'updated', 'thread-1', 'thread-2', 'thread-3', 'thread-4']
 }
 
-export const getFields = (type) => {
+export const getFields = type => {
   return FIELDS[type] || null
 }

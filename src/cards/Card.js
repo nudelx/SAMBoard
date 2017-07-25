@@ -78,12 +78,14 @@ class Card extends Component {
 
   extractDataFromState(type) {
     const fieldsData = getFields(type) || []
-    const { timeAgo, threads  } = this.state
-    return fieldsData.reduce((data, f) => {
-      data[f] = this.state[f]
-      return data
-    }, { timeAgo, threads })
-
+    const { timeAgo, threads } = this.state
+    return fieldsData.reduce(
+      (data, f) => {
+        data[f] = this.state[f]
+        return data
+      },
+      { timeAgo, threads }
+    )
   }
 
   render() {
@@ -95,11 +97,7 @@ class Card extends Component {
         <CardHeader type={type} env={env} />
         <CardBody isPass={isPass} type={type}>
           <FieldsList type={type} data={data} />
-          {
-            type === 'tests'
-            ? <TestStatus status={isPass} />
-            : null
-          }
+          {type === 'tests' ? <TestStatus status={isPass} /> : null}
         </CardBody>
       </div>
     )
