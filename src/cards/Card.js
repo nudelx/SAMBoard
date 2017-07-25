@@ -88,7 +88,7 @@ class Card extends Component {
 
   render() {
     const { env, type } = this.props
-    const { isPass, threads } = this.state
+    const { isPass } = this.state
     const data = this.extractDataFromState(type)
     return (
       <div className="card">
