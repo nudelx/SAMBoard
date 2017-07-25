@@ -11,7 +11,7 @@ import { parseThreadField } from '../tools/threadsDataParser'
 import { buildTimeStr } from '../tools/timeStampParser'
 import { testState } from '../tools/constants'
 import TestThreads from './testThreads'
-
+import FieldsList from './fieldsList'
 
 class Card extends Component {
   constructor(props) {
@@ -81,6 +81,7 @@ class Card extends Component {
   getValue(field) {
     if (field === 'updated') return this.state.timeAgo
     if (field === 'user') return <User user={this.state.user} />
+
     if (field.indexOf('thread') !== -1) {
       return parseFloat(this.state.threads[field])
         ? <span className="fail">
@@ -116,18 +117,32 @@ class Card extends Component {
     )
   }
 
-  renderDeploysContent () {
+  renderDeploysContent() {
     return (
       <div>
         {this.renderFields()}
       </div>
     )
   }
-  renderTestContent () {
+
+  extractDataFromState(type) {
+    const fieldsData = getFields(type) || []
+    const { timeAgo, threads  } = this.state
+    return fieldsData.reduce((data, f) => {
+      data[f] = this.state[f]
+      return data
+    }, { timeAgo, threads })
+
+  }
+
+  renderTestContent() {
     const { isPass } = this.state
+    const { type } = this.props
+    const data = this.extractDataFromState(type)
     return (
       <div>
-        {this.renderFields()}
+        {/* {this.renderFields()} */}
+        <FieldsList type={type} data={data} />
         {<TestStatus status={isPass} />}
       </div>
     )
@@ -140,12 +155,10 @@ class Card extends Component {
       <div className="card">
         <CardHeader type={type} env={env} />
         <CardBody isPass={isPass} type={type}>
-          {
-            type === 'tests'
+          {type === 'tests'
             ? this.renderTestContent()
-            : this.renderDeploysContent()
-          }
-          <TestThreads threads={threads}/>
+            : this.renderDeploysContent()}
+          {/* <TestThreads threads={threads}/> */}
         </CardBody>
       </div>
     )
