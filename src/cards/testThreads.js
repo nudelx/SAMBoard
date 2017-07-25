@@ -1,8 +1,8 @@
 import React from 'react'
+import FieldFormater from '../tools/FieldFormater'
 
-const TestThreads = ({ threads }) => {        
+const TestThreads = ({ threads }) => {
   if (!threads) return null
-  console.log(threads)
   return (
     <div>
       <ul>

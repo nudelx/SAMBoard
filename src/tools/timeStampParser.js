@@ -1,4 +1,4 @@
-export const buildTimeStr = (timestamp) => {
+export const buildTimeStr = timestamp => {
   var delta = new Date().getTime() / 1000 - timestamp
   var days = Math.floor(delta / 86400)
   delta -= days * 86400
