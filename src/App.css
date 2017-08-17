@@ -265,18 +265,20 @@ span.list-key {
 div.status-box {
   border: 1px solid #212121;
   width: 150px;
-  height: 150px;
+  height: 170px;
   display: inline-block;
   vertical-align: top;
   text-align: center;
+  position: relative;
 }
 
 div.env-status {
   padding: 5px;
   display: inline-block;
   width: 50%;
-  font-weight: 600;
-  margin: 10px 0px;
+  font-weight: bolder;
+  font-size: 16px;
+  margin: 10px 0px 15px;
 }
 
 div.free {
@@ -291,11 +293,21 @@ div.busy {
 }
 
 div.status-box-header {
-  background-color: #2D5986;
+  /*background-color: #d6d6d6;*/
+  /*background-color: #2D5986;*/
   padding: 5px 0px;
-  margin-bottom: 10px;
-  /*color: #2e2e2e;*/
-  font-weight: bolder;
+  margin-bottom: 5px;
+  font-size: 14px;
+  border-bottom: 1px solid #262626;
+  color: #999;
+  text-transform: uppercase;
+}
+div.status-date-box {
+  position: absolute;
+  bottom:10px;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
 
 div.state-date {
@@ -304,4 +316,8 @@ div.state-date {
 
 div.state-time {
   font-size: 12px;
+}
+
+div.user-holder {
+  margin-bottom: 5px;
 }
