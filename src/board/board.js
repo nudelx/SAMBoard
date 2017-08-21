@@ -3,6 +3,7 @@ import Card from '../cards/textCard'
 import EnvStatus from '../cards/envStatus'
 import '../App.css'
 import fbConnect from '../firebase/fb_config'
+import Pie from '../cards/chartPie'
 
 const Board = () => {
   fbConnect()
@@ -17,6 +18,8 @@ const Board = () => {
       <Card type="tests" env="dev12" />
 
       <EnvStatus title="env" />
+
+      <Pie />
 
     </div>
   )
