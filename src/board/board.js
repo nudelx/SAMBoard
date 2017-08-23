@@ -1,5 +1,6 @@
 import React from 'react'
-import Card from '../cards/Card'
+import Card from '../cards/textCard'
+import EnvStatus from '../cards/envStatus'
 import '../App.css'
 import fbConnect from '../firebase/fb_config'
 
@@ -14,6 +15,9 @@ const Board = () => {
 
       <Card type="tests" env="review" />
       <Card type="tests" env="dev12" />
+
+      <EnvStatus title="env" />
+
     </div>
   )
 }
