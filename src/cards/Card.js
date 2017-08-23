@@ -8,7 +8,6 @@ import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { buildTimeStr } from '../tools/timeStampParser'
 import { testState } from '../tools/constants'
-import TestThreads from './testThreads'
 import FieldsList from './fieldsList'
 
 class Card extends Component {

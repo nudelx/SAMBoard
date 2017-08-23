@@ -12,7 +12,7 @@ const formatTime = (timestamp) => {
 
  const StatusBox = ({ status, type, user, timestamp}) => {
   const dateObj = timestamp ? formatTime(timestamp*1000) : null
-  const staus = (parseInt(status) === 1) ? 'busy' : 'free'
+  const staus = (parseInt(status, 10) === 1) ? 'busy' : 'free'
   return (
    <div className="status-box">
      <div className="status-box-header">{type}</div>
