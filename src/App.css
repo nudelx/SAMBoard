@@ -1,5 +1,5 @@
 html {
-  background-color: #2e2e2e;
+  background-color: #011E26;
 }
 .App {
   text-align: center;
@@ -15,14 +15,14 @@ html {
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #011115;
   position: relative;
   height: 35px;
   padding: 20px;
   color: #61dafb;
   -webkit-box-shadow: black 0px 2px 17px 6px;
   box-shadow: black 0px 2px 17px 6px;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #002933;
 }
 
 .logo-holder,
@@ -108,6 +108,7 @@ html {
   border: 1px solid #2e2e2e;
   overflow: auto;
   vertical-align: bottom;
+  background-color:#012B36;
 }
 
 .card-header {
@@ -120,7 +121,8 @@ html {
   font-size: 20px;
   text-align: left;
   padding-left: 10px;
-  border-bottom: 1px solid #262626;
+  border-bottom: 1px solid #193C47;
+  background-color: #033643;
 }
 
 .card-body {
@@ -320,4 +322,55 @@ div.state-time {
 
 div.user-holder {
   margin-bottom: 5px;
+}
+
+div.header {
+    white-space: nowrap;
+    -webkit-box-shadow: black 0px 2px 4px 1px;
+    box-shadow: black 0px 2px 4px 1px;
+    border-radius: 3px;
+    padding-left: 20px;
+    background-color: #012B36;
+}
+
+div.header ul {
+  list-style: none;
+  display: block;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.header li {
+  display: inline-block;
+  line-height: 53px;
+  height: 53px;
+  width: 200px;
+}
+
+div.header .main-title {
+  text-transform: uppercase;
+  color: #BBC9CC;
+  font-weight: bold;;
+}
+
+div.statusBlock {
+  display: inline-block;
+  background-color: #01212A;
+  height: 28px;
+  line-height: 28px;
+  /*width: 150px;*/
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+div.statusBlock > * {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+div.statusBlock > div.st-name {
+  text-align: left;
+  color: #627980;
 }
