@@ -6,14 +6,6 @@ html {
   font-family: helvetica, arial, sans-serif;
 }
 
-.App-logo {
-  -webkit-animation: App-logo-spin infinite 20s linear;
-  animation: App-logo-spin infinite 20s linear;
-  height: 50px;
-  position: relative;
-  top: -6px;
-}
-
 .App-header {
   background-color: #222;
   position: relative;
@@ -33,14 +25,13 @@ html {
   display: flex;*/
 }
 .logo-holder {
-  left: 0px;
+  left: 25px;
 }
 
 .side-right {
-  margin-top: 0px;
-  padding: 0px;
-  right: 0px;
-  width: 170px;
+  right: 10px;
+  width: 150px;
+  text-align: right;
 }
 
 .brand {
@@ -55,30 +46,8 @@ html {
   font-size: large;
 }
 
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 .simple-board {
-  padding: 50px;
+  padding: 25px;
   min-height: 900px;
   height: 100%;
   max-width: 1765px;
@@ -90,6 +59,7 @@ html {
   font: 15px helvetica, arial, sans-serif;
   width: 150px;
   display: inline-block;
+  color: #bbc9cc;
 }
 
 .time {
@@ -99,7 +69,7 @@ html {
 .card {
   color: #d6d6d6;
   display: inline-block;
-  width: 420px;
+  width: 390px;
   height: 260px;
   margin: 20px 20px 0px 0px;
   position: relative;
@@ -121,8 +91,8 @@ html {
   padding-left: 20px;
   border-bottom: 1px solid #24454f;
   background-color: #013642;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .card-body {
@@ -131,8 +101,8 @@ html {
   padding: 20px;
   text-align: left;
   background-color: #002b35;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .card-body ul {

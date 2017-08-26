@@ -1,6 +1,6 @@
 export const FIELDS = {
-  deploys: ['user', 'branch', 'tag', 'updated', 'date'],
-  installation: ['user', 'branch', 'tag', 'version', 'updated', 'date'],
+  deploys: ['user', 'date', 'branch', 'tag', 'updated'],
+  installation: ['user', 'date', 'branch', 'tag', 'version', 'updated'],
   tests: ['date', 'updated', 'thread-1', 'thread-2', 'thread-3', 'thread-4']
 }
 

@@ -30,13 +30,13 @@ const FieldsList = ({ type, data }) => {
     )
   return (
     <ul>
-      {fields.map(f =>
-        <li key={f}>
+      {fields.map(field =>
+        <li key={field}>
           <span className="list-key">
-            {f}:
+            {field}:
           </span>
           <span className="list-val">
-            {getValue(f, data)}
+            {getValue(field, data)}
           </span>
         </li>
       )}
