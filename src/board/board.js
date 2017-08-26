@@ -10,7 +10,7 @@ const Board = () => {
 
   return (
     <div className="simple-board">
-      <Header />
+      <Header title={'master status'}/>
 
       <Card type="deploys" env="build" />
       <Card type="deploys" env="review" />

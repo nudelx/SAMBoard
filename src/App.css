@@ -327,7 +327,7 @@ div.user-holder {
 div.header {
     white-space: nowrap;
     -webkit-box-shadow: black 0px 2px 4px 1px;
-    box-shadow: black 0px 2px 4px 1px;
+    box-shadow: black 0px 3px 20px 0px;
     border-radius: 3px;
     padding-left: 20px;
     background-color: #012B36;
