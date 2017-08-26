@@ -103,32 +103,36 @@ html {
   height: 260px;
   margin: 20px 20px 0px 0px;
   position: relative;
-  -webkit-box-shadow: black 0px 2px 4px 1px;
+  /*-webkit-box-shadow: black 0px 2px 4px 1px;
   box-shadow: black 0px 2px 4px 1px;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #2e2e2e;*/
   overflow: auto;
   vertical-align: bottom;
 }
 
 .card-header {
-  color: #ff794d;
-  /*color: #FF5C85;*/
-  /*color: #DBA400;*/
-  line-height: 40px;
-  height: 40px;
+  color: #bbc9cc;
+  line-height: 55px;
+  height: 55px;
   text-transform: uppercase;
   font-size: 20px;
+  font-weight: bold;
   text-align: left;
-  padding-left: 10px;
-  border-bottom: 1px solid #262626;
+  padding-left: 20px;
+  border-bottom: 1px solid #24454f;
+  background-color: #013642;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card-body {
-  width: 90%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
+  padding: 20px;
   text-align: left;
+  background-color: #002b35;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .card-body ul {
