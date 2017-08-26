@@ -1,9 +1,11 @@
 import React from 'react'
+import Badge from './badge'
 
 const CardHeader = ({ type, env }) => {
   return (
     <div className="card-header">
-      {`${type} :: ${env}`}
+      <div className={'env-name'}>{env}</div>
+      <Badge value={'busy'} />
     </div>
   )
 }

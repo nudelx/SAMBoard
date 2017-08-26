@@ -20,8 +20,8 @@ html {
   height: 35px;
   padding: 20px;
   color: #61dafb;
-  -webkit-box-shadow: black 0px 2px 17px 6px;
-  box-shadow: black 0px 2px 17px 6px;
+  -webkit-box-shadow: black 0px 3px 20px 1px;
+  box-shadow: black 0px 3px 20px 1px;
   border: 1px solid #002933;
 }
 
@@ -103,9 +103,9 @@ html {
   height: 260px;
   margin: 20px 20px 0px 0px;
   position: relative;
-  -webkit-box-shadow: black 0px 2px 4px 1px;
-  box-shadow: black 0px 2px 4px 1px;
-  border: 1px solid #2e2e2e;
+  -webkit-box-shadow: black 0px 3px 20px 1px;
+  box-shadow: black 0px 3px 20px 1px;
+  /*border: 1px solid #2e2e2e;*/
   overflow: auto;
   vertical-align: bottom;
   background-color:#012B36;
@@ -123,6 +123,13 @@ html {
   padding-left: 10px;
   border-bottom: 1px solid #193C47;
   background-color: #033643;
+}
+.env-name{
+  display: inline-block;
+  color: #BBC9CC;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
 .card-body {
@@ -326,7 +333,7 @@ div.user-holder {
 
 div.header {
     white-space: nowrap;
-    -webkit-box-shadow: black 0px 2px 4px 1px;
+    -webkit-box-shadow: black 0px 3px 20px 1px;
     box-shadow: black 0px 3px 20px 0px;
     border-radius: 3px;
     padding-left: 20px;
@@ -339,13 +346,15 @@ div.header ul {
   text-align: left;
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 div.header li {
   display: inline-block;
   line-height: 53px;
   height: 53px;
-  width: 200px;
+  /*width: 200px;*/
+  margin-right: 5%;
 }
 
 div.header .main-title {
@@ -373,4 +382,22 @@ div.statusBlock > * {
 div.statusBlock > div.st-name {
   text-align: left;
   color: #627980;
+}
+
+div.badge {
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  display: inline;
+  padding: 5px 5px;
+  vertical-align: bottom;
+}
+
+.badge-red {
+  background-color: #f5003d;
+}
+
+.badge-green {
+  background-color: #289e00;
 }
