@@ -51,10 +51,13 @@ class Card extends Component {
       return
     }
     var db = firebase.database().ref().child(type)
+
     db.on('value', snap => {
       let data = snap.val()
       let isPass = testState.RUN
-      if (!data) return
+      if (!data) { data = JSON.parse(localStorage.getItem(type))}
+      console.log(data)
+      // localStorage.setItem(type, JSON.stringify(data));
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof threads === 'object')
         isPass = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
