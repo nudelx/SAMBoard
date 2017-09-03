@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CardHeader = ({ type, env }) => {
+const CardHeader = ({ env }) => {
   return (
     <div className="card-header">
-      {`${type} :: ${env}`}
+      {env}
     </div>
   )
 }
