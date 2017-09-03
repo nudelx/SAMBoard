@@ -4,7 +4,7 @@ import FieldFormater from '../tools/FieldFormater'
 const TestThreads = ({ threads }) => {
   if (!threads) return null
   return (
-    <div>
+    <div className='test-threads'>
       <ul>
         {Object.keys(threads).map((t, i) =>
           <li key={i}>

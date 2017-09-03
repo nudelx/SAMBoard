@@ -4,6 +4,7 @@ import * as firebase from 'firebase'
 import CardHeader from './cardHeader'
 import CardBody from './cardBody'
 import User from './user'
+import TestsBody from './testsBody'
 import TestThreads from './testThreads'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { testState } from '../tools/constants'
@@ -108,7 +109,10 @@ class CardNew extends Component {
             {this.renderField('version', data)}
           </ul>
         </CardBody>
-        {tests && <TestThreads threads={data.threads}/>}
+        {tests && <TestsBody>
+          <span className='test-status'>test status</span>
+          {<TestThreads threads={data.threads}/>}
+        </TestsBody>}
       </div>
     )
   }

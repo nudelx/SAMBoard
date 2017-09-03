@@ -11,8 +11,8 @@ const Board = () => {
 
   return (
     <div className="simple-board">
-      {/* <CardNew type="installation" env="dev10" fields={getFields("installation")} /> */}
-      {/* <CardNew type="deploys" env="build" fields={getFields("deploys")} /> */}
+      <CardNew type="installation" env="dev10" fields={getFields("installation")} />
+      <CardNew type="deploys" env="build" fields={getFields("deploys")} />
       <CardNew type="deploys" env="review" tests={true} fields={getFields("deploys")} />
       {/* <CardNew type="tests" env="review" tests={true} fields={getFields("tests")} /> */}
 
