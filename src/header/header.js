@@ -7,7 +7,7 @@ const Header = ({ title }) => {
       <ul className={'header-list'}>
         <li className={'main-title'}> {title} </li>
         <li> <StatusBlock status envName={'cmdb'} /> </li>
-        <li> <StatusBlock envName={'dev12'} /> </li>
+        <li> <StatusBlock envName={'esd'} /> </li>
       </ul>
     </div>
   )
