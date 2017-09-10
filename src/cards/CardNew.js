@@ -8,6 +8,7 @@ import TestsBody from './testsBody'
 import TestThreads from './testThreads'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { testState } from '../tools/constants'
+import TestsStatus from './testsStatus'
 
 class CardNew extends Component {
   constructor(props) {
@@ -18,17 +19,22 @@ class CardNew extends Component {
       branch: '--',
       tag: '--',
       version: '--',
-      threads: {}
+      threads: {},
+      testDate: '--',
+      testsStatus: '--'
     }
   }
 
-  createStateObj(data, env, threads) {
+  createStateObj(data, threads, testDate, testsStatus) {
     return {
-      user: (data[env] && data[env].user) || 'n/a',
-      date: (data[env] && data[env].date) || 'n/a',
-      branch: (data[env] && data[env].branch) || 'n/a',
-      version: (data[env] && data[env].version) || 'n/a',
-      tag: (data[env] && data[env].tag) || 'n/a',
+      user: (data && data.user) || 'n/a',
+      date: (data && data.date) || 'n/a',
+      branch: (data && data.branch) || 'n/a',
+      version: (data && data.version) || 'n/a',
+      tag: (data && data.tag) || 'n/a',
+      threads: threads,
+      testDate: testDate,
+      testsStatus: testsStatus,
     }
   }
 
@@ -37,38 +43,32 @@ class CardNew extends Component {
     if (!type && !env) {
       return
     }
-    var db = firebase.database().ref().child(type)
+    var db = firebase.database().ref()
     db.on('value', snap => {
-      let data = snap.val()
+      let data = snap.val()[type][env]
       if (!data) return
 
-      var db1 = firebase.database().ref().child('tests')
-      db1.on('value', snap => {
-        let testsData = snap.val()
-        let isPass = testState.RUN
+      let testsData = snap.val()['tests'][env]
 
-        const threads = (testsData[env] && parseThreadField(testsData[env].threads)) || {}
-        if (typeof threads === 'object')
-          isPass = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
-            ? testState.FAIL
-            : testState.PASS
-        this.setState({ threads: threads, isPass })
-      })
-      // const threads = (data[env] && parseThreadField(data[env].threads)) || {}
-      // this.setState(this.createStateObj(data, env, threads))
-      this.setState(this.createStateObj(data, env))
+      let testsStatus = testState.RUN
+      const threads = (testsData && parseThreadField(testsData.threads)) || {}
+      if (typeof threads === 'object')
+        testsStatus = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
+          ? testState.FAIL
+          : testState.PASS
+      this.setState(this.createStateObj(data, threads, testsData && testsData.date, testsStatus))
     })
   }
 
   extractDataFromState(type) {
     const fieldsData = this.props.fields || []
-    const { threads } = this.state
+    const { threads, testDate, testsStatus } = this.state
     return fieldsData.reduce(
       (data, field) => {
         data[field] = this.state[field]
         return data
       },
-      { threads }
+      { threads, testDate, testsStatus }
     )
   }
 
@@ -110,8 +110,9 @@ class CardNew extends Component {
           </ul>
         </CardBody>
         {tests && <TestsBody>
-          <span className='test-status'>test status</span>
-          {<TestThreads threads={data.threads}/>}
+          <TestsStatus status={data.testsStatus}/>
+          <div className='test-date'>{data.testDate}</div>
+          <TestThreads threads={data.threads}/>
         </TestsBody>}
       </div>
     )
