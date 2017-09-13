@@ -3,26 +3,23 @@ import FieldFormater from '../tools/FieldFormater'
 import Loading from '../tools/loading'
 
 const statusClass = (thread) => {
-  switch (parseInt(thread)) {
-    case -1:
-      return 'wait'
-    case 0:
-      return 'pass'
-    default:
-      return 'fail'
+  const number = parseInt(thread)
+  if (number === 0) {
+    return 'pass'
   }
+  return 'fail'
 }
 
 const statusValue = (status) => {
-  if (status === '-1') {
+  if (parseInt(status) >= 0) {
     return (
-      <Loading />
+      <span className={'thread-value ' + statusClass(status)}>
+        {status}
+      </span>
     )
   }
   return (
-    <span className={'thread-value ' + statusClass(status)}>
-      {status}
-    </span>
+    <Loading />
   )
 }
 

@@ -8,15 +8,16 @@ const testsStatusText = (status) => {
       return 'Passed'
     case 'running':
       return 'Running...'
+    default:
+      return ''
   }
 }
 
 const TestsStatus = ({ status }) => {
-  const testsStatusClass = 'test-status ' + `st-status-${status}`
   return (
     <div className='tests-status'>
       <span className='test-status-label'>test status</span>
-      <span className={testsStatusClass}>{testsStatusText(status)}</span>
+      <span className={`test-status st-status-${status}`}>{testsStatusText(status)}</span>
     </div>
   )
 }

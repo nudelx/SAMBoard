@@ -14,14 +14,14 @@ class CardNew extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: '--',
-      date: '--',
-      branch: '--',
-      tag: '--',
-      version: '--',
-      threads: {},
-      testDate: '--',
-      testsStatus: '--'
+      // user: '--',
+      // date: '--',
+      // branch: '--',
+      // tag: '--',
+      // version: '--',
+      // threads: {},
+      // testDate: '--',
+      // testsStatus: '--'
     }
   }
 
@@ -60,7 +60,7 @@ class CardNew extends Component {
     })
   }
 
-  extractDataFromState(type) {
+  extractDataFromState() {
     const fieldsData = this.props.fields || []
     const { threads, testDate, testsStatus } = this.state
     return fieldsData.reduce(
@@ -82,7 +82,7 @@ class CardNew extends Component {
   }
 
   renderField(field, data) {
-    if (data[field])
+    if (data[field] && data[field] !== 'n/a')
       return (
         <li key={field}>
           <span className="list-key">
@@ -96,8 +96,8 @@ class CardNew extends Component {
   }
 
   render() {
-    const { env, type, tests } = this.props
-    const data = this.extractDataFromState(type)
+    const { env, tests } = this.props
+    const data = this.extractDataFromState()
     return (
       <div className="card">
         <CardHeader env={env} />
