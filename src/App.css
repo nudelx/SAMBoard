@@ -46,7 +46,6 @@ html {
 }
 
 .simple-board {
-  display: flex;
   padding: 25px;
   min-height: 900px;
   height: 100%;
@@ -67,8 +66,7 @@ html {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
   color: #d6d6d6;
   background-color: #002b35;
   -webkit-box-shadow: black 0px 2px 17px 0px;
