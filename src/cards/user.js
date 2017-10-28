@@ -1,7 +1,7 @@
 import React from 'react'
 
 const User = ({ user, date }) => {
-  const cleanUser = user.replace('/', '')
+  const cleanUser = (user === 'runner' ? 'Semaphore' : user).replace('/', '')
   return (
     <div className="user-card">
       <div className="image-holder">

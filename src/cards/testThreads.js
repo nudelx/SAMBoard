@@ -1,5 +1,4 @@
 import React from 'react'
-import FieldFormater from '../tools/FieldFormater'
 import Loading from '../tools/loading'
 
 const statusClass = (thread) => {
@@ -24,7 +23,7 @@ const statusValue = (status) => {
 }
 
 const TestThreads = ({ threads }) => {
-  if (!threads || Object.keys(threads).length == 0) return null
+  if (!threads || Object.keys(threads).length === 0) return null
   return (
     <div className='test-threads'>
       <ul>
