@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../cards/card'
+import Card from '../cards/Card'
 import EnvStatus from '../cards/envStatus'
 import Header from '../header/header'
 import '../App.css'
