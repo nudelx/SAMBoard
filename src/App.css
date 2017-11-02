@@ -253,7 +253,7 @@ span.list-key {
   font-size: 10px;
 }
 
-.image-holder, .user-details {
+.image-holder, .user-holder {
   display: inline-block;
   vertical-align: top;
 }
@@ -266,6 +266,15 @@ span.list-key {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.name-holder, .user-date {
+  font-size: 16px;
+  color: #bbc9cc;
+}
+
+.name-holder {
+  font-weight: 600;
 }
 
 .spinner {
@@ -331,10 +340,6 @@ div.state-date {
 
 div.state-time {
   font-size: 12px;
-}
-
-div.user-holder {
-  margin-bottom: 5px;
 }
 
 div.header {
