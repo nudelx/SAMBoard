@@ -5,7 +5,7 @@ import spinner from '../spinner.svg'
 
 const getValue = (field, data) => {
   if (field === 'updated') return data.timeAgo
-  if (field === 'user') return <User user={data.user} />
+  if (field === 'user') return <User user={data.user} date={data.date} />
   if (field.indexOf('thread') !== -1) {
     return parseFloat(data.threads[field])
       ? <span className="fail">
@@ -20,6 +20,22 @@ const getValue = (field, data) => {
   return data[field]
 }
 
+const getField = (field, data) => {
+  if (field === 'user')
+    return <li key={field}>{getValue(field, data)}</li>
+
+  return (
+    <li key={field}>
+      <span className="list-key">
+        {field}:
+      </span>
+      <span className="list-val">
+        {getValue(field, data)}
+      </span>
+    </li>
+  )
+}
+
 const FieldsList = ({ type, data }) => {
   const fields = getFields(type)
   if (!fields)
@@ -30,16 +46,7 @@ const FieldsList = ({ type, data }) => {
     )
   return (
     <ul>
-      {fields.map(f =>
-        <li key={f}>
-          <span className="list-key">
-            {f}:
-          </span>
-          <span className="list-val">
-            {getValue(f, data)}
-          </span>
-        </li>
-      )}
+      {fields.map(f => getField(f, data))}
     </ul>
   )
 }
