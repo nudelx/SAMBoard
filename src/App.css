@@ -6,23 +6,15 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  -webkit-animation: App-logo-spin infinite 20s linear;
-  animation: App-logo-spin infinite 20s linear;
-  height: 50px;
-  position: relative;
-  top: -6px;
-}
-
 .App-header {
-  background-color: #011115;
+  background-color: black;
   position: relative;
   height: 35px;
   padding: 20px;
-  color: #61dafb;
-  -webkit-box-shadow: black 0px 3px 20px 1px;
-  box-shadow: black 0px 3px 20px 1px;
-  border: 1px solid #002933;
+  color: #15bcfe;
+  border-bottom: 1px solid #002933;
+  -webkit-box-shadow: black 0px 2px 17px 0px;
+  box-shadow: black 0px 2px 17px 0px;
 }
 
 .logo-holder,
@@ -33,14 +25,13 @@ html {
   display: flex;*/
 }
 .logo-holder {
-  left: 0px;
+  left: 25px;
 }
 
 .side-right {
-  margin-top: 0px;
-  padding: 0px;
-  right: 0px;
-  width: 170px;
+  right: 25px;
+  width: 150px;
+  text-align: right;
 }
 
 .brand {
@@ -55,34 +46,13 @@ html {
   font-size: large;
 }
 
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 .simple-board {
-  padding: 50px;
+  padding: 25px;
   min-height: 900px;
   height: 100%;
   max-width: 1765px;
   /*background-color: #2E2E2E;*/
+  background-color: #001e26;
 }
 
 .date,
@@ -90,6 +60,7 @@ html {
   font: 15px helvetica, arial, sans-serif;
   width: 150px;
   display: inline-block;
+  color: #bbc9cc;
 }
 
 .time {
