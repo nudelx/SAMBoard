@@ -56,7 +56,6 @@ class Card extends Component {
       let data = snap.val()
       let isPass = testState.RUN
       if (!data) { data = JSON.parse(localStorage.getItem(type))}
-      console.log(data)
       // localStorage.setItem(type, JSON.stringify(data));
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
       if (typeof threads === 'object')
