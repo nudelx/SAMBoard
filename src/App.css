@@ -51,7 +51,6 @@ html {
   min-height: 900px;
   height: 100%;
   max-width: 1765px;
-  /*background-color: #2E2E2E;*/
   background-color: #001e26;
 }
 
@@ -68,37 +67,37 @@ html {
 }
 
 .card {
-  color: #d6d6d6;
   display: inline-block;
+  color: #d6d6d6;
+  background-color: #002b35;
+  -webkit-box-shadow: black 0px 2px 17px 0px;
+  box-shadow: black 0px 2px 17px 0px;
   width: 420px;
-  height: 260px;
+  min-height: 265px;
   margin: 20px 20px 0px 0px;
   position: relative;
-  -webkit-box-shadow: black 0px 3px 20px 1px;
-  box-shadow: black 0px 3px 20px 1px;
-  /*border: 1px solid #2e2e2e;*/
-  overflow: auto;
-  vertical-align: bottom;
-  background-color:#012B36;
+  overflow: hidden;
+  border-radius: 6px;
+  vertical-align: top;
 }
 
 .card-header {
-  color: #ff794d;
-  /*color: #FF5C85;*/
-  /*color: #DBA400;*/
-  line-height: 40px;
-  height: 40px;
+  color: #bbc9cc;
+  line-height: 55px;
+  height: 55px;
   text-transform: uppercase;
   font-size: 20px;
+  font-weight: bold;
   text-align: left;
-  padding-left: 10px;
-  border-bottom: 1px solid #193C47;
-  background-color: #033643;
+  padding-left: 20px;
+  border-bottom: 1px solid #24454f;
+  background-color: #013642;
 }
+
 .env-name{
   display: inline-block;
-  color: #BBC9CC;
-  font-size: 14px;
+  color: #bbc9cc;
+  font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
 }
@@ -107,7 +106,7 @@ html {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
+  padding-top: 28px;
   text-align: left;
 }
 
@@ -119,7 +118,7 @@ html {
 }
 
 .card-body li {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   line-height: 20px;
   font-size: 14px;
   white-space: nowrap;
@@ -127,7 +126,7 @@ html {
 
 .card-body li > span {
   margin-right: 10px;
-  min-width: 60px;
+  min-width: 70px;
   display: inline-block;
   white-space: nowrap;
 }
@@ -213,8 +212,14 @@ html {
 }
 
 span.list-key {
-  width: 80px;
-  text-transform: capitalize;
+  width: 70px;
+  text-transform: uppercase;
+  color: #547b82;
+}
+
+span.list-val {
+  color: #bbc9cc;
+  font-size: 16px;
 }
 
 .card-footer {
@@ -246,6 +251,10 @@ span.list-key {
 
 .name-holder {
   font-weight: 600;
+}
+
+li .user-card {
+  padding-bottom: 24px;
 }
 
 .spinner {
@@ -315,9 +324,9 @@ div.state-time {
 
 div.header {
     white-space: nowrap;
-    -webkit-box-shadow: black 0px 3px 20px 1px;
-    box-shadow: black 0px 3px 20px 0px;
-    border-radius: 3px;
+    -webkit-box-shadow: black 0px 2px 17px 0px;
+    box-shadow: black 0px 2px 17px 0px;
+    border-radius: 6px;
     padding-left: 20px;
     background-color: #012B36;
 }
@@ -333,16 +342,15 @@ div.header ul {
 
 div.header li {
   display: inline-block;
-  line-height: 53px;
+  line-height: 55px;
   height: 53px;
-  /*width: 200px;*/
   margin-right: 5%;
 }
 
 div.header .main-title {
   text-transform: uppercase;
   color: #BBC9CC;
-  font-weight: bold;;
+  font-weight: bold;
 }
 
 div.statusBlock {
@@ -367,19 +375,20 @@ div.statusBlock > div.st-name {
 }
 
 div.badge {
-  color: #fff;
-  font-size: 10px;
+  color: #bbc9cc;
+  font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
-  border-radius: 3px;
+  border-radius: 4px;
   display: inline;
-  padding: 5px 5px;
+  padding: 8px 8px;
   vertical-align: bottom;
 }
 
 .badge-red {
-  background-color: #f5003d;
+  background-color: #b60420;
 }
 
 .badge-green {
-  background-color: #289e00;
+  background-color: #087103;
 }
