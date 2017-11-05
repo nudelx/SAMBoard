@@ -1,17 +1,36 @@
-  import React from 'react'
-  import StatusBlock from './statusBlock'
+import React from 'react'
+import StatusBlock from './statusBlock'
+import * as firebase from 'firebase'
 
-const Header = ({ title }) => {
-  return  (
-    <div className={'header'}>
-      <ul className={'header-list'}>
-        <li className={'main-title'}> {title} </li>
-        <li> <StatusBlock status envName={'cmdb'} /> </li>
-        <li> <StatusBlock envName={'esd'} /> </li>
-      </ul>
-    </div>
-  )
+export default class Header extends React.Component {
+  state = { data: null }
+  componentDidMount() {
+    const db = firebase
+      .database()
+      .ref()
+      .child('master_status')
+
+    db.on('value', snap => {
+      let data = snap.val()
+      this.setState({ data })
+    })
+  }
+
+  render() {
+    const { title } = this.props
+
+    return (
+      <div className={'header'}>
+        <ul className={'header-list'}>
+          <li className={'main-title'}> {title} </li>
+          <li>
+            <StatusBlock {...this.state} envName={'cmdb'} />
+          </li>
+          <li>
+            <StatusBlock {...this.state} envName={'esd'} />
+          </li>
+        </ul>
+      </div>
+    )
+  }
 }
-
-
-export default Header
