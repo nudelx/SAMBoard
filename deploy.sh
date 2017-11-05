@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+git checkout master
+git pull 
 git checkout gh-pages
 git merge master
 rm -rf static/
