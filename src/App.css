@@ -11,7 +11,6 @@ html {
   position: relative;
   height: 35px;
   padding: 20px;
-  color: #15bcfe;
   border-bottom: 1px solid #002933;
   -webkit-box-shadow: black 0px 2px 17px 0px;
   box-shadow: black 0px 2px 17px 0px;
@@ -20,10 +19,8 @@ html {
 .logo-holder,
 .side-right {
   position: absolute;
-  /*display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;*/
 }
+
 .logo-holder {
   left: 25px;
 }
@@ -40,6 +37,18 @@ html {
   padding: 0px;
   display: inline-block;
   vertical-align: top;
+  color: #bbc9cc;
+  font-weight: 400;
+}
+
+.brand.second {
+  margin-left: 3px;
+  color: black;
+  border-radius: 4px;
+  display: inline;
+  padding: 1px 5px;
+  /*background-color: #F89C23;*/
+  background-color: #00bbff;
 }
 
 .App-intro {
@@ -355,14 +364,12 @@ div.header .main-title {
   font-size: 20px;
 }
 
-
-
 div.statusBlock {
   display: inline-block;
   background-color: #01212A;
-  height: 28px;
-  line-height: 28px;
-  /*width: 150px;*/
+  height: 35px;
+  line-height: 35px;
+  width: 150px;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
@@ -370,7 +377,7 @@ div.statusBlock {
 
 div.statusBlock > * {
   display: inline-block;
-  padding: 0px 10px;
+  padding: 2px 10px;
 }
 
 div.statusBlock > div.st-name {
@@ -385,8 +392,9 @@ div.badge {
   text-transform: uppercase;
   border-radius: 4px;
   display: inline;
-  padding: 6px 8px;
+  padding: 4px 6px;
   vertical-align: bottom;
+  font-weight: 400;
 }
 
 .badge-red {
