@@ -18,7 +18,8 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <div className="logo-holder">
-            <h2 className="brand">SAMBOARD</h2>
+            <h2 className="brand">Sam</h2>
+            <h2 className="brand second">Hub</h2>
           </div>
           <div className="side-right">
             <TimeCard />
