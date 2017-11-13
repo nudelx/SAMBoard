@@ -6,7 +6,7 @@ export const FIELDS = {
 
 export const SKIP_FIELDS = {
   deploys: { date: 1 },
-  installation: { date: 1 },
+  installation: { date: 1, branch: 1, tag: 1 },
   tests: {}
 }
 
