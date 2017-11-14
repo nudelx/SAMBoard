@@ -404,3 +404,32 @@ div.badge {
 .badge-green {
   background-color: #087103;
 }
+
+ul.test-thread-box {
+  display: inline-block;
+  padding: 7px 10px;
+}
+
+.test-success {
+  background-color: #376431;
+}
+
+.test-fail {
+  background-color: #883541;
+}
+
+li.test-thread-name, li.test-thread-value {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+li.test-thread-name {
+  font-size: 12px;
+}
+
+li.test-thread-value {
+  color: #bbc9cc;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
