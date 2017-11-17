@@ -153,13 +153,6 @@ html {
 .st-status-pass,
 .st-status-fail,
 .st-status-running {
-  position: absolute;
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  width: 100%;
-  text-transform: uppercase;
-  padding-top: 5px;
   color: #289e00;
 }
 
@@ -405,9 +398,48 @@ div.badge {
   background-color: #087103;
 }
 
+div.tests-header-container {
+  margin-top: 20px;
+}
+
+div.tests-header {
+  color: #647B82;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  text-align: left;
+}
+
+div.tests-status {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  text-align: right;
+}
+
+div.tests-body {
+  border-top: 1px solid #24454f;
+}
+
+div.tests-inner-body {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+div.test-threads-body {
+  background-color: #01212A;
+  min-height: 73px;
+}
+
 ul.test-thread-box {
   display: inline-block;
   padding: 7px 10px;
+  min-width: 25px;
+  vertical-align: middle;
 }
 
 .test-success {
@@ -418,9 +450,10 @@ ul.test-thread-box {
   background-color: #883541;
 }
 
-li.test-thread-name, li.test-thread-value {
+li.test-thread-name, li.test-thread-value, li.test-thread-loading {
   margin-bottom: 0px;
   text-align: center;
+  display: block;
 }
 
 li.test-thread-name {
@@ -432,4 +465,52 @@ li.test-thread-value {
   font-size: 20px;
   font-weight: bold;
   margin-top: 15px;
+}
+
+.bouncing_loading {
+  /*display: none;*/
+}
+
+.bouncing_loading > div {
+  width: 8px;
+  height: 8px;
+  background-color: #05aaff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.bouncing_loading .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s
+}
+
+.bouncing_loading .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s
+}
+
+@-webkit-keyframes bouncedelay {
+  0%,80%,100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes bouncedelay {
+  0%,80%,100% {
+    transform: scale(0);
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1)
+  }
 }

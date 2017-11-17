@@ -1,24 +1,24 @@
 import React from 'react'
 import { getFields, SKIP_FIELDS } from '../tools/fields'
 import User from './user'
-import spinner from '../spinner.svg'
+// import spinner from '../spinner.svg'
 
 const getValue = (field, data) => {
   if (field === 'updated') return data.timeAgo
   if (field === 'user') return <User user={data.user} date={data.date} />
-  if (field.indexOf('thread') !== -1) {
-    return parseFloat(data.threads[field]) ? (
-      <span className="fail">{data.threads[field]}</span>
-    ) : (
-      <span className="pass">
-        {data.threads[field] === undefined ? (
-          <img alt="spinner" className="spinner" src={spinner} />
-        ) : (
-          '✓'
-        )}
-      </span>
-    )
-  }
+  // if (field.indexOf('thread') !== -1) {
+  //   return parseFloat(data.threads[field]) ? (
+  //     <span className="fail">{data.threads[field]}</span>
+  //   ) : (
+  //     <span className="pass">
+  //       {data.threads[field] === undefined ? (
+  //         <img alt="spinner" className="spinner" src={spinner} />
+  //       ) : (
+  //         '✓'
+  //       )}
+  //     </span>
+  //   )
+  // }
   return data[field]
 }
 
