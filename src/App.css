@@ -81,7 +81,7 @@ html {
   background-color: #002b35;
   -webkit-box-shadow: black 0px 2px 17px 0px;
   box-shadow: black 0px 2px 17px 0px;
-  width: 420px;
+  width: 430px;
   min-height: 267px;
   margin: 20px 20px 0px 0px;
   position: relative;
@@ -399,7 +399,9 @@ div.badge {
 }
 
 div.tests-header-container {
+  position: relative;
   margin-top: 20px;
+  height: 32px;
 }
 
 div.tests-header {
@@ -408,15 +410,15 @@ div.tests-header {
   font-size: 18px;
   font-weight: bold;
   position: absolute;
-  text-align: left;
 }
 
 div.tests-status {
+  position: absolute;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
   position: absolute;
-  text-align: right;
+  right: 0px;
 }
 
 div.tests-body {
