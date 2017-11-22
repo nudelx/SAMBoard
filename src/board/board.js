@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../cards/Card'
-import EnvStatus from '../cards/envStatus'
+// import EnvStatus from '../cards/envStatus'
 import Header from '../header/header'
 import '../App.css'
 import fbConnect from '../firebase/fb_config'
