@@ -37,23 +37,27 @@ const maxThreadsNum = (threads) => {
   return maxThreadNumber
 }
 
+const getComponent = (component, key) => {
+  return <li key={key} className='thread-box'>{component}</li>
+}
+
 const renderTestBoxes = (threads, status) => {
   if (Object.keys(threads).length === 0)
-    return <TestLoadingBox />
+    return getComponent(<TestLoadingBox />, 1)
 
   let boxes = []
   const maxNum = maxThreadsNum(threads)
   for (let i = 1; i <= maxThreadsNum(threads); i++) {
     const thread = threadName(i)
     if (threads[thread])
-      boxes.push(<TestBox key={i} name={`T${i}`} value={threads[thread]} />)
+      boxes.push(getComponent(<TestBox key={i} name={`T${i}`} value={threads[thread]} />, `T${i}`))
     else {
-      if (running(status) && i < maxNum && (boxes.length === 0 || boxes[boxes.length - 1].props.name))
-        boxes.push(<TestLoadingBox key={i} />)
+      if (running(status) && i < maxNum && (boxes.length === 0 || boxes[boxes.length - 1].key.startsWith('T')))
+        boxes.push(getComponent(<TestLoadingBox key={i} />, i))
     }
   }
   if (running(status))
-    boxes.push(<TestLoadingBox key={maxNum + 1} />)
+    boxes.push(getComponent(<TestLoadingBox key={maxNum + 1} />, maxNum + 1))
   return boxes
 }
 
@@ -65,8 +69,10 @@ const TestsBody = ({ threads, date, status }) => {
           <div className='tests-header'>Test Status</div>
           <div className={`tests-status st-status-${status}`}>{testsStatusText(status)}</div>
         </div>
-        <div className='test-threads-body'>
-          {renderTestBoxes(threads, status)}
+        <div className='test-threads-body-container'>
+          <ul className='test-threads-body'>
+            {renderTestBoxes(threads, status)}
+          </ul>
         </div>
       </div>
     </div>
