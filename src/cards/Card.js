@@ -5,7 +5,6 @@ import CardHeader from './cardHeader'
 import CardBody from './cardBody'
 import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
-import { buildTimeStr } from '../tools/timeStampParser'
 import { testState } from '../tools/constants'
 import FieldsList from './fieldsList'
 import TestsBody from './testsBody'
@@ -24,12 +23,6 @@ class Card extends Component {
       passed: '--',
       threads: {}
     }
-  }
-
-  timeAgoTimer() {
-    setInterval(() => {
-      this.calculateTime()
-    }, 1000)
   }
 
   createStateObj(data, env, threads, status) {
@@ -64,28 +57,17 @@ class Card extends Component {
           : testState.PASS
       this.setState(this.createStateObj(data, env, threads, status))
     })
-    this.timeAgoTimer()
-  }
-
-  calculateTime() {
-    const { timestamp } = this.state
-    if (!timestamp) {
-      this.setState({ timeAgo: '--' })
-      return
-    }
-    const timeAgo = buildTimeStr(timestamp)
-    this.setState({ timeAgo })
   }
 
   extractDataFromState(type) {
     const fieldsData = getFields(type) || []
-    const { timeAgo, timestamp, threads } = this.state
+    const { threads, timestamp } = this.state
     return fieldsData.reduce(
       (data, f) => {
         data[f] = this.state[f]
         return data
       },
-      { timeAgo, timestamp, threads }
+      { threads, timestamp }
     )
   }
 

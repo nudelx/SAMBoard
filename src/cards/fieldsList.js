@@ -1,9 +1,10 @@
 import React from 'react'
 import { getFields, SKIP_FIELDS } from '../tools/fields'
 import User from './user'
+import TimeAgo from './TimeAgo'
 
 const getValue = (field, data) => {
-  if (field === 'updated') return data.timeAgo
+  if (field === 'updated' && data.timestamp) return <TimeAgo timestamp={data.timestamp} />
   if (field === 'user') return <User user={data.user} date={data.date} />
   return data[field]
 }
