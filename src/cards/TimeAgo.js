@@ -1,9 +1,8 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import { buildTimeStr } from '../tools/timeStampParser'
 
 export default class TimeAgo extends Component {
-
-  state = {timeAgo: '--'}
+  state = { timeAgo: '--' }
 
   calculateTime() {
     const { timestamp } = this.props
@@ -23,8 +22,7 @@ export default class TimeAgo extends Component {
     this.timeAgoTimer()
   }
 
-  render () {
-    return (<span>{this.state.timeAgo}</span>)
+  render() {
+    return <span>{this.state.timeAgo}</span>
   }
-
 }
