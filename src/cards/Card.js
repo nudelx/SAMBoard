@@ -6,7 +6,6 @@ import CardBody from './cardBody'
 import TestStatus from './testStatus'
 import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
-
 import { testState } from '../tools/constants'
 import FieldsList from './fieldsList'
 
