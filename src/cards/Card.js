@@ -61,13 +61,13 @@ class Card extends Component {
 
   extractDataFromState(type) {
     const fieldsData = getFields(type) || []
-    const { timeAgo, threads, timestamp } = this.state
+    const { threads, timestamp } = this.state
     return fieldsData.reduce(
       (data, f) => {
         data[f] = this.state[f]
         return data
       },
-      { timeAgo, threads, timestamp }
+      { threads, timestamp }
     )
   }
 
