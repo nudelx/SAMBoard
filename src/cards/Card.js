@@ -3,11 +3,11 @@ import '../App.css'
 import * as firebase from 'firebase'
 import CardHeader from './cardHeader'
 import CardBody from './cardBody'
-import TestStatus from './testStatus'
 import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { testState } from '../tools/constants'
 import FieldsList from './fieldsList'
+import TestsBody from './testsBody'
 
 class Card extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Card extends Component {
     }
   }
 
-  createStateObj(data, env, threads, isPass) {
+  createStateObj(data, env, threads, status) {
     return {
       user: (data[env] && data[env].user) || 'n/a',
       date: (data[env] && data[env].date) || 'n/a',
@@ -33,8 +33,8 @@ class Card extends Component {
       timestamp: (data[env] && data[env].timestamp) || 0,
       version: (data[env] && data[env].version) || 'n/a',
       tag: (data[env] && data[env].tag) || 'n/a',
-      threads: threads,
-      isPass
+      threads,
+      status
     }
   }
 
@@ -47,15 +47,15 @@ class Card extends Component {
 
     db.on('value', snap => {
       let data = snap.val()
-      let isPass = testState.RUN
+      let status = testState.RUN
       if (!data) { data = JSON.parse(localStorage.getItem(type))}
       // localStorage.setItem(type, JSON.stringify(data));
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
-      if (typeof threads === 'object')
-        isPass = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
+      if (typeof threads === 'object' && Object.keys(threads).length > 0)
+        status = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
           ? testState.FAIL
           : testState.PASS
-      this.setState(this.createStateObj(data, env, threads, isPass))
+      this.setState(this.createStateObj(data, env, threads, status))
     })
   }
 
@@ -72,16 +72,16 @@ class Card extends Component {
   }
 
   render() {
-    const { env, type } = this.props
-    const { isPass } = this.state
+    const { env, type, tests } = this.props
+    const { status } = this.state
     const data = this.extractDataFromState(type)
     return (
       <div className="card">
         <CardHeader type={type} env={env} />
-        <CardBody isPass={isPass} type={type}>
+        <CardBody>
           <FieldsList type={type} data={data} />
-          {type === 'tests' ? <TestStatus status={isPass} /> : null}
         </CardBody>
+        {tests && <TestsBody threads={data.threads} date={new Date(data.timestamp * 1000)} status={status} />}
       </div>
     )
   }
