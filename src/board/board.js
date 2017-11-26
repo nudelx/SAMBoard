@@ -12,14 +12,14 @@ const Board = () => {
     <div className="simple-board">
       <Header title={'master status'}/>
 
-      {/* <Card type="deploys" env="build" />
+      <Card type="deploys" env="build" />
       <Card type="deploys" env="review" />
-      <Card type="installation" env="dev10" /> */}
+      <Card type="installation" env="dev10" />
 
-      {/* <Card type="tests" env="review" /> */}
+      <Card type="tests" env="review" />
       <Card type="tests" env="dev12" />
 
-      {/* <EnvStatus title="env" /> */}
+      <EnvStatus title="env" />
 
     </div>
   )
