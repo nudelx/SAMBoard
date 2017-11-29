@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from './badge'
+import Badge from '../tools/badge'
 
 const CardHeader = ({ type, env }) => {
   return (

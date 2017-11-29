@@ -7,7 +7,7 @@ import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { testState } from '../tools/constants'
 import FieldsList from './fieldsList'
-import TestsBody from './testsBody'
+import TestsBody from '../tests/testsBody'
 
 class Card extends Component {
   constructor(props) {
@@ -38,6 +38,14 @@ class Card extends Component {
     }
   }
 
+  testsRunning(threads) {
+    return Object.keys(threads).some(t => threads[t])
+  }
+
+  testsFailed(threads) {
+    return Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
+  }
+
   componentDidMount() {
     const { env, type } = this.props
     if (!type && !env) {
@@ -51,10 +59,9 @@ class Card extends Component {
       if (!data) { data = JSON.parse(localStorage.getItem(type))}
       // localStorage.setItem(type, JSON.stringify(data));
       const threads = (data[env] && parseThreadField(data[env].threads)) || {}
-      if (typeof threads === 'object' && Object.keys(threads).length > 0)
-        status = Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
-          ? testState.FAIL
-          : testState.PASS
+      const threadsRunning = (data[env] && data[env].threads_running) || {}
+      if (!this.testsRunning(threadsRunning) && typeof threads === 'object' && Object.keys(threads).length > 0)
+        status = this.testsFailed(threads) ? testState.FAIL : testState.PASS
       this.setState(this.createStateObj(data, env, threads, status))
     })
   }

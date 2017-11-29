@@ -15,7 +15,7 @@ const testsStatusText = (status) => {
   }
 }
 
-const running = (status) => {
+const running = (threads, status) => {
   return status === 'running'
 }
 
@@ -52,11 +52,11 @@ const renderTestBoxes = (threads, status) => {
     if (threads[thread])
       boxes.push(getComponent(<TestBox key={i} name={`T${i}`} value={threads[thread]} />, `T${i}`))
     else {
-      if (running(status) && i < maxNum && (boxes.length === 0 || boxes[boxes.length - 1].key.startsWith('T')))
+      if (running(threads, status) && i < maxNum && (boxes.length === 0 || boxes[boxes.length - 1].key.startsWith('T')))
         boxes.push(getComponent(<TestLoadingBox key={i} />, i))
     }
   }
-  if (running(status))
+  if (running(threads, status))
     boxes.push(getComponent(<TestLoadingBox key={maxNum + 1} />, maxNum + 1))
   return boxes
 }
