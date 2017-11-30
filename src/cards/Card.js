@@ -21,11 +21,12 @@ class Card extends Component {
       timestamp: 0,
       failed: '--',
       passed: '--',
-      threads: {}
+      threadsRunning: {},
+      browsers: {}
     }
   }
 
-  createStateObj(data, env, threads, status) {
+  createStateObj(data, env, browsers, threadsRunning, status) {
     return {
       user: (data[env] && data[env].user) || 'n/a',
       date: (data[env] && data[env].date) || 'n/a',
@@ -33,7 +34,8 @@ class Card extends Component {
       timestamp: (data[env] && data[env].timestamp) || 0,
       version: (data[env] && data[env].version) || 'n/a',
       tag: (data[env] && data[env].tag) || 'n/a',
-      threads,
+      browsers,
+      threadsRunning,
       status
     }
   }
@@ -42,8 +44,8 @@ class Card extends Component {
     return Object.keys(threads).some(t => threads[t])
   }
 
-  testsFailed(threads) {
-    return Object.keys(threads).some(t => parseFloat(threads[t]) > 0)
+  testsFailed(browsers) {
+    return Object.keys(browsers).some(browser => (browsers[browser].failed > 0))
   }
 
   componentDidMount() {
@@ -58,23 +60,23 @@ class Card extends Component {
       let status = testState.RUN
       if (!data) { data = JSON.parse(localStorage.getItem(type))}
       // localStorage.setItem(type, JSON.stringify(data));
-      const threads = (data[env] && parseThreadField(data[env].threads)) || {}
+      const browsers = (data[env] && parseThreadField(data[env].browsers)) || {}
       const threadsRunning = (data[env] && data[env].threads_running) || {}
-      if (!this.testsRunning(threadsRunning) && typeof threads === 'object' && Object.keys(threads).length > 0)
-        status = this.testsFailed(threads) ? testState.FAIL : testState.PASS
-      this.setState(this.createStateObj(data, env, threads, status))
+      if (!this.testsRunning(threadsRunning) && Object.keys(browsers).length > 0)
+        status = this.testsFailed(browsers) ? testState.FAIL : testState.PASS
+      this.setState(this.createStateObj(data, env, browsers, threadsRunning, status))
     })
   }
 
   extractDataFromState(type) {
     const fieldsData = getFields(type) || []
-    const { threads, timestamp } = this.state
+    const { browsers, threadsRunning, timestamp } = this.state
     return fieldsData.reduce(
       (data, f) => {
         data[f] = this.state[f]
         return data
       },
-      { threads, timestamp }
+      { browsers, threadsRunning, timestamp }
     )
   }
 
@@ -88,7 +90,7 @@ class Card extends Component {
         <CardBody>
           <FieldsList type={type} data={data} />
         </CardBody>
-        {tests && <TestsBody threads={data.threads} date={new Date(data.timestamp * 1000)} status={status} />}
+        {tests && <TestsBody browsers={data.browsers} threadsRunning={data.threadsRunning} date={new Date(data.timestamp * 1000)} status={status} />}
       </div>
     )
   }

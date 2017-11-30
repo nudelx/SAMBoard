@@ -1,10 +1,20 @@
-import { testState } from './constants'
-
-export const parseThreadField = function(threadsObject) {
-  if (!threadsObject || typeof threadsObject === 'string') return testState.RUN
+export const parseThreadField = function(browsers) {
+  if (!browsers) return
   const newObj = {}
-  Object.keys(threadsObject).map(
-    f => (newObj[`thread-${f.replace(/[^0-9]/g, '')}`] = threadsObject[f])
+  Object.keys(browsers).forEach(browser => {
+      let total = 0
+      let failed = 0
+      newObj[browser] = {}
+      Object.keys(browsers[browser]).forEach(thread => {
+          const threadData = browsers[browser][thread]
+          total = total + parseInt(threadData.total, 0)
+          failed = failed + parseInt(threadData.failed, 0)
+        }
+      )
+
+      newObj[browser].total = total
+      newObj[browser].failed = failed
+    }
   )
   return newObj
 }
