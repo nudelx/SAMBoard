@@ -32,7 +32,7 @@ const renderTestBoxes = (browsers, threadsRunning) => {
 
   Object.keys(browsers).forEach(browser => {
     const browserData = browsers[browser]
-    boxes.push(getComponent(<TestBox key={browser} name={browser} value={`${browserData.failed}/${browserData.total}`} />, browser))
+    boxes.push(getComponent(<TestBox key={browser} name={browser} failed={browserData.failed} total={browserData.total} />, browser))
   })
 
   if (running(threadsRunning))
