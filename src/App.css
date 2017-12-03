@@ -549,7 +549,8 @@ div.n-msg {
   background-color: #002b35;
   color: #bbc9cc;
   border-radius: 6px;
-  box-shadow: black 0px 2px 17px 0px;
+  -webkit-box-shadow: black 0px 2px 17px 0px;
+          box-shadow: black 0px 2px 17px 0px;
 }
 
 div.n-msg-header {
@@ -557,6 +558,7 @@ div.n-msg-header {
 }
 
 div.n-msg-slide {
+  -webkit-transition: 0.2s;
   transition: 0.2s;
   right: 10px;
 }
