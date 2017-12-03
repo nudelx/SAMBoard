@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './App.css'
 import Board from './board/board'
 import TimeCard from './cards/timeCard'
+import Notification from './cards/notification'
+
+
 
 const activateSelfReboot = () => {
   setTimeout(function () {
@@ -10,9 +13,11 @@ const activateSelfReboot = () => {
 }
 
 class App extends Component {
+
   componentDidMount() {
     activateSelfReboot()
   }
+
   render() {
     return (
       <div className="App">
@@ -27,6 +32,8 @@ class App extends Component {
         </div>
         <div>
           <Board />
+          <Notification />
+
         </div>
       </div>
     )

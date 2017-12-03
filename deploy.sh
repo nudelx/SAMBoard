@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+clear
+node updateVersion
 git checkout master
 git pull
 git checkout gh-pages
