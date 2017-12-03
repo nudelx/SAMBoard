@@ -15,53 +15,33 @@ const testsStatusText = (status) => {
   }
 }
 
-const running = (threads, status) => {
-  return status === 'running'
-}
-
-const threadNumber = (thread) => {
-  return parseInt(thread.split('-')[1], 10)
-}
-
-const threadName = (number) => {
-  return `thread-${number}`
-}
-
-const maxThreadsNum = (threads) => {
-  let maxThreadNumber = 0
-  Object.keys(threads).forEach((thread) => {
-    const num = threadNumber(thread)
-    if (num > maxThreadNumber)
-      maxThreadNumber = num
-  })
-  return maxThreadNumber
+const running = (threadsRunning) => {
+  return Object.keys(threadsRunning).some(t => threadsRunning[t])
 }
 
 const getComponent = (component, key) => {
   return <li key={key} className='thread-box'>{component}</li>
 }
 
-const renderTestBoxes = (threads, status) => {
-  if (Object.keys(threads).length === 0)
+const renderTestBoxes = (browsers, threadsRunning) => {
+  const browsersCount = Object.keys(browsers).length
+  if (browsersCount === 0)
     return getComponent(<TestLoadingBox />, 1)
 
   let boxes = []
-  const maxNum = maxThreadsNum(threads)
-  for (let i = 1; i <= maxThreadsNum(threads); i++) {
-    const thread = threadName(i)
-    if (threads[thread])
-      boxes.push(getComponent(<TestBox key={i} name={`T${i}`} value={threads[thread]} />, `T${i}`))
-    else {
-      if (running(threads, status) && i < maxNum && (boxes.length === 0 || boxes[boxes.length - 1].key.startsWith('T')))
-        boxes.push(getComponent(<TestLoadingBox key={i} />, i))
-    }
-  }
-  if (running(threads, status))
-    boxes.push(getComponent(<TestLoadingBox key={maxNum + 1} />, maxNum + 1))
+
+  Object.keys(browsers).forEach(browser => {
+    const browserData = browsers[browser]
+    boxes.push(getComponent(<TestBox key={browser} name={browser} failed={browserData.failed} total={browserData.total} />, browser))
+  })
+
+  if (running(threadsRunning))
+    boxes.push(getComponent(<TestLoadingBox key={browsersCount + 1} />, browsersCount + 1))
+
   return boxes
 }
 
-const TestsBody = ({ threads, date, status }) => {
+const TestsBody = ({ browsers, threadsRunning, date, status }) => {
   return (
     <div className='tests-body'>
       <div className='tests-inner-body'>
@@ -71,7 +51,7 @@ const TestsBody = ({ threads, date, status }) => {
         </div>
         <div className='test-threads-body-container'>
           <ul className='test-threads-body'>
-            {renderTestBoxes(threads, status)}
+            {renderTestBoxes(browsers, threadsRunning)}
           </ul>
         </div>
       </div>
