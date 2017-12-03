@@ -4,16 +4,13 @@ import Board from './board/board'
 import TimeCard from './cards/timeCard'
 import Notification from './cards/notification'
 
-
-
 const activateSelfReboot = () => {
-  setTimeout(function () {
-    window.location.reload();
+  setTimeout(function() {
+    window.location.reload()
   }, 86400000)
 }
 
 class App extends Component {
-
   componentDidMount() {
     activateSelfReboot()
   }
@@ -33,7 +30,6 @@ class App extends Component {
         <div>
           <Board />
           <Notification />
-
         </div>
       </div>
     )
