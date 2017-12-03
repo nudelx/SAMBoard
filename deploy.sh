@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 clear
-node updateVersion
-git commit -am "version update $(date)"
 git checkout master
 git pull
 git checkout gh-pages
 git merge -X theirs master
+node updateVersion
+git commit -am "version update $(date)"
 rm -rf static/
 yarn build
 cp -r build/* .
