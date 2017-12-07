@@ -29,6 +29,9 @@ export default class Header extends React.Component {
           <li>
             <StatusBlock {...this.state} envName={'esd'} />
           </li>
+          <li>
+            <StatusBlock {...this.state} envName={'mm'} />
+          </li>
         </ul>
       </div>
     )
