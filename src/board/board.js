@@ -16,7 +16,7 @@ const Board = () => {
       <Card type="deploys" env="build" />
       <Card type="installation" env="dev10" />
       <Card type="tests" env="NewDev12" tests />
-      <Card type="tests" env="dev12" tests />
+      <Card type="tests" env="MM_stage" tests />
 
       {/* <Card type="tests" env="review" /> */}
 
