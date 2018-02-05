@@ -5,7 +5,7 @@ class BB8 extends Component{
 
   componentDidMount() {
     const { bb8 } = this
-    this.applyForNewRun()
+    this.run()
   }
 
   getRandom() {
