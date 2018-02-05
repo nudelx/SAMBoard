@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 class BB8 extends Component{
-  state = { runValue: -100, timer: null }
+  state = { runValue: 100, timer: null }
 
   componentDidMount() {
     const { bb8 } = this
-    this.run()
+    // this.run()
   }
 
   getRandom() {
@@ -36,7 +36,7 @@ class BB8 extends Component{
 
   render () {
     const { timer } = this.state
-    if (! timer) return null
+    // if (! timer) return null
     return (
       <div ref={'bb8'} className="move-bb8">
         <div className="bb8"></div>
