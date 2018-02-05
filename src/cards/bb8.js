@@ -8,13 +8,14 @@ class BB8 extends Component{
   }
 
   getRandom() {
-    return Math.floor(Math.random() * 30) + 1
+    // return Math.floor(Math.random() * 30) + 1
+    return 2
   }
 
   applyForNewRun() {
     setTimeout(() => {
       this.run()
-    }, this.getRandom() * 60000)
+    }, this.getRandom() * 1000)
   }
 
   run() {
