@@ -3,6 +3,7 @@ import './App.css'
 import Board from './board/board'
 import TimeCard from './cards/timeCard'
 import Notification from './cards/notification'
+import BB8 from './cards/bb8'
 
 const activateSelfReboot = () => {
   setTimeout(function() {
@@ -11,6 +12,8 @@ const activateSelfReboot = () => {
 }
 
 class App extends Component {
+  state = { bb8: true }
+
   componentDidMount() {
     activateSelfReboot()
   }
@@ -30,6 +33,7 @@ class App extends Component {
         <div>
           <Board />
           <Notification />
+          <BB8 />
         </div>
       </div>
     )
