@@ -4,7 +4,7 @@ class BB8 extends Component{
   state = { runValue: -100, timer: null }
 
   componentDidMount() {
-    this.run()
+    this.applyForNewRun()
   }
 
   getRandom() {
