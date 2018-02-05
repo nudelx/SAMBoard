@@ -27,7 +27,8 @@ class Carousel extends Component {
   render() {
     const { children } = this.props
     const { showIndex } = this.state
-    const margin = -1*((this.refs.slideClosure.offsetWidth - this.offSet) * showIndex)
+    const startMargin = this.refs.slideClosure ? this.refs.slideClosure.offsetWidth : 0
+    const margin = -1*( startMargin * showIndex)
     return (<ul className='carousel' ref='slideClosure'>{children({ showIndex, margin })}</ul>)
   }
 }
