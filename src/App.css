@@ -3,7 +3,7 @@ html {
 }
 .App {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .App-header {
@@ -550,7 +550,7 @@ div.n-msg {
   color: #bbc9cc;
   border-radius: 6px;
   -webkit-box-shadow: black 0px 2px 17px 0px;
-          box-shadow: black 0px 2px 17px 0px;
+  box-shadow: black 0px 2px 17px 0px;
 }
 
 div.n-msg-header {
@@ -561,4 +561,42 @@ div.n-msg-slide {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   right: 10px;
+}
+
+.carousel {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel li.slide {
+  display: inline-block;
+  vertical-align: top;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  overflow: hidden;
+  white-space: normal;
+  text-align: center;
+}
+
+.move-bb8 {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+
+}
+
+.bb8 {
+  opacity: 0.9;
+  background-image: url(./bb8.gif);
+  background-position: -226px -11px;
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 208px;
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
 }
