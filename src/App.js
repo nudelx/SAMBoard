@@ -3,7 +3,7 @@ import './App.css'
 import Board from './board/board'
 import TimeCard from './cards/timeCard'
 import Notification from './cards/notification'
-
+console.log('test')
 const activateSelfReboot = () => {
   setTimeout(function() {
     window.location.reload()
