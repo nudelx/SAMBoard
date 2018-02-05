@@ -4,7 +4,6 @@ class BB8 extends Component{
   state = { runValue: 100, timer: null }
 
   componentDidMount() {
-    const { bb8 } = this
     this.run()
   }
 
