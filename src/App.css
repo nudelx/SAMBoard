@@ -1,5 +1,6 @@
 html {
   background-color: #011e26;
+  overflow-x: hidden;
 }
 
 .App {
