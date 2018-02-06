@@ -10,7 +10,6 @@ class Carousel extends Component {
       timer: null,
       offSet:50,
       timerValue: 30000,
-      showOnlySlide: props.showOnlySlide
     }
   }
 
@@ -22,8 +21,11 @@ class Carousel extends Component {
   }
 
   componentDidMount(props) {
-    const { enableCarousel } = this.props
-    if (!enableCarousel) return
+    const { enableCarousel, showOnlySlide } = this.props
+    if (!enableCarousel) {
+      this.setState({ showIndex: showOnlySlide })
+      return
+    }
     const timer = this.enableTimer()
     this.setState({timer})
     this.props.setTotalSlides(this.state.slidesCount)
@@ -40,6 +42,11 @@ class Carousel extends Component {
         console.log('Carousel disable timer')
         clearInterval(this.state.timer)
       }
+    }
+
+    if (! this.props.enableCarousel && nextProps.showOnlySlide !== this.props.showOnlySlide) {
+      console.log('set default slide')
+      this.setState({ showIndex: nextProps.showOnlySlide })
     }
   }
 
