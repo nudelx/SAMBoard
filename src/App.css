@@ -663,6 +663,14 @@ div.n-msg-slide {
   min-width: 230px;
 }
 
+.config-box label[for="onlySlide"] {
+  min-width: unset;
+}
+
+.config-box select {
+  min-width: 170px;
+}
+
 .config-box .cfg-row {
   margin-bottom: 10px;
 }

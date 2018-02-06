@@ -16,7 +16,7 @@ class Config extends Component {
 
   render() {
     const { active } = this.state
-    const { toggleCarousel, toggleBB8, enableBB8, enableCarousel } = this.props
+    const { toggleCarousel, toggleBB8, enableBB8, enableCarousel, totalSlides, setShowOnlySlide, showOnlySlide } = this.props
     return (
       <div>
         <div className="config-button" onClick={this.setActive} />
@@ -27,6 +27,9 @@ class Config extends Component {
             onClose={this.setActive}
             enableBB8={enableBB8}
             enableCarousel={enableCarousel}
+            totalSlides={totalSlides}
+            showOnlySlide={showOnlySlide}
+            setShowOnlySlide={setShowOnlySlide}
           />
         )}
       </div>

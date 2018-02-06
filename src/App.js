@@ -20,7 +20,7 @@ class App extends Component {
     this.state = {
       enableCarousel: true,
       enableBB8: false,
-      showOnlySlide: null,
+      showOnlySlide: 0,
       totalSlides: 0
     }
   }
@@ -54,7 +54,7 @@ class App extends Component {
   }
 
   render() {
-    const { enableBB8, enableCarousel, totalSlides } = this.state
+    const { enableBB8, enableCarousel, totalSlides, showOnlySlide } = this.state
     return (
       <div className="App">
         <div className="App-header">
@@ -70,6 +70,7 @@ class App extends Component {
           <Board
             enableCarousel={enableCarousel}
             setTotalSlides={this.setTotalSlides}
+            showOnlySlide={showOnlySlide}
           />
           <Notification />
           <BB8 enableBB8={enableBB8} />
@@ -80,6 +81,7 @@ class App extends Component {
             enableCarousel={enableCarousel}
             setShowOnlySlide={this.setShowOnlySlide}
             totalSlides={totalSlides}
+            showOnlySlide={showOnlySlide}
 
           />
         </div>

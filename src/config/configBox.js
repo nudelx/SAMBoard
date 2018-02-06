@@ -1,11 +1,22 @@
 import React from 'react'
 
+const makeOptions = (value) => {
+  const arr = []
+  for (let i=0; i < value; i++){
+    arr.push(i)
+  }
+  return arr
+}
+
 const ConfigBox = ({
   onClose,
   toggleCarousel,
   toggleBB8,
   enableCarousel,
-  enableBB8
+  enableBB8,
+  totalSlides,
+  setShowOnlySlide,
+  showOnlySlide
 }) => {
   return (
     <div className="config-box">
@@ -36,6 +47,23 @@ const ConfigBox = ({
           />
         </div>
       </div>
+
+      {!enableCarousel && <div className={'basic-config-box'}>
+        <div className="cfg-row">
+          <label htmlFor="onlySlide">Show Only</label>
+          <select
+            onChange={(e) => setShowOnlySlide(e.target.selectedIndex)}
+            id="onlySlide"
+            name="onlySlide"
+            value={showOnlySlide}
+          >
+            {
+              makeOptions(totalSlides).map((item) => <option key={item} value={item}>{`Slide ${item}`}</option>)
+            }
+          </select>
+        </div>
+      </div>}
+
     </div>
   )
 }

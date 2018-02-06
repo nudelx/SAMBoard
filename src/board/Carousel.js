@@ -9,7 +9,8 @@ class Carousel extends Component {
       windowWidth: 0,
       timer: null,
       offSet:50,
-      timerValue: 30000
+      timerValue: 30000,
+      showOnlySlide: props.showOnlySlide
     }
   }
 
