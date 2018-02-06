@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ConfigBox from './configBox'
-
+import BurgerButton from './burgerButton'
 class Config extends Component {
   state = {
     active: false,
@@ -16,14 +16,18 @@ class Config extends Component {
 
   render() {
     const { active } = this.state
-    const { toggleCarousel, toggleBB8, enableBB8, enableCarousel, totalSlides, setShowOnlySlide, showOnlySlide } = this.props
+    const {
+      toggleCarousel,
+      toggleBB8,
+      enableBB8,
+      enableCarousel,
+      totalSlides,
+      setShowOnlySlide,
+      showOnlySlide
+    } = this.props
     return (
       <div>
-        <div className="config-button-🍔" onClick={this.setActive} >
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <BurgerButton onClick={this.setActive} />
         {active && (
           <ConfigBox
             toggleCarousel={toggleCarousel}
