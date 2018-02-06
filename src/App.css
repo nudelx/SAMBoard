@@ -630,6 +630,7 @@ div.n-msg-slide {
   min-height: 400px;
   box-shadow: black 0px 2px 17px 0px;
   overflow: hidden;
+  border-radius: 6px;
 }
 
 .config-box .close {
