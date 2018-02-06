@@ -19,7 +19,11 @@ class Config extends Component {
     const { toggleCarousel, toggleBB8, enableBB8, enableCarousel, totalSlides, setShowOnlySlide, showOnlySlide } = this.props
     return (
       <div>
-        <div className="config-button" onClick={this.setActive} />
+        <div className="config-button-🍔" onClick={this.setActive} >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         {active && (
           <ConfigBox
             toggleCarousel={toggleCarousel}

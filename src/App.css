@@ -29,7 +29,7 @@ html {
 }
 
 .side-right {
-  right: 25px;
+  right: 60px;
   width: 150px;
   text-align: right;
 }
@@ -603,21 +603,30 @@ div.n-msg-slide {
   filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
 }
 
-.config-button {
-  cursor: pointer;
-  display: inline-block;
-  position: absolute;
-  right: -23px;
-  top: 16px;
-  color: #fff;
-  font-size: 32px;
+.config-button-🍔 {
+  /* border: 1px solid red; */
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  border: 2px solid #000;
-  -webkit-box-shadow: inset 1px 1px 1px 1px #404040;
-  box-shadow: inset 0px 0px 10px 2px #444;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  padding-top: 10px;
+  overflow: hidden;
+  cursor: pointer;
 }
+.config-button-🍔:hover  {
+  opacity: 0.9;
+}
+
+
+.config-button-🍔 > div {
+  width: 65%;
+  margin: 4px auto 0px auto;
+  border-top: 3px solid #bbc9cc;
+  height: 1px;
+}
+
+
 
 .config-box {
   display: inline-block;
