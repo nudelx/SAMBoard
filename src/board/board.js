@@ -5,11 +5,11 @@ import Slide from './Slide'
 import Header from '../header/header'
 import '../App.css'
 
-const Board = ({ enableCarousel }) => {
+const Board = ({ enableCarousel, setTotalSlides }) => {
   return (
     <div className="simple-board">
       <Header title={"master status"} />
-      <Carousel enableCarousel={enableCarousel}>
+      <Carousel enableCarousel={enableCarousel} setTotalSlides={setTotalSlides}>
         {
           ({ showIndex, margin }) => {
             return ([

@@ -19,10 +19,17 @@ class App extends Component {
     fbConnect()
     this.state = {
       enableCarousel: true,
-      enableBB8: false
+      enableBB8: false,
+      showOnlySlide: null,
+      totalSlides: 0
     }
   }
 
+  setShowOnlySlide = (value) => {
+    this.setState({
+      showOnlySlide: value
+    })
+  }
 
   toggleCarousel = () => {
     this.setState({
@@ -36,12 +43,18 @@ class App extends Component {
     })
   }
 
+  setTotalSlides = value => {
+    this.setState({
+      totalSlides: value
+    })
+  }
+
   componentDidMount() {
     activateSelfReboot()
   }
 
   render() {
-    const { enableBB8, enableCarousel } = this.state
+    const { enableBB8, enableCarousel, totalSlides } = this.state
     return (
       <div className="App">
         <div className="App-header">
@@ -54,14 +67,20 @@ class App extends Component {
           </div>
         </div>
         <div>
-          <Board enableCarousel={enableCarousel}/>
+          <Board
+            enableCarousel={enableCarousel}
+            setTotalSlides={this.setTotalSlides}
+          />
           <Notification />
-          <BB8 enableBB8={enableBB8}/>
+          <BB8 enableBB8={enableBB8} />
           <Config
             toggleCarousel={this.toggleCarousel}
             toggleBB8={this.toggleBB8}
             enableBB8={enableBB8}
             enableCarousel={enableCarousel}
+            setShowOnlySlide={this.setShowOnlySlide}
+            totalSlides={totalSlides}
+
           />
         </div>
       </div>
