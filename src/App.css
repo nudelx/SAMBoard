@@ -1,9 +1,11 @@
 html {
   background-color: #011e26;
 }
+
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+
 }
 
 .App-header {
@@ -626,6 +628,7 @@ div.n-msg-slide {
   min-width: 300px;
   min-height: 400px;
   box-shadow: black 0px 2px 17px 0px;
+  overflow: hidden;
 }
 
 .config-box .close {
