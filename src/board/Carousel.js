@@ -13,6 +13,8 @@ class Carousel extends Component {
   }
 
   componentDidMount(props) {
+    const { enableCarousel } = this.props
+    if (!enableCarousel) return 
     const timer = setInterval(() => {
       this.setState({showIndex: (this.state.showIndex +1 ) % this.state.slidesCount})
     }, this.timerValue)

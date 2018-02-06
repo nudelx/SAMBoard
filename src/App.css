@@ -3,7 +3,7 @@ html {
 }
 .App {
   text-align: center;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-header {
@@ -587,7 +587,6 @@ div.n-msg-slide {
   position: fixed;
   bottom: 0px;
   right: 0px;
-
 }
 
 .bb8 {
@@ -599,4 +598,71 @@ div.n-msg-slide {
   height: 208px;
   -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
   filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+}
+
+.config-button {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: -23px;
+  top: 16px;
+  color: #fff;
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  -webkit-box-shadow: inset 1px 1px 1px 1px #404040;
+  box-shadow: inset 0px 0px 10px 2px #444;
+}
+
+.config-box {
+  display: inline-block;
+  position: absolute;
+  background-color: #002B35;
+  border: 1px solid #000;
+  top: 10px;
+  right: 10px;
+  min-width: 300px;
+  min-height: 400px;
+  box-shadow: black 0px 2px 17px 0px;
+}
+
+.config-box .close {
+  color: #005266;
+  font-size: 16px;
+  position: absolute;
+  right: 3px;
+  top: 2px;
+  cursor: pointer;
+}
+
+.config-box .config-header {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #bbc9cc;
+}
+
+.config-box .basic-config-box {
+  margin-top: 40px;
+  border: 1px solid #24454f;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0 20px 10px;
+  text-align: left;
+}
+
+
+.config-box label {
+  display: inline-block;
+  color: #bbc9cc;
+  margin-right: 10px;
+  min-width: 230px;
+}
+
+.config-box .cfg-row {
+  margin-bottom: 10px;
 }

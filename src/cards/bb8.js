@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 class BB8 extends Component{
   state = { runValue: -100, timer: null }
 
-  componentDidMount() {
-    this.applyForNewRun()
+  componentDidMount(props) {
+    this.props.enableBB8 && this.applyForNewRun()
   }
 
   getRandom() {
@@ -34,8 +34,9 @@ class BB8 extends Component{
   }
 
   render () {
+    const { enableBB8 } = this.props
     const { timer } = this.state
-    if (! timer) return null
+    if (!timer || !enableBB8) return null
     return (
       <div ref={'bb8'} className="move-bb8">
         <div className="bb8"></div>

@@ -4,18 +4,14 @@ import Carousel from './Carousel'
 import Slide from './Slide'
 import Header from '../header/header'
 import '../App.css'
-import fbConnect from '../firebase/fb_config'
 
-const Board = () => {
-  fbConnect()
-
+const Board = ({ enableCarousel }) => {
   return (
     <div className="simple-board">
       <Header title={"master status"} />
-      <Carousel>
+      <Carousel enableCarousel={enableCarousel}>
         {
           ({ showIndex, margin }) => {
-            console.log('index', showIndex, margin)
             return ([
               <Slide style={{marginLeft: margin}} key='1'>
                 <Card type="deploys" env="review" />

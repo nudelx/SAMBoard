@@ -4,6 +4,8 @@ import Board from './board/board'
 import TimeCard from './cards/timeCard'
 import Notification from './cards/notification'
 import BB8 from './cards/bb8'
+import Config from './config/config'
+import fbConnect from './firebase/fb_config'
 
 const activateSelfReboot = () => {
   setTimeout(function() {
@@ -12,13 +14,34 @@ const activateSelfReboot = () => {
 }
 
 class App extends Component {
-  state = { bb8: true }
+  constructor(props) {
+    super(props)
+    fbConnect()
+    this.state = {
+      enableCarousel: true,
+      enableBB8: false
+    }
+  }
+
+
+  toggleCarousel = () => {
+    this.setState({
+      enableCarousel: !this.state.enableCarousel
+    })
+  }
+
+  toggleBB8 = () => {
+    this.setState({
+      enableBB8: !this.state.enableBB8
+    })
+  }
 
   componentDidMount() {
     activateSelfReboot()
   }
 
   render() {
+    const { enableBB8, enableCarousel } = this.state
     return (
       <div className="App">
         <div className="App-header">
@@ -31,9 +54,15 @@ class App extends Component {
           </div>
         </div>
         <div>
-          <Board />
+          <Board enableCarousel={enableCarousel}/>
           <Notification />
-          <BB8 />
+          <BB8 enableBB8={enableBB8}/>
+          <Config
+            toggleCarousel={this.toggleCarousel}
+            toggleBB8={this.toggleBB8}
+            enableBB8={enableBB8}
+            enableCarousel={enableCarousel}
+          />
         </div>
       </div>
     )
