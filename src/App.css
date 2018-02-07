@@ -6,7 +6,6 @@ html {
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-
 }
 
 .App-header {
@@ -614,10 +613,9 @@ div.n-msg-slide {
   overflow: hidden;
   cursor: pointer;
 }
-.config-button-🍔:hover  {
+.config-button-🍔:hover {
   opacity: 0.9;
 }
-
 
 .config-button-🍔 > div {
   width: 65%;
@@ -626,12 +624,10 @@ div.n-msg-slide {
   height: 1px;
 }
 
-
-
 .config-box {
   display: inline-block;
   position: absolute;
-  background-color: #002B35;
+  background-color: #002b35;
   border: 1px solid #000;
   top: 10px;
   right: 10px;
@@ -642,13 +638,27 @@ div.n-msg-slide {
   border-radius: 6px;
 }
 
-.config-box .close {
-  color: #005266;
-  font-size: 16px;
+.config-box .close-holder {
   position: absolute;
-  right: 3px;
-  top: 2px;
+  bottom: 10px;
+  width: 100%;
+}
+
+.config-box .close {
+  padding: 5px 0px;
+  border: 2px solid #24454f;
+  border-radius: 6px;
+  color: #bbc9cc;
+  font-size: 16px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 10px;
   cursor: pointer;
+}
+
+.config-box .close:active {
+  border: 1px solid #24454f;
 }
 
 .config-box .config-header {
@@ -669,7 +679,6 @@ div.n-msg-slide {
   text-align: left;
 }
 
-
 .config-box label {
   display: inline-block;
   color: #bbc9cc;
@@ -677,7 +686,7 @@ div.n-msg-slide {
   min-width: 230px;
 }
 
-.config-box label[for="onlySlide"] {
+.config-box label[for='onlySlide'] {
   min-width: unset;
 }
 

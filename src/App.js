@@ -6,6 +6,7 @@ import Notification from './cards/notification'
 import BB8 from './cards/bb8'
 import Config from './config/config'
 import fbConnect from './firebase/fb_config'
+import AppHeader from './header/appHeader'
 
 const activateSelfReboot = () => {
   setTimeout(function() {
@@ -25,7 +26,7 @@ class App extends Component {
     }
   }
 
-  setShowOnlySlide = (value) => {
+  setShowOnlySlide = value => {
     this.setState({
       showOnlySlide: value
     })
@@ -57,15 +58,7 @@ class App extends Component {
     const { enableBB8, enableCarousel, totalSlides, showOnlySlide } = this.state
     return (
       <div className="App">
-        <div className="App-header">
-          <div className="logo-holder">
-            <h2 className="brand">Sam</h2>
-            <h2 className="brand second">Hub</h2>
-          </div>
-          <div className="side-right">
-            <TimeCard />
-          </div>
-        </div>
+        <AppHeader />
         <div>
           <Board
             enableCarousel={enableCarousel}
@@ -82,7 +75,6 @@ class App extends Component {
             setShowOnlySlide={this.setShowOnlySlide}
             totalSlides={totalSlides}
             showOnlySlide={showOnlySlide}
-
           />
         </div>
       </div>

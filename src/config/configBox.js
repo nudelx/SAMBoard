@@ -20,9 +20,7 @@ const ConfigBox = ({
 }) => {
   return (
     <div className="config-box">
-      <div className={'close'} onClick={onClose}>
-        X
-      </div>
+
       <div className={'config-header'}>{'Configuration'}</div>
       <div className={'basic-config-box'}>
         <div className="cfg-row">
@@ -63,6 +61,10 @@ const ConfigBox = ({
           </select>
         </div>
       </div>}
+
+      <div className={'close-holder'} onClick={onClose}>
+        <div className={'close'}>{'Done'}</div>
+      </div>
 
     </div>
   )
