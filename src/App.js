@@ -19,13 +19,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     const local = loadLocalCashe()
+    const defaultState = { enableCarousel: true, enableBB8: true, showOnlySlide: 0, totalSlides: 0}
     fbConnect()
-    this.state = {
-      enableCarousel: local.enableCarousel || true,
-      enableBB8: local.enableBB8 || true,
-      showOnlySlide: local.showOnlySlide|| 0,
-      totalSlides: local.totalSlides || 0
-    }
+    this.state = { ...( local ? local : defaultState) }
 
     if (!local) {
       saveLocalChache(this.state)

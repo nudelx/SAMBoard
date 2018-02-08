@@ -5,5 +5,5 @@ export const saveLocalChache = (object) => {
 }
 
 export const loadLocalCashe = () => {
-  return localStorage.getItem(LOCAL_CASHE_KEY) || null
+  return JSON.parse(localStorage.getItem(LOCAL_CASHE_KEY)) || null
 }
