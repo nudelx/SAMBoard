@@ -1,4 +1,5 @@
 import React from 'react'
+import ConfigRow from './configRow'
 
 const makeOptions = (value) => {
   const arr = []
@@ -23,7 +24,7 @@ const ConfigBox = ({
 
       <div className={'config-header'}>{'Configuration'}</div>
       <div className={'basic-config-box'}>
-        <div className="cfg-row">
+        <ConfigRow>
           <label htmlFor="enableCarousel">Enable Carousel</label>
           <input
             name="enableCarousel"
@@ -32,9 +33,9 @@ const ConfigBox = ({
             id="enableCarousel"
             type="checkbox"
           />
-        </div>
+        </ConfigRow>
 
-        <div className="cfg-row">
+        <ConfigRow>
           <label htmlFor="enableBB-8">Enable BB-8</label>
           <input
             id="enableBB-8"
@@ -43,11 +44,11 @@ const ConfigBox = ({
             name="enableBB-8"
             type="checkbox"
           />
-        </div>
+        </ConfigRow>
       </div>
 
       {!enableCarousel && <div className={'basic-config-box'}>
-        <div className="cfg-row">
+        <ConfigRow>
           <label htmlFor="onlySlide">Show Only</label>
           <select
             onChange={(e) => setShowOnlySlide(e.target.selectedIndex)}
@@ -59,13 +60,12 @@ const ConfigBox = ({
               makeOptions(totalSlides).map((item) => <option key={item} value={item}>{`Slide ${item}`}</option>)
             }
           </select>
-        </div>
+        </ConfigRow>
       </div>}
 
       <div className={'close-holder'} onClick={onClose}>
         <div className={'close'}>{'Done'}</div>
       </div>
-
     </div>
   )
 }
