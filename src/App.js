@@ -6,6 +6,7 @@ import BB8 from './cards/bb8'
 import Config from './config/config'
 import fbConnect from './firebase/fb_config'
 import AppHeader from './header/appHeader'
+import { saveLocalChache,  loadLocalCashe} from './tools/cacheTool'
 
 const activateSelfReboot = () => {
   setTimeout(function() {
@@ -14,39 +15,45 @@ const activateSelfReboot = () => {
 }
 
 class App extends Component {
+
   constructor(props) {
     super(props)
+    const local = loadLocalCashe()
     fbConnect()
     this.state = {
-      enableCarousel: true,
-      enableBB8: true,
-      showOnlySlide: 0,
-      totalSlides: 0
+      enableCarousel: local.enableCarousel || true,
+      enableBB8: local.enableBB8 || true,
+      showOnlySlide: local.showOnlySlide|| 0,
+      totalSlides: local.totalSlides || 0
+    }
+
+    if (!local) {
+      saveLocalChache(this.state)
     }
   }
 
   setShowOnlySlide = value => {
     this.setState({
       showOnlySlide: value
-    })
+    }, () => saveLocalChache(this.state))
   }
 
   toggleCarousel = () => {
     this.setState({
       enableCarousel: !this.state.enableCarousel
-    })
+    }, () => saveLocalChache(this.state))
   }
 
   toggleBB8 = () => {
     this.setState({
       enableBB8: !this.state.enableBB8
-    })
+    }, () => saveLocalChache(this.state))
   }
 
   setTotalSlides = value => {
     this.setState({
       totalSlides: value
-    })
+    }, () => saveLocalChache(this.state))
   }
 
   componentDidMount() {
