@@ -20,7 +20,7 @@ class App extends Component {
     fbConnect()
     this.state = {
       enableCarousel: true,
-      enableBB8: false,
+      enableBB8: true,
       showOnlySlide: 0,
       totalSlides: 0
     }
