@@ -28,7 +28,7 @@ class App extends Component {
   setShowOnlySlide = value => {
     this.setState({
       showOnlySlide: value
-    }, () => saveLocalChache(this.state))
+    }, () => saveLocalCache(this.state))
   }
 
   toggleCarousel = () => {
