@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 import Board from './board/board'
-import TimeCard from './cards/timeCard'
 import Notification from './cards/notification'
 import BB8 from './cards/bb8'
 import Config from './config/config'
