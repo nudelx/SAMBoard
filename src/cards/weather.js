@@ -57,7 +57,6 @@ class Weather extends Component {
               <div>{ name }</div>
             </div>
           </div>
-
         </div>
       ) : null
     }
