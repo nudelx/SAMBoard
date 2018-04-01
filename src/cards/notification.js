@@ -33,7 +33,7 @@ export default class Notification extends Component {
       <div className={`n-msg ${fxClass ? fxClass : ''}`}>
         <div className="n-msg-header">
           {`${ver.type} - Build(${new Date(
-            parseInt(ver.version)
+            parseInt(ver.version,10)
           ).toLocaleDateString()})`}
         </div>
         <div className="n-msg-body">{ver.description}</div>
