@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Weather extends Component {
   state = {
     key: '259587a13998d2d0de3f461165765f2c',
-    url: 'http://api.openweathermap.org/data/2.5/weather?'
+    url: 'https://api.openweathermap.org/data/2.5/weather?'
   }
 
   getLocation() {
