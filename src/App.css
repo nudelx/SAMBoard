@@ -1,6 +1,8 @@
 html {
   background-color: #011e26;
+  overflow-x: hidden;
 }
+
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -9,7 +11,7 @@ html {
 .App-header {
   background-color: black;
   position: relative;
-  height: 35px;
+  height: 45px;
   padding: 20px;
   border-bottom: 1px solid #002933;
   -webkit-box-shadow: black 0px 2px 17px 0px;
@@ -26,8 +28,8 @@ html {
 }
 
 .side-right {
-  right: 25px;
-  width: 150px;
+  right: 60px;
+  /* width: 150px; */
   text-align: right;
 }
 
@@ -65,8 +67,8 @@ html {
 .date,
 .time {
   font: 15px helvetica, arial, sans-serif;
-  width: 150px;
-  display: inline-block;
+  /* width: 150px; */
+  /* display: inline-block; */
   color: #bbc9cc;
 }
 
@@ -550,7 +552,7 @@ div.n-msg {
   color: #bbc9cc;
   border-radius: 6px;
   -webkit-box-shadow: black 0px 2px 17px 0px;
-          box-shadow: black 0px 2px 17px 0px;
+  box-shadow: black 0px 2px 17px 0px;
 }
 
 div.n-msg-header {
@@ -561,4 +563,150 @@ div.n-msg-slide {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   right: 10px;
+}
+
+.carousel {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel li.slide {
+  display: inline-block;
+  vertical-align: top;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  overflow: hidden;
+  white-space: normal;
+  text-align: center;
+}
+
+.move-bb8 {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.bb8 {
+  opacity: 0.9;
+  background-image: url(./bb8.gif);
+  background-position: -226px -11px;
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 208px;
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+}
+
+.config-button-🍔 {
+  /* border: 1px solid red; */
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  padding-top: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.config-button-🍔:hover {
+  opacity: 0.9;
+}
+
+.config-button-🍔 > div {
+  width: 65%;
+  margin: 4px auto 0px auto;
+  border-top: 3px solid #bbc9cc;
+  height: 1px;
+}
+
+.config-box {
+  display: inline-block;
+  position: absolute;
+  background-color: #002b35;
+  border: 1px solid #000;
+  top: 10px;
+  right: 10px;
+  min-width: 300px;
+  min-height: 250px;
+  box-shadow: black 0px 2px 17px 0px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.config-box .close-holder {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.config-box .close {
+  padding: 5px 0px;
+  border: 2px solid #24454f;
+  border-radius: 6px;
+  color: #bbc9cc;
+  font-size: 16px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.config-box .close:active {
+  border: 1px solid #24454f;
+}
+
+.config-box .config-header {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #bbc9cc;
+}
+
+.config-box .basic-config-box {
+  margin-top: 30px;
+  border: 1px solid #24454f;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0 10px 10px;
+  text-align: left;
+}
+
+.config-box label {
+  display: inline-block;
+  color: #bbc9cc;
+  margin-right: 10px;
+  min-width: 230px;
+}
+
+.config-box label[for='onlySlide'] {
+  min-width: unset;
+}
+
+.config-box label.opacity {
+  opacity: 0.5;
+}
+
+.config-box select {
+  min-width: 170px;
+}
+
+.config-box .cfg-row {
+  margin-bottom: 10px;
+}
+
+.time-card{
+  vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
+  display: inline-block;
+  border-left: 1px solid #bbc9cc;
+  margin-left: 28px;
+  width: 100px;
 }
