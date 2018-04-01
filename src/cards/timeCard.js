@@ -22,7 +22,7 @@ class TimeCard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="time-card">
         <div className="date">
           {this.state.date}
         </div>
