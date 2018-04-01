@@ -11,7 +11,7 @@ html {
 .App-header {
   background-color: black;
   position: relative;
-  height: 35px;
+  height: 45px;
   padding: 20px;
   border-bottom: 1px solid #002933;
   -webkit-box-shadow: black 0px 2px 17px 0px;
@@ -29,7 +29,7 @@ html {
 
 .side-right {
   right: 60px;
-  width: 150px;
+  /* width: 150px; */
   text-align: right;
 }
 
@@ -67,8 +67,8 @@ html {
 .date,
 .time {
   font: 15px helvetica, arial, sans-serif;
-  width: 150px;
-  display: inline-block;
+  /* width: 150px; */
+  /* display: inline-block; */
   color: #bbc9cc;
 }
 
@@ -699,4 +699,14 @@ div.n-msg-slide {
 
 .config-box .cfg-row {
   margin-bottom: 10px;
+}
+
+.time-card{
+  vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
+  display: inline-block;
+  border-left: 1px solid #bbc9cc;
+  margin-left: 28px;
+  width: 100px;
 }
