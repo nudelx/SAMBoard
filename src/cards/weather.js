@@ -8,12 +8,12 @@ class Weather extends Component {
 
   getLocation() {
     return new Promise((yes, no) => {
-      if (navigator.geolocation === 'aa') {
+      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => yes(pos))
       } else {
         console.log('Geolocation is not supported by this browser.')
-        alert('Geolocation is not supported by this browser. Will use defaults latitude: 32.276979, longitude: 34.8590267 ')
-        yes({coords: { latitude: 32.276979, longitude: 34.8590267 }})
+        alert('Geolocation is not supported by this browser. Will use defaults localStorage.latitude, localStorage.longitude ')
+        yes({coords: { latitude: localStorage.latitude|| 33, longitude: localStorage.longitude|| 33 }})
       }
     })
   }
