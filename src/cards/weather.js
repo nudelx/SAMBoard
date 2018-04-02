@@ -40,15 +40,16 @@ class Weather extends Component {
   componentWillMount() {
     const self = this
     this.getLocation()
-      .then(data =>
+      .then(data => {
+        alert(data)
         setTimeout(
-          () => { alert('in timeout'); self.setState({ coords: data.coords }, this.getWeather) },
+          () => { alert('in timeout'); self.setState({ coords: data.coords }, self.getWeather) },
           0
         )
-      )
-      .catch(error => console.log(error))
+      })
+      .catch(error => console.log(error) && alert(error))
 
-    setInterval(self.getWeather, 3600000)
+    // setInterval(self.getWeather, 3600000)
   }
 
   render() {
