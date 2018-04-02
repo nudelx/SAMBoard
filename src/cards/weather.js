@@ -7,20 +7,22 @@ class Weather extends Component {
   }
 
   getLocation() {
-    const { lat, lon , customGeolocation } =this.props
+    const { lat, lon, customGeolocation } = this.props
     return new Promise((yes, no) => {
       if (customGeolocation) {
-        yes({ coords: { latitude: lat, longitude: lon }})
+        yes({ coords: { latitude: lat, longitude: lon } })
       } else {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(pos => console.log(pos) && yes(pos))
+          navigator.geolocation.getCurrentPosition(
+            pos => yes(pos)
+          )
         } else {
           console.log('Geolocation is not supported by this browser.')
-          alert('Geolocation is not supported by this browser. You can use csutom latitude: 32.276979, longitude: 34.8590267 ')
-
+          alert(
+            'Geolocation is not supported by this browser. You can use csutom latitude: 32.276979, longitude: 34.8590267 '
+          )
         }
       }
-
     })
   }
 

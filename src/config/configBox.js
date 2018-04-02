@@ -86,7 +86,11 @@ const ConfigBox = ({
             />
           </div>
           <div className="cfg-row">
-            <label className={!customGeolocation ? 'opacity' : ''} htmlFor="lat">Latitude</label>
+            <label
+              className={!customGeolocation ? 'opacity' : ''}
+              htmlFor="lat">
+              Latitude
+            </label>
             <input
               className
               disabled={!customGeolocation}
@@ -98,7 +102,11 @@ const ConfigBox = ({
             />
           </div>
           <div className="cfg-row">
-            <label className={!customGeolocation ? 'opacity' : ''} htmlFor="lon">Longitude</label>
+            <label
+              className={!customGeolocation ? 'opacity' : ''}
+              htmlFor="lon">
+              Longitude
+            </label>
             <input
               disabled={!customGeolocation}
               id="lon"

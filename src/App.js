@@ -71,7 +71,8 @@ class App extends Component {
   }
 
   render() {
-    const { enableBB8, enableCarousel, totalSlides, showOnlySlide,  customGeolocation, lat, lon} = this.state
+    const { enableBB8, enableCarousel, totalSlides, showOnlySlide,  customGeolocation, lat, lon
+} = this.state
     return (
       <div className="App">
         <AppHeader lat={lat} lon={lon} customGeolocation={customGeolocation}/>
