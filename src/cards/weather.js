@@ -19,7 +19,7 @@ class Weather extends Component {
     })
   }
 
-  getWeather = () => {
+  getWeather(){
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
@@ -33,6 +33,7 @@ class Weather extends Component {
   }
 
   componentWillMount() {
+    const self = this
     this.getLocation()
       .then(data =>
         setTimeout(
@@ -42,7 +43,7 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    setInterval(self.getWeather, 3600000)
   }
 
   render() {
@@ -50,7 +51,7 @@ class Weather extends Component {
     const { name, weather, main } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-${weather[0].icon}`} />
+        <div className={`w-icon icon-2${weather[0].icon} icon-01d`} />
         <div className="w-data">
           <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
           <div className="w-text">
