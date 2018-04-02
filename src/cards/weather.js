@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import 'promise-polyfill/src/polyfill';
 
 class Weather extends Component {
   state = {
@@ -8,29 +7,20 @@ class Weather extends Component {
   }
 
   getLocation() {
-    alert('getLocation')
-
     return new Promise((yes, no) => {
-      if (navigator.geolocation && navigator.geolocation.getCurrentPosition) {
-        alert('in Promise')
-        navigator.geolocation.getCurrentPosition((pos) => {
-          alert(JSON.stringify(pos))
-          yes(pos)
-        })
+      if (navigator.geolocation === 'aa') {
+        navigator.geolocation.getCurrentPosition(pos => yes(pos))
       } else {
-        alert('getLocation in else')
         console.log('Geolocation is not supported by this browser.')
-        alert('Geolocation is not supported by this browser')
-        // yes({coords: { latitude: localStorage.latitude|| 33, longitude: localStorage.longitude|| 33 }})
-        no('Geolocation is not supported by this browser')
+        alert('Geolocation is not supported by this browser. Will use defaults latitude: 32.276979, longitude: 34.8590267 ')
+        yes({coords: { latitude: 32.276979, longitude: 34.8590267 }})
       }
     })
   }
 
-  getWeather(){
+  getWeather() {
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
-    alert('get => '+URL)
     fetch(URL)
       .then(r => r.json())
       .then(forecast => this.setState({ forecast }))
@@ -42,27 +32,24 @@ class Weather extends Component {
   }
 
   componentWillMount() {
-    const self = this
     this.getLocation()
-      .then(data => {
-        alert(data)
+      .then(data =>
         setTimeout(
-          () => { alert('in timeout'); self.setState({ coords: data.coords }, self.getWeather) },
+          () => this.setState({ coords: data.coords }, this.getWeather),
           0
         )
-      })
-      .catch(error => console.log(error) && alert(error))
+      )
+      .catch(error => console.log(error))
 
-    // setInterval(self.getWeather, 3600000)
+    setInterval(this.getWeather, 3600000)
   }
 
   render() {
     const { forecast } = this.state
-    alert(JSON.stringify(this.state))
     const { name, weather, main } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-2${weather[0].icon} icon-01d`} />
+        <div className={`w-icon icon-${weather[0].icon}`} />
         <div className="w-data">
           <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
           <div className="w-text">
