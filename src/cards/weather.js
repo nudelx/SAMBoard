@@ -49,7 +49,7 @@ class Weather extends Component {
     const { name, weather, main } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-01d`} />
+        <div className={`w-icon icon-${weather[0].icon}`} />
         <div className="w-data">
           <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
           <div className="w-text">
