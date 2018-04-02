@@ -639,9 +639,10 @@ div.n-msg-slide {
 }
 
 .config-box .close-holder {
-  position: absolute;
   bottom: 10px;
   width: 100%;
+  padding: 20px 0;
+
 }
 
 .config-box .close {
@@ -709,4 +710,10 @@ div.n-msg-slide {
   border-left: 1px solid #bbc9cc;
   margin-left: 28px;
   width: 100px;
+}
+
+label[for="lat"], label[for="lon"] {
+  display: inline-block;
+  min-width: unset;
+  width: 112px;
 }
