@@ -8,9 +8,10 @@ class Weather extends Component {
   }
 
   getLocation() {
+    alert('getLocation')
     return new Promise((yes, no) => {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => yes(pos))
+        navigator.geolocation.getCurrentPosition(pos => alert('getLocation done ') && yes(pos))
       } else {
         console.log('Geolocation is not supported by this browser.')
         alert('Geolocation is not supported by this browser. Will use defaults localStorage.latitude, localStorage.longitude ')
@@ -24,7 +25,7 @@ class Weather extends Component {
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
-      .then(forecast => this.setState({ forecast }))
+      .then(forecast => alert('getWeather done ') && this.setState({ forecast }))
   }
 
   temperatureConverter(valNum) {
