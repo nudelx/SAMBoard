@@ -7,7 +7,7 @@ import Config from './config/config'
 import fbConnect from './firebase/fb_config'
 import AppHeader from './header/appHeader'
 import { saveLocalCache,  loadLocalCashe} from './tools/cacheTool'
-import 'promise-polyfill/src/polyfill';
+
 
 const activateSelfReboot = () => {
   const now = new Date()
