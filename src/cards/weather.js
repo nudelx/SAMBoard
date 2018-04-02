@@ -54,6 +54,7 @@ class Weather extends Component {
 
   render() {
     const { forecast } = this.state
+    alert(JSON.stringify(this.state))
     const { name, weather, main } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
