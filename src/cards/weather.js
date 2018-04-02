@@ -18,7 +18,7 @@ class Weather extends Component {
     })
   }
 
-  getWeather() {
+  getWeather = () => {
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
@@ -41,7 +41,7 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    setInterval(this.getWeather, 3600000) 
   }
 
   render() {
