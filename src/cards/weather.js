@@ -9,9 +9,10 @@ class Weather extends Component {
 
   getLocation() {
     alert('getLocation')
-    alert('Promise', Promise)
+
     return new Promise((yes, no) => {
       if (navigator.geolocation) {
+        alert('in Promise')
         navigator.geolocation.getCurrentPosition(pos => yes(pos))
       } else {
         alert('getLocation in else')
@@ -25,6 +26,7 @@ class Weather extends Component {
   getWeather(){
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
+    alert('get => '+URL)
     fetch(URL)
       .then(r => r.json())
       .then(forecast => this.setState({ forecast }))
@@ -40,7 +42,7 @@ class Weather extends Component {
     this.getLocation()
       .then(data =>
         setTimeout(
-          () => this.setState({ coords: data.coords }, this.getWeather),
+          () => { alert('in timeout'); self.setState({ coords: data.coords }, this.getWeather) },
           0
         )
       )
