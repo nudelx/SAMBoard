@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import 'promise-polyfill/src/polyfill';
 
 class Weather extends Component {
   state = {
