@@ -7,18 +7,26 @@ class Weather extends Component {
   }
 
   getLocation() {
+    const { lat, lon, customGeolocation } = this.props
     return new Promise((yes, no) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => yes(pos))
+      if (customGeolocation) {
+        yes({ coords: { latitude: lat, longitude: lon } })
       } else {
-        console.log('Geolocation is not supported by this browser.')
-        alert('Geolocation is not supported by this browser. Will use defaults latitude: 32.276979, longitude: 34.8590267 ')
-        yes({coords: { latitude: 32.276979, longitude: 34.8590267 }})
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            pos => yes(pos)
+          )
+        } else {
+          console.log('Geolocation is not supported by this browser.')
+          alert(
+            'Geolocation is not supported by this browser. You can use custom latitude: 32.276979, longitude: 34.8590267 '
+          )
+        }
       }
     })
   }
 
-  getWeather() {
+  getWeather = () => {
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)

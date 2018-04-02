@@ -2,9 +2,9 @@ import React from 'react'
 import ConfigRow from './configRow'
 import Buttons from './buttons'
 
-const makeOptions = (value) => {
+const makeOptions = value => {
   const arr = []
-  for (let i=0; i < value; i++){
+  for (let i = 0; i < value; i++) {
     arr.push(i)
   }
   return arr
@@ -18,11 +18,16 @@ const ConfigBox = ({
   enableBB8,
   totalSlides,
   setShowOnlySlide,
-  showOnlySlide
+  showOnlySlide,
+  toggleCustomGeolocation,
+  lat,
+  lon,
+  customGeolocation,
+  setLat,
+  setLon
 }) => {
   return (
     <div className="config-box">
-
       <div className={'config-header'}>{'Configuration'}</div>
       <div className={'basic-config-box'}>
         <ConfigRow>
@@ -37,17 +42,20 @@ const ConfigBox = ({
         </ConfigRow>
 
         <ConfigRow>
-          <label className={enableCarousel ? 'opacity' : ''} htmlFor="onlySlide">Show Only</label>
+          <label
+            className={enableCarousel ? 'opacity' : ''}
+            htmlFor="onlySlide">
+            Show Only
+          </label>
           <select
-            onChange={(e) => setShowOnlySlide(e.target.selectedIndex)}
+            onChange={e => setShowOnlySlide(e.target.selectedIndex)}
             id="onlySlide"
             name="onlySlide"
             disabled={enableCarousel}
-            value={showOnlySlide}
-          >
-            {
-              makeOptions(totalSlides).map((item) => <option key={item} value={item}>{`Slide ${item}`}</option>)
-            }
+            value={showOnlySlide}>
+            {makeOptions(totalSlides).map(item => (
+              <option key={item} value={item}>{`Slide ${item}`}</option>
+            ))}
           </select>
         </ConfigRow>
 
@@ -60,6 +68,54 @@ const ConfigBox = ({
             name="enableBB-8"
             type="checkbox"
           />
+        </ConfigRow>
+      </div>
+
+      <div className={'basic-config-box'}>
+        <ConfigRow>
+          <div className="cfg-row">
+            <label htmlFor="enable-custom-geolocation">
+              Enable Custom Geolocation
+            </label>
+            <input
+              id="enable-custom-geolocation"
+              onChange={toggleCustomGeolocation}
+              checked={customGeolocation}
+              name="enable-custom-geolocation"
+              type="checkbox"
+            />
+          </div>
+          <div className="cfg-row">
+            <label
+              className={!customGeolocation ? 'opacity' : ''}
+              htmlFor="lat">
+              Latitude
+            </label>
+            <input
+              className
+              disabled={!customGeolocation}
+              id="lat"
+              onChange={e => setLat(e.target.value)}
+              name="lat"
+              type="text"
+              value={lat}
+            />
+          </div>
+          <div className="cfg-row">
+            <label
+              className={!customGeolocation ? 'opacity' : ''}
+              htmlFor="lon">
+              Longitude
+            </label>
+            <input
+              disabled={!customGeolocation}
+              id="lon"
+              onChange={e => setLon(e.target.value)}
+              name="lon"
+              type="text"
+              value={lon}
+            />
+          </div>
         </ConfigRow>
       </div>
 
