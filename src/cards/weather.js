@@ -19,7 +19,7 @@ class Weather extends Component {
         } else {
           console.log('Geolocation is not supported by this browser.')
           alert(
-            'Geolocation is not supported by this browser. You can use csutom latitude: 32.276979, longitude: 34.8590267 '
+            'Geolocation is not supported by this browser. You can use custom latitude: 32.276979, longitude: 34.8590267 '
           )
         }
       }
