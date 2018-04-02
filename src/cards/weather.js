@@ -8,9 +8,10 @@ class Weather extends Component {
   }
 
   getLocation() {
+    alert('getLocation')
     return new Promise((yes, no) => {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => yes(pos))
+        navigator.geolocation.getCurrentPosition(pos => alert('getLocation done ') && yes(pos))
       } else {
         console.log('Geolocation is not supported by this browser.')
         alert('Geolocation is not supported by this browser. Will use defaults localStorage.latitude, localStorage.longitude ')
@@ -19,12 +20,12 @@ class Weather extends Component {
     })
   }
 
-  getWeather = () => {
+  getWeather(){
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
-      .then(forecast => this.setState({ forecast }))
+      .then(forecast => alert('getWeather done ') && this.setState({ forecast }))
   }
 
   temperatureConverter(valNum) {
@@ -33,6 +34,7 @@ class Weather extends Component {
   }
 
   componentWillMount() {
+    const self = this
     this.getLocation()
       .then(data =>
         setTimeout(
@@ -42,7 +44,7 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    setInterval(self.getWeather, 3600000)
   }
 
   render() {
@@ -50,7 +52,7 @@ class Weather extends Component {
     const { name, weather, main } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-${weather[0].icon}`} />
+        <div className={`w-icon icon-2${weather[0].icon} icon-01d`} />
         <div className="w-data">
           <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
           <div className="w-text">
