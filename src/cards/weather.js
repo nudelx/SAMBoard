@@ -9,10 +9,12 @@ class Weather extends Component {
 
   getLocation() {
     alert('getLocation')
+    alert('Promise', Promise)
     return new Promise((yes, no) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => alert('getLocation done ') && yes(pos))
       } else {
+        alert('getLocation in else')
         console.log('Geolocation is not supported by this browser.')
         alert('Geolocation is not supported by this browser. Will use defaults localStorage.latitude, localStorage.longitude ')
         yes({coords: { latitude: localStorage.latitude|| 33, longitude: localStorage.longitude|| 33 }})
