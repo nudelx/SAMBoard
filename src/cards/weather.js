@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Weather extends Component {
   state = {
     key: '259587a13998d2d0de3f461165765f2c',
-    url: 'https://api.openweathermap.org/data/2.5/weather?'
+    url: 'http://api.openweathermap.org/data/2.5/weather?'
   }
 
   getLocation() {
@@ -18,7 +18,7 @@ class Weather extends Component {
     })
   }
 
-  getWeather() {
+  getWeather = () => {
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
