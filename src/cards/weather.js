@@ -41,7 +41,7 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    // setInterval(this.getWeather, 3600000)
   }
 
   render() {
