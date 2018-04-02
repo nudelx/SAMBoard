@@ -17,8 +17,9 @@ class Weather extends Component {
       } else {
         alert('getLocation in else')
         console.log('Geolocation is not supported by this browser.')
-        alert('Geolocation is not supported by this browser. Will use defaults localStorage.latitude, localStorage.longitude ')
-        yes({coords: { latitude: localStorage.latitude|| 33, longitude: localStorage.longitude|| 33 }})
+        alert('Geolocation is not supported by this browser')
+        // yes({coords: { latitude: localStorage.latitude|| 33, longitude: localStorage.longitude|| 33 }})
+        no('Geolocation is not supported by this browser')
       }
     })
   }
