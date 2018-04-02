@@ -8,7 +8,7 @@ class Weather extends Component {
 
   getLocation() {
     return new Promise((yes, no) => {
-      if (navigator.geolocation === 'aa') {
+      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => yes(pos))
       } else {
         console.log('Geolocation is not supported by this browser.')
