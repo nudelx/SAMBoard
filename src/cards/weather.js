@@ -3,32 +3,36 @@ import React, { Component } from 'react'
 class Weather extends Component {
   state = {
     key: '259587a13998d2d0de3f461165765f2c',
-    url: 'https://api.openweathermap.org/data/2.5/weather?'
+    url: 'https://api.openweathermap.org/data/2.5/weather?',
+    timer: null
   }
 
   getLocation() {
+    const { lat, lon, customGeolocation } = this.props
     return new Promise((yes, no) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => yes(pos))
+      if (customGeolocation) {
+        yes({ coords: { latitude: lat, longitude: lon } })
       } else {
-        console.log('Geolocation is not supported by this browser.')
-        alert('Geolocation is not supported by this browser. Will use defaults latitude: 32.276979, longitude: 34.8590267 ')
-        yes({coords: { latitude: 32.276979, longitude: 34.8590267 }})
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            pos => yes(pos)
+          )
+        } else {
+          console.log('Geolocation is not supported by this browser.')
+          alert(
+            'Geolocation is not supported by this browser. You can use custom latitude: 32.276979, longitude: 34.8590267 '
+          )
+        }
       }
     })
   }
 
-  getWeather() {
+  getWeather = () => {
     const { url, key, coords: { latitude, longitude } } = this.state
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
       .then(forecast => this.setState({ forecast }))
-  }
-
-  temperatureConverter(valNum) {
-    valNum = parseFloat(valNum)
-    return (valNum - 32) / 1.8
   }
 
   componentWillMount() {
@@ -41,7 +45,8 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    const timer = setInterval(this.getWeather, 3600000)
+    this.setState({ timer })
   }
 
   render() {

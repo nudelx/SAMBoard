@@ -10,13 +10,9 @@ import { saveLocalCache,  loadLocalCashe} from './tools/cacheTool'
 
 
 const activateSelfReboot = () => {
-  const now = new Date()
-  const night = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0)
-  const msToMidnight = night.getTime() - now.getTime()
-
   setTimeout(() => {
     window.location.reload()
-  }, msToMidnight)
+  }, 86400000)
 }
 
 class App extends Component {
@@ -25,9 +21,15 @@ class App extends Component {
     super(props)
     fbConnect()
     const local = loadLocalCashe()
-    const defaultState = { enableCarousel: true, enableBB8: true, showOnlySlide: 0, totalSlides: 0}
+    const defaultState = { enableCarousel: true, enableBB8: true, showOnlySlide: 0, totalSlides: 0, customGeolocation: false, lat:0, lon:0}
     this.state = { ...( local ? local : defaultState) }
     if (!local) {  saveLocalCache(this.state) }
+  }
+
+  toggleCustomGeolocation = () => {
+    this.setState({
+      customGeolocation: !this.state.customGeolocation
+    }, () => saveLocalCache(this.state))
   }
 
   setShowOnlySlide = value => {
@@ -54,15 +56,22 @@ class App extends Component {
     }, () => saveLocalCache(this.state))
   }
 
+  setLatOrLong = type => value => {
+    this.setState({
+      [type]: value
+    }, () => saveLocalCache(this.state))
+  }
+
   componentDidMount() {
     activateSelfReboot()
   }
 
   render() {
-    const { enableBB8, enableCarousel, totalSlides, showOnlySlide } = this.state
+    const { enableBB8, enableCarousel, totalSlides, showOnlySlide,  customGeolocation, lat, lon
+} = this.state
     return (
       <div className="App">
-        <AppHeader />
+        <AppHeader lat={lat} lon={lon} customGeolocation={customGeolocation}/>
         <div>
           <Board
             enableCarousel={enableCarousel}
@@ -79,6 +88,12 @@ class App extends Component {
             setShowOnlySlide={this.setShowOnlySlide}
             totalSlides={totalSlides}
             showOnlySlide={showOnlySlide}
+            toggleCustomGeolocation={this.toggleCustomGeolocation}
+            customGeolocation={customGeolocation}
+            lat={lat}
+            lon={lon}
+            setLat={this.setLatOrLong('lat')}
+            setLon={this.setLatOrLong('lon')}
           />
         </div>
       </div>

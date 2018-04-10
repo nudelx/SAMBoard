@@ -23,7 +23,13 @@ class Config extends Component {
       enableCarousel,
       totalSlides,
       setShowOnlySlide,
-      showOnlySlide
+      showOnlySlide,
+      toggleCustomGeolocation,
+      lat,
+      lon,
+      customGeolocation,
+      setLat,
+      setLon
     } = this.props
     return (
       <div>
@@ -38,6 +44,12 @@ class Config extends Component {
             totalSlides={totalSlides}
             showOnlySlide={showOnlySlide}
             setShowOnlySlide={setShowOnlySlide}
+            toggleCustomGeolocation={toggleCustomGeolocation}
+            lat={lat}
+            lon={lon}
+            customGeolocation={customGeolocation}
+            setLat={setLat}
+            setLon={setLon}
           />
         )}
       </div>
