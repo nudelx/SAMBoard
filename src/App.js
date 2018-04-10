@@ -10,13 +10,9 @@ import { saveLocalCache,  loadLocalCashe} from './tools/cacheTool'
 
 
 const activateSelfReboot = () => {
-  const now = new Date()
-  const night = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0)
-  const msToMidnight = night.getTime() - now.getTime()
-
   setTimeout(() => {
     window.location.reload()
-  }, msToMidnight)
+  }, 86400000)
 }
 
 class App extends Component {

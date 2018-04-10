@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class Weather extends Component {
   state = {
     key: '259587a13998d2d0de3f461165765f2c',
-    url: 'https://api.openweathermap.org/data/2.5/weather?'
+    url: 'https://api.openweathermap.org/data/2.5/weather?',
+    timer: null
   }
 
   getLocation() {
@@ -34,11 +35,6 @@ class Weather extends Component {
       .then(forecast => this.setState({ forecast }))
   }
 
-  temperatureConverter(valNum) {
-    valNum = parseFloat(valNum)
-    return (valNum - 32) / 1.8
-  }
-
   componentWillMount() {
     this.getLocation()
       .then(data =>
@@ -49,7 +45,8 @@ class Weather extends Component {
       )
       .catch(error => console.log(error))
 
-    setInterval(this.getWeather, 3600000)
+    const timer = setInterval(this.getWeather, 3600000)
+    this.setState({ timer })
   }
 
   render() {
