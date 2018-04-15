@@ -36,6 +36,7 @@ class Weather extends Component {
   }
 
   componentWillMount() {
+    const async = null
     this.getLocation()
       .then(data =>
         setTimeout(
@@ -44,9 +45,14 @@ class Weather extends Component {
         )
       )
       .catch(error => console.log(error))
+    clearTimeout(async)
 
     const timer = setInterval(this.getWeather, 3600000)
     this.setState({ timer })
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.state.timer)
   }
 
   render() {
