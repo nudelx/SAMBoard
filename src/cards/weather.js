@@ -9,7 +9,6 @@ class Weather extends Component {
 
   getLocation() {
     const { lat, lon, customGeolocation } = this.props
-    console.log('customGeolocation', customGeolocation)
     return new Promise((yes, no) => {
       if (customGeolocation) {
         yes({ coords: { latitude: lat, longitude: lon } })
