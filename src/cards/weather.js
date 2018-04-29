@@ -15,9 +15,7 @@ class Weather extends Component {
         yes({ coords: { latitude: lat, longitude: lon } })
       } else {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            pos => yes(pos)
-          )
+          navigator.geolocation.getCurrentPosition(pos => yes(pos))
         } else {
           console.log('Geolocation is not supported by this browser.')
           alert(
@@ -33,7 +31,16 @@ class Weather extends Component {
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
-      .then(forecast => this.setState({ forecast: { name: forecast.name, icon: forecast.weather[0].icon, temp: forecast.main.temp,  iconName: forecast.weather[0].main  } }))
+      .then(forecast =>
+        this.setState({
+          forecast: {
+            name: forecast.name,
+            icon: forecast.weather[0].icon,
+            temp: forecast.main.temp,
+            iconName: forecast.weather[0].main
+          }
+        })
+      )
   }
 
   componentWillMount() {
@@ -47,12 +54,11 @@ class Weather extends Component {
     this.setState({ timer })
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.state.timer)
   }
 
   render() {
-    console.log(this.state)
     const { forecast } = this.state
     const { name, iconName, temp, icon } = forecast || {}
     return forecast ? (
