@@ -9,6 +9,7 @@ class Weather extends Component {
 
   getLocation() {
     const { lat, lon, customGeolocation } = this.props
+    console.log('customGeolocation', customGeolocation)
     return new Promise((yes, no) => {
       if (customGeolocation) {
         yes({ coords: { latitude: lat, longitude: lon } })
@@ -32,18 +33,13 @@ class Weather extends Component {
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
-      .then(forecast => this.setState({ forecast }))
+      .then(forecast => this.setState({ forecast: { name: forecast.name, icon: forecast.weather[0].icon, temp: forecast.main.temp,  iconName: forecast.weather[0].main  } }))
   }
 
   componentWillMount() {
     const async = null
     this.getLocation()
-      .then(data =>
-        setTimeout(
-          () => this.setState({ coords: data.coords }, this.getWeather),
-          0
-        )
-      )
+      .then(data => this.setState({ coords: data.coords }, this.getWeather))
       .catch(error => console.log(error))
     clearTimeout(async)
 
@@ -56,15 +52,16 @@ class Weather extends Component {
   }
 
   render() {
+    console.log(this.state)
     const { forecast } = this.state
-    const { name, weather, main } = forecast || {}
+    const { name, iconName, temp, icon } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-${weather[0].icon}`} />
+        <div className={`w-icon icon-${icon}`} />
         <div className="w-data">
-          <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
+          <div className="w-temp">{`${Math.ceil(temp)}c`}</div>
           <div className="w-text">
-            <div>{weather[0].main}</div>
+            <div>{iconName}</div>
             <div>{name}</div>
           </div>
         </div>
