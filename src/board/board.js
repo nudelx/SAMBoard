@@ -22,7 +22,7 @@ const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
               </Slide>,
               <Slide key='2'>
                 <Card type="tests" env="MM_stage" tests />
-                <Card type="tests" env="MM_master" tests />
+                <Card type="tests" env="MM_us" tests />
                 <Card type="tests" env="MM_eu" tests />
               </Slide>
             ])
