@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class Weather extends Component {
   state = {
     key: '259587a13998d2d0de3f461165765f2c',
-    url: 'https://api.openweathermap.org/data/2.5/weather?'
+    url: 'https://api.openweathermap.org/data/2.5/weather?',
+    timer: null
   }
 
   getLocation() {
@@ -13,9 +14,7 @@ class Weather extends Component {
         yes({ coords: { latitude: lat, longitude: lon } })
       } else {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            pos => yes(pos)
-          )
+          navigator.geolocation.getCurrentPosition(pos => yes(pos))
         } else {
           console.log('Geolocation is not supported by this browser.')
           alert(
@@ -31,37 +30,40 @@ class Weather extends Component {
     const URL = `${url}appid=${key}&lat=${latitude}&lon=${longitude}&units=metric`
     fetch(URL)
       .then(r => r.json())
-      .then(forecast => this.setState({ forecast }))
-  }
-
-  temperatureConverter(valNum) {
-    valNum = parseFloat(valNum)
-    return (valNum - 32) / 1.8
-  }
-
-  componentWillMount() {
-    this.getLocation()
-      .then(data =>
-        setTimeout(
-          () => this.setState({ coords: data.coords }, this.getWeather),
-          0
-        )
+      .then(forecast =>
+        this.setState({
+          forecast: {
+            name: forecast.name,
+            icon: forecast.weather[0].icon,
+            temp: forecast.main.temp,
+            iconName: forecast.weather[0].main
+          }
+        })
       )
-      .catch(error => console.log(error))
+  }
 
-    setInterval(this.getWeather, 3600000)
+  componentDidMount() {
+    this.getLocation()
+      .then(data => this.setState({ coords: data.coords }, this.getWeather))
+      .catch(error => console.log(error))
+    const timer = setInterval(this.getWeather, 3600000)
+    this.setState({ timer })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.timer)
   }
 
   render() {
     const { forecast } = this.state
-    const { name, weather, main } = forecast || {}
+    const { name, iconName, temp, icon } = forecast || {}
     return forecast ? (
       <div className="icon-weather">
-        <div className={`w-icon icon-${weather[0].icon}`} />
+        <div className={`w-icon icon-${icon}`} />
         <div className="w-data">
-          <div className="w-temp">{`${Math.ceil(main.temp)}c`}</div>
+          <div className="w-temp">{`${Math.ceil(temp)}c`}</div>
           <div className="w-text">
-            <div>{weather[0].main}</div>
+            <div>{iconName}</div>
             <div>{name}</div>
           </div>
         </div>
