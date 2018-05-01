@@ -3,6 +3,7 @@ clear
 git checkout master
 git pull
 git checkout gh-pages
+git pull
 git merge -X theirs master
 node updateVersion
 git commit -am "version update $(date)"
