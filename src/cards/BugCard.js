@@ -50,7 +50,6 @@ export default class extends React.Component {
           method: 'GET',
           mode: 'no-cors',
           headers: {
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/x-www-form-urlencoded'
           },
           withCredentials: true,
