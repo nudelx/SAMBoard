@@ -34,8 +34,14 @@ export default class extends React.Component {
   }
   componentDidMount() {
     this.getData()
+    this.timer = setInterval(() => {
+      this.getData()
+    }, 1800000)
   }
 
+  componentWillMount() {
+    clearInterval(this.timer)
+  }
   getLevel(value) {
     const { GOOD, BAD } = this.state.const
     return value < GOOD ? 1 : value >= GOOD && value <= BAD ? 2 : 3
