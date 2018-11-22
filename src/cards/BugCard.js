@@ -45,11 +45,22 @@ export default class extends React.Component {
         // "https://samanage.tpondemand.com/api/v1/Bugs?where=(Tags contains '*block*')&access_token=Mjk6YUdWZm9XbU8yemw1Q1BaMVBKZVEvL3VjdW1zeWN2YkJnVys3MHdocmthYz0="
         `${BUGS_URL}?where=${BLOCKER_QUERY}and${QUERY}and${
           type === 'SSP' ? SSP_PREFIX : SSF_PREFIX
-        }&${LIMIT}&${TOKEN}`
+        }&${LIMIT}&${TOKEN}`,
+        {
+          method: 'GET',
+          mode: 'no-cors',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          withCredentials: true,
+          credentials: 'same-origin'
+        }
       )
-      .then(resp =>
-        this.setState({ total: resp.data.Items.length, data: resp.data.Items })
-      )
+      // .then(resp => resp.body)
+      .then(data => console.log(data))
+
+    //  this.setState({ total: resp.data.Items.length, data: resp.data.Items })
   }
   componentDidMount() {
     this.getData()
