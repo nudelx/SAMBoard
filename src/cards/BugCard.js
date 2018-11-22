@@ -4,11 +4,6 @@ import CardHeader from './cardHeader'
 import CardBody from './cardBody'
 // import Emoji from '../tools/emoji'
 import TestLoadingBox from '../tests/testLoadingBox'
-const bugsLevel = {
-  1: '😃',
-  2: '😕',
-  3: '😱'
-}
 
 export default class extends React.Component {
   state = {
@@ -60,7 +55,7 @@ export default class extends React.Component {
           ) : (
             <div className="bugs-stat-view">
               <div className={`number color-bugs-${level}`}>{total}</div>
-              <div className="level">{bugsLevel[level]}</div>
+              <div className={`level emoji-level-${level}`} />
             </div>
           )}
         </CardBody>
