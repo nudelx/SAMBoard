@@ -3,7 +3,7 @@ import Emoji from './emoji'
 const Badge = () => {
   return (
     <div className={`badge`}>
-      <Emoji i={'🐞'} className="badge-bugs" />
+      <div className="badge-bugs" />
     </div>
   )
 }
