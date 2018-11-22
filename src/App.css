@@ -642,7 +642,6 @@ div.n-msg-slide {
   bottom: 10px;
   width: 100%;
   padding: 20px 0;
-
 }
 
 .config-box .close {
@@ -702,7 +701,7 @@ div.n-msg-slide {
   margin-bottom: 10px;
 }
 
-.time-card{
+.time-card {
   vertical-align: top;
   display: inline-block;
   vertical-align: top;
@@ -712,8 +711,34 @@ div.n-msg-slide {
   width: 100px;
 }
 
-label[for="lat"], label[for="lon"] {
+label[for='lat'],
+label[for='lon'] {
   display: inline-block;
   min-width: unset;
   width: 112px;
+}
+
+.bugs-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.badge-bugs {
+  font-size: 30px;
+}
+
+.bugs-stat-view {
+  display: flex;
+  justify-content: space-around;
+  font-size: 150px;
+}
+
+.color-bugs-1 {
+  color: #289e00;
+}
+.color-bugs-2 {
+  color: #e0c643;
+}
+.color-bugs-3 {
+  color: #b60420;
 }
