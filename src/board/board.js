@@ -32,7 +32,7 @@ const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
 
             <Slide key="3">
               <BugCard type="SSP" env="SSP BLOCKERS" />
-              <BugCard type="SSF" env="SSF BLOCKERS" />
+              {/* <BugCard type="SSF" env="SSF BLOCKERS" /> */}
             </Slide>
           ]
         }}
