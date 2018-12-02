@@ -47,7 +47,7 @@ export default class extends React.Component {
   }
   getLevel(value) {
     const { type } = this.props
-    const { constLinks, SMILE, SAD, HYSTERICAL } = this.state
+    const { constLinks } = this.state
     const { SMILE, SAD, HYSTERICAL } = constLinks
     const [_GOOD, _BAD] = type.match(/BLOCK/gi)
       ? [constLinks.BLOCK_GOOD, constLinks.BLOCK_BAD]
