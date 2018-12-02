@@ -1,5 +1,4 @@
 import React from 'react'
-import Emoji from './emoji'
 const Badge = () => {
   return (
     <div className={`badge`}>
