@@ -9,20 +9,25 @@ export default class extends React.Component {
   state = {
     total: null,
     data: null,
-    const: {
-      GOOD: 5,
-      BAD: 10,
+    constLinks: {
+      BLOCK_GOOD: 5,
+      BLOCK_BAD: 10,
+      QUE_GOOD: 60,
+      QUE_BAD: 80,
       BUGS_URL: 'https://nudel-proxy-node.herokuapp.com/',
-      SSF_PREFIX: 'SSF',
-      SSP_PREFIX: 'SSP'
+      SSF_BLOCK: 'SSF',
+      SSP_BLOCK: 'SSP',
+      SSP_ALL: 'SSP-ALL',
+      SSF_ALL: 'SSF-ALL'
     }
   }
 
   getData = () => {
     const { type } = this.props
-    const { BUGS_URL, SSF_PREFIX, SSP_PREFIX } = this.state.const
+    const { constLinks } = this.state
+    const { BUGS_URL } = constLinks
     axios
-      .get(`${BUGS_URL}${type === 'SSP' ? SSP_PREFIX : SSF_PREFIX}`)
+      .get(`${BUGS_URL}${constLinks[type]}`)
       .then(resp =>
         this.setState({ total: resp.data.Items.length, data: resp.data.Items })
       )
@@ -38,8 +43,13 @@ export default class extends React.Component {
     clearInterval(this.timer)
   }
   getLevel(value) {
-    const { GOOD, BAD } = this.state.const
-    return value < GOOD ? 1 : value >= GOOD && value <= BAD ? 2 : 3
+    const { type } = this.props
+    const { constLinks } = this.state
+    const [_GOOD, _BAD] = type.match('/block/i')
+      ? [constLinks.BLOCK_GOOD, constLinks.BLOCK_BAD]
+      : [constLinks.QUE_GOOD, constLinks.QUE_BAD]
+
+    return value < _GOOD ? 1 : value >= _GOOD && value <= _BAD ? 2 : 3
   }
   render() {
     const { env, type } = this.props
@@ -63,5 +73,3 @@ export default class extends React.Component {
     )
   }
 }
-
-// where=(Tags contains '*block*')and(EntityState.Name not contains  'Code')and(EntityState.Id ne '174')and(EntityState.Id ne  '225')and(EntityState.Name not contains  '*Deploy*')and(EntityState.Name not contains  '*Design*')and(EntityState.Name not contains  '*Live*')and(Project.Name contains 'SSF')&take=100
