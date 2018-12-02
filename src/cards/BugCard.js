@@ -10,6 +10,9 @@ export default class extends React.Component {
     total: null,
     data: null,
     constLinks: {
+      SMILE: 1,
+      SAD: 2,
+      HYSTERICAL: 3,
       BLOCK_GOOD: 5,
       BLOCK_BAD: 10,
       QUE_GOOD: 60,
@@ -44,12 +47,16 @@ export default class extends React.Component {
   }
   getLevel(value) {
     const { type } = this.props
-    const { constLinks } = this.state
+    const { constLinks, SMILE, SAD, HYSTERICAL } = this.state
     const [_GOOD, _BAD] = type.match(/BLOCK/gi)
       ? [constLinks.BLOCK_GOOD, constLinks.BLOCK_BAD]
       : [constLinks.QUE_GOOD, constLinks.QUE_BAD]
 
-    return value < _GOOD ? 1 : value >= _GOOD && value <= _BAD ? 2 : 3
+    return value < _GOOD
+      ? SMILE
+      : value >= _GOOD && value <= _BAD
+      ? SAD
+      : HYSTERICAL
   }
   render() {
     const { env, type } = this.props
