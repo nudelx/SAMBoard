@@ -6,8 +6,7 @@ import BB8 from './cards/bb8'
 import Config from './config/config'
 import fbConnect from './firebase/fb_config'
 import AppHeader from './header/appHeader'
-import { saveLocalCache,  loadLocalCashe} from './tools/cacheTool'
-
+import { saveLocalCache, loadLocalCache } from './tools/cacheTool'
 
 const activateSelfReboot = () => {
   setTimeout(() => {
@@ -16,50 +15,77 @@ const activateSelfReboot = () => {
 }
 
 class App extends Component {
-
   constructor(props) {
     super(props)
     fbConnect()
-    const local = loadLocalCashe()
-    const defaultState = { enableCarousel: true, enableBB8: true, showOnlySlide: 0, totalSlides: 0, customGeolocation: false, lat:0, lon:0}
-    this.state = { ...( local ? local : defaultState) }
-    if (!local) {  saveLocalCache(this.state) }
+    const local = loadLocalCache()
+    const defaultState = {
+      enableCarousel: true,
+      enableBB8: true,
+      showOnlySlide: 0,
+      totalSlides: 0,
+      customGeolocation: false,
+      lat: 0,
+      lon: 0
+    }
+    this.state = { ...(local ? local : defaultState) }
+    if (!local) {
+      saveLocalCache(this.state)
+    }
   }
 
   toggleCustomGeolocation = () => {
-    this.setState({
-      customGeolocation: !this.state.customGeolocation
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        customGeolocation: !this.state.customGeolocation
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   setShowOnlySlide = value => {
-    this.setState({
-      showOnlySlide: value
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        showOnlySlide: value
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   toggleCarousel = () => {
-    this.setState({
-      enableCarousel: !this.state.enableCarousel
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        enableCarousel: !this.state.enableCarousel
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   toggleBB8 = () => {
-    this.setState({
-      enableBB8: !this.state.enableBB8
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        enableBB8: !this.state.enableBB8
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   setTotalSlides = value => {
-    this.setState({
-      totalSlides: value
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        totalSlides: value
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   setLatOrLong = type => value => {
-    this.setState({
-      [type]: value
-    }, () => saveLocalCache(this.state))
+    this.setState(
+      {
+        [type]: value
+      },
+      () => saveLocalCache(this.state)
+    )
   }
 
   componentDidMount() {
@@ -67,11 +93,18 @@ class App extends Component {
   }
 
   render() {
-    const { enableBB8, enableCarousel, totalSlides, showOnlySlide,  customGeolocation, lat, lon
-} = this.state
+    const {
+      enableBB8,
+      enableCarousel,
+      totalSlides,
+      showOnlySlide,
+      customGeolocation,
+      lat,
+      lon
+    } = this.state
     return (
       <div className="App">
-        <AppHeader lat={lat} lon={lon} customGeolocation={customGeolocation}/>
+        <AppHeader lat={lat} lon={lon} customGeolocation={customGeolocation} />
         <div>
           <Board
             enableCarousel={enableCarousel}
