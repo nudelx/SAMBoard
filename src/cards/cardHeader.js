@@ -1,11 +1,12 @@
 import React from 'react'
 import Badge from '../tools/badge'
 import BugsBadge from '../tools/bugsBadge'
+import { ENV_NAMES } from "../tools/envNames"
 
 const CardHeader = ({ type, env, bugs }) => {
   return (
     <div className={`card-header ${bugs ? 'bugs-style' : ''}`}>
-      <div className={'env-name'}>{env}</div>
+      <div className={'env-name'}>{ENV_NAMES[env] || env}</div>
       {bugs ? <BugsBadge /> : <Badge value={'busy'} />}
     </div>
   )
