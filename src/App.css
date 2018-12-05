@@ -348,7 +348,7 @@ div.header li {
   display: inline-block;
   line-height: 55px;
   height: 53px;
-  margin-right: 5%;
+  margin-right: 4%;
 }
 
 div.header .main-title {
@@ -363,7 +363,6 @@ div.statusBlock {
   background-color: #01212a;
   height: 35px;
   line-height: 35px;
-  width: 150px;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
@@ -377,6 +376,10 @@ div.statusBlock > * {
 div.statusBlock > div.st-name {
   text-align: left;
   color: #627980;
+}
+
+div.statusBlock > div.st-user {
+  text-transform: initial;
 }
 
 div.badge {
