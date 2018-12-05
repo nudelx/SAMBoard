@@ -1,6 +1,5 @@
 import React from 'react'
 import { ENV_NAMES } from '../tools/envNames'
-import classnames from 'classnames'
 
 const StatusBlock = ({ data, envName }) => {
   data = data || {}
@@ -12,7 +11,7 @@ const StatusBlock = ({ data, envName }) => {
     <div className={'statusBlock'}>
       <div className={'st-name'}>{ENV_NAMES[envName]}</div>
       <div className={`st-value ${classStatus}`}>{displayStatus}</div>
-      {dirty && <div className={classnames('st-user', 'busy')}>{displayUser}</div>}
+      {dirty && <div className={'st-user busy'}>{displayUser}</div>}
     </div>
   )
 }
