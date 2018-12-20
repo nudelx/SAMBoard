@@ -467,6 +467,14 @@ ul.test-thread-box {
   background-color: #883541;
 }
 
+.test-minor {
+  background-color: #fef489;
+}
+
+.test-major {
+  background-color: #ff6600;
+}
+
 li.test-thread-name,
 li.test-thread-value,
 li.test-thread-loading {
