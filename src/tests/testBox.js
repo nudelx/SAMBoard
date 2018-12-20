@@ -1,7 +1,7 @@
 import React from 'react'
 
 const getSeverityStyle = (failed, total) => {
-  const percent = failed / total
+  const percent = 100 * failed / total
   if (percent < 5) return "test-minor"
   if (percent >= 5 && percent < 10) return "test-major"
   return "test-fail"

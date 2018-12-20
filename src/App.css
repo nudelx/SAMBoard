@@ -463,16 +463,16 @@ ul.test-thread-box {
   background-color: #376431;
 }
 
-.test-fail {
-  background-color: #883541;
-}
-
 .test-minor {
-  background-color: #fef489;
+  background-color: #A38A21;
 }
 
 .test-major {
-  background-color: #ff6600;
+  background-color: #AA5930;
+}
+
+.test-fail {
+  background-color: #883541;
 }
 
 li.test-thread-name,
