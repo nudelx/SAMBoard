@@ -2,6 +2,12 @@ import React from 'react'
 import ConfigRow from './configRow'
 import Buttons from './buttons'
 
+const SLIDES = {
+  0: 'SSF',
+  1: 'SSP',
+  2: 'Bugs'
+}
+
 const makeOptions = value => {
   const arr = []
   for (let i = 0; i < value; i++) {
@@ -54,7 +60,7 @@ const ConfigBox = ({
             disabled={enableCarousel}
             value={showOnlySlide}>
             {makeOptions(totalSlides).map(item => (
-              <option key={item} value={item}>{`Slide ${item}`}</option>
+              <option key={item} value={item}>{SLIDES[item]}</option>
             ))}
           </select>
         </ConfigRow>
