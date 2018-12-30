@@ -17,7 +17,7 @@ export default class extends React.Component {
       BLOCK_BAD: 10,
       QUE_GOOD: 60,
       QUE_BAD: 80,
-      BUGS_URL: 'https://nudel-proxy-node.herokuapp.com/',
+      BUGS_URL: 'https://samanage-node-proxy.herokuapp.com/',
       SSF_BLOCK: 'SSF',
       SSP_BLOCK: 'SSP',
       SSP_ALL: 'SSP-ALL',
