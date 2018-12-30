@@ -45,7 +45,7 @@ class Card extends Component {
   }
 
   testsFailed(browsers) {
-    return Object.keys(browsers).some(browser => (browsers[browser].failed > 0))
+    return Object.keys(browsers).some(browser => browsers[browser].failed > 0)
   }
 
   componentDidMount() {
@@ -53,18 +53,28 @@ class Card extends Component {
     if (!type && !env) {
       return
     }
-    var db = firebase.database().ref().child(type)
+    var db = firebase
+      .database()
+      .ref()
+      .child(type)
 
     db.on('value', snap => {
       let data = snap.val()
       let status = testState.RUN
-      if (!data) { data = JSON.parse(localStorage.getItem(type))}
+      if (!data) {
+        data = JSON.parse(localStorage.getItem(type))
+      }
       // localStorage.setItem(type, JSON.stringify(data));
       const browsers = (data[env] && parseThreadField(data[env].browsers)) || {}
       const threadsRunning = (data[env] && data[env].threads_running) || {}
-      if (!this.testsRunning(threadsRunning) && Object.keys(browsers).length > 0)
+      if (
+        !this.testsRunning(threadsRunning) &&
+        Object.keys(browsers).length > 0
+      )
         status = this.testsFailed(browsers) ? testState.FAIL : testState.PASS
-      this.setState(this.createStateObj(data, env, browsers, threadsRunning, status))
+      this.setState(
+        this.createStateObj(data, env, browsers, threadsRunning, status)
+      )
     })
   }
 
@@ -90,7 +100,14 @@ class Card extends Component {
         <CardBody>
           <FieldsList type={type} data={data} />
         </CardBody>
-        {tests && <TestsBody browsers={data.browsers} threadsRunning={data.threadsRunning} date={new Date(data.timestamp * 1000)} status={status} />}
+        {tests && (
+          <TestsBody
+            browsers={data.browsers}
+            threadsRunning={data.threadsRunning}
+            date={new Date(data.timestamp * 1000)}
+            status={status}
+          />
+        )}
       </div>
     )
   }
