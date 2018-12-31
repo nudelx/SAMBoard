@@ -60,21 +60,20 @@ class Card extends Component {
 
     db.on('value', snap => {
       let data = snap.val()
-      let status = testState.RUN
+      let status = testState.NONE
       if (!data) {
         data = JSON.parse(localStorage.getItem(type))
       }
       // localStorage.setItem(type, JSON.stringify(data));
       const browsers = (data[env] && parseThreadField(data[env].browsers)) || {}
       const threadsRunning = (data[env] && data[env].threads_running) || {}
-      if (
-        !this.testsRunning(threadsRunning) &&
-        Object.keys(browsers).length > 0
-      )
+      const isRunning = this.testsRunning(threadsRunning)
+      if (isRunning)
+        status = testState.RUN
+      else if (Object.keys(browsers).length > 0)
         status = this.testsFailed(browsers) ? testState.FAIL : testState.PASS
-      this.setState(
-        this.createStateObj(data, env, browsers, threadsRunning, status)
-      )
+        
+      this.setState(this.createStateObj(data, env, browsers, threadsRunning, status))
     })
   }
 
@@ -100,14 +99,7 @@ class Card extends Component {
         <CardBody>
           <FieldsList type={type} data={data} />
         </CardBody>
-        {tests && (
-          <TestsBody
-            browsers={data.browsers}
-            threadsRunning={data.threadsRunning}
-            date={new Date(data.timestamp * 1000)}
-            status={status}
-          />
-        )}
+        {tests && <TestsBody browsers={data.browsers} status={status} />}
       </div>
     )
   }

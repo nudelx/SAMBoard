@@ -1,6 +1,7 @@
 import React from 'react'
 import TestBox from './testBox'
 import TestLoadingBox from './testLoadingBox'
+import { testState } from '../tools/constants'
 
 const testsStatusText = (status) => {
   switch (status) {
@@ -15,17 +16,15 @@ const testsStatusText = (status) => {
   }
 }
 
-const running = (threadsRunning) => {
-  return Object.keys(threadsRunning).some(t => threadsRunning[t])
-}
+const running = status => (status !== testState.NONE)
 
 const getComponent = (component, key) => {
   return <li key={key} className='thread-box'>{component}</li>
 }
 
-const renderTestBoxes = (browsers, threadsRunning) => {
+const renderTestBoxes = (browsers, status) => {
   const browsersCount = Object.keys(browsers).length
-  if (browsersCount === 0)
+  if (browsersCount === 0 && running(status))
     return getComponent(<TestLoadingBox />, 1)
 
   let boxes = []
@@ -35,13 +34,13 @@ const renderTestBoxes = (browsers, threadsRunning) => {
     boxes.push(getComponent(<TestBox key={browser} name={browser} failed={browserData.failed} total={browserData.total} />, browser))
   })
 
-  if (running(threadsRunning))
+  if (running(status))
     boxes.push(getComponent(<TestLoadingBox key={browsersCount + 1} />, browsersCount + 1))
 
   return boxes
 }
 
-const TestsBody = ({ browsers, threadsRunning, date, status }) => {
+const TestsBody = ({ browsers, status }) => {
   return (
     <div className='tests-body'>
       <div className='tests-inner-body'>
@@ -51,7 +50,7 @@ const TestsBody = ({ browsers, threadsRunning, date, status }) => {
         </div>
         <div className='test-threads-body-container'>
           <ul className='test-threads-body'>
-            {renderTestBoxes(browsers, threadsRunning)}
+            {running() && renderTestBoxes(browsers, status)}
           </ul>
         </div>
       </div>
