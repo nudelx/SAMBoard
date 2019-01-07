@@ -2,7 +2,7 @@ import React from 'react'
 import StatusBlock from './statusBlock'
 import * as firebase from 'firebase'
 
-export default class Header extends React.Component {
+export default class MasterStatusHeader extends React.Component {
   state = { data: null }
   componentDidMount() {
     const db = firebase
@@ -24,13 +24,13 @@ export default class Header extends React.Component {
         <ul className={'header-list'}>
           <li className={'main-title'}> {title} </li>
           <li>
-            <StatusBlock {...this.state} envName={'cmdb'} />
+            <StatusBlock {...this.state} envName={'mm'} />
           </li>
           <li>
             <StatusBlock {...this.state} envName={'esd'} />
           </li>
           <li>
-            <StatusBlock {...this.state} envName={'mm'} />
+            <StatusBlock {...this.state} envName={'cmdb'} />
           </li>
         </ul>
       </div>

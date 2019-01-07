@@ -2,14 +2,16 @@ import React from 'react'
 import Card from '../cards/Card'
 import Carousel from './Carousel'
 import Slide from './Slide'
-import Header from '../header/header'
+import MasterStatusHeader from "../header/masterStatusHeader"
+import DeployersHeader from "../header/deployersHeader"
 import '../App.css'
 import BugCard from '../cards/BugCard'
 
 const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
   return (
     <div className="simple-board">
-      <Header title={'master status'} />
+      <DeployersHeader title={'deployers'} />
+      <MasterStatusHeader title={'master status'} />
       <Carousel
         showOnlySlide={showOnlySlide}
         enableCarousel={enableCarousel}

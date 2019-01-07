@@ -327,6 +327,7 @@ div.state-time {
 }
 
 div.header {
+  margin-bottom: 10px;
   white-space: nowrap;
   -webkit-box-shadow: black 0px 2px 17px 0px;
   box-shadow: black 0px 2px 17px 0px;
