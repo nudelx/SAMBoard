@@ -5,7 +5,8 @@ import Buttons from './buttons'
 const SLIDES = {
   0: 'SSF',
   1: 'SSP',
-  2: 'Bugs'
+  2: 'Bugs',
+  3: 'SamNext'
 }
 
 const makeOptions = value => {
@@ -50,7 +51,8 @@ const ConfigBox = ({
         <ConfigRow>
           <label
             className={enableCarousel ? 'opacity' : ''}
-            htmlFor="onlySlide">
+            htmlFor="onlySlide"
+          >
             Show Only
           </label>
           <select
@@ -58,9 +60,12 @@ const ConfigBox = ({
             id="onlySlide"
             name="onlySlide"
             disabled={enableCarousel}
-            value={showOnlySlide}>
+            value={showOnlySlide}
+          >
             {makeOptions(totalSlides).map(item => (
-              <option key={item} value={item}>{SLIDES[item]}</option>
+              <option key={item} value={item}>
+                {SLIDES[item]}
+              </option>
             ))}
           </select>
         </ConfigRow>
@@ -94,7 +99,8 @@ const ConfigBox = ({
           <div className="cfg-row">
             <label
               className={!customGeolocation ? 'opacity' : ''}
-              htmlFor="lat">
+              htmlFor="lat"
+            >
               Latitude
             </label>
             <input
@@ -110,7 +116,8 @@ const ConfigBox = ({
           <div className="cfg-row">
             <label
               className={!customGeolocation ? 'opacity' : ''}
-              htmlFor="lon">
+              htmlFor="lon"
+            >
               Longitude
             </label>
             <input

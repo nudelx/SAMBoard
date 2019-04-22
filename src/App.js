@@ -35,6 +35,8 @@ class App extends Component {
   }
 
   toggleCustomGeolocation = () => {
+    // eslint-disbale-line
+
     this.setState(
       {
         customGeolocation: !this.state.customGeolocation
