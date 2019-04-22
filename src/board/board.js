@@ -5,6 +5,7 @@ import Slide from './Slide'
 import Header from '../header/header'
 import '../App.css'
 import BugCard from '../cards/BugCard'
+import QueCard from '../cards/queCard'
 
 const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
   return (
@@ -35,6 +36,11 @@ const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
               <BugCard type="SSF_BLOCK" env="SSF BLOCKERS" />
               <BugCard type="SSF_ALL" env="SSF BUGS IN QUEUE" />
               <BugCard type="SSP_ALL" env="SSP BUGS IN QUEUE" />
+            </Slide>,
+
+            <Slide key="4">
+              {/* <QueCard /> */}
+              <QueCard />
             </Slide>
           ]
         }}
