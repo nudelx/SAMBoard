@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "promise-polyfill": "^7.1.1",
-    "react-scripts": "1.0.7"
+    "react-scripts": "3.0.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -17,5 +17,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
