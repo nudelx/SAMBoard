@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "promise-polyfill": "^7.1.1",
-    "react-scripts": "3.0.0"
+    "react-scripts": "1.0.7"
   },
   "dependencies": {
     "axios": "^0.18.0",
