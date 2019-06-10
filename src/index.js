@@ -4,6 +4,6 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 import './weather.css'
-alert('here')
+
 ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()
