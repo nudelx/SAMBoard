@@ -16,6 +16,7 @@ export default ({ list }) => {
           </li>
         ))}
       </ul>
+      <div className="rocket-icon rocket" />
     </div>
   )
 }
