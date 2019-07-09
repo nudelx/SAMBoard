@@ -6,8 +6,9 @@ import CardBody from './cardBody'
 import { getFields } from '../tools/fields'
 import { parseThreadField } from '../tools/threadsDataParser'
 import { testState } from '../tools/constants'
-import FieldsList from './fieldsList'
 import TestsBody from '../tests/testsBody'
+import DeployList from '../cards/deployList'
+import FieldsList from '../cards/fieldsList'
 
 class Card extends Component {
   constructor(props) {
@@ -34,8 +35,8 @@ class Card extends Component {
       timestamp: (data[env] && data[env].timestamp) || 0,
       version: (data[env] && data[env].version) || 'n/a',
       tag: (data[env] && data[env].tag) || 'n/a',
-      browsers,
       threadsRunning,
+      [env]: data,
       status
     }
   }
@@ -57,7 +58,6 @@ class Card extends Component {
       .database()
       .ref()
       .child(type)
-
     db.on('value', snap => {
       let data = snap.val()
       let status = testState.RUN
@@ -65,7 +65,8 @@ class Card extends Component {
         data = JSON.parse(localStorage.getItem(type))
       }
       // localStorage.setItem(type, JSON.stringify(data));
-      const browsers = (data[env] && parseThreadField(data[env].browsers)) || {}
+      const browsers =
+        (data && data[env] && parseThreadField(data[env].browsers)) || {}
       const threadsRunning = (data[env] && data[env].threads_running) || {}
       if (
         !this.testsRunning(threadsRunning) &&
@@ -92,13 +93,17 @@ class Card extends Component {
 
   render() {
     const { env, type, tests } = this.props
-    const { status } = this.state
+    const { status, deployers } = this.state
     const data = this.extractDataFromState(type)
     return (
       <div className="card">
         <CardHeader type={type} env={env} />
         <CardBody>
-          <FieldsList type={type} data={data} />
+          {env === 'deployers' ? (
+            deployers && <DeployList list={deployers} />
+          ) : (
+            <FieldsList type={type} data={data} />
+          )}
         </CardBody>
         {tests && (
           <TestsBody
