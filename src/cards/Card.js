@@ -100,7 +100,7 @@ class Card extends Component {
         <CardHeader type={type} env={env} />
         <CardBody>
           {env === 'deployers' ? (
-            deployers && <DeployList deployers={deployers} />
+            deployers && <DeployList list={deployers} />
           ) : (
             <FieldsList type={type} data={data} />
           )}
