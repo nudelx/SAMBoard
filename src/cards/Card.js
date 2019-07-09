@@ -93,7 +93,6 @@ class Card extends Component {
 
   render() {
     const { env, type, tests } = this.props
-    console.log(this)
     const { status, deployers } = this.state
     const data = this.extractDataFromState(type)
     return (
