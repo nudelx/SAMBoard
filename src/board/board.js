@@ -29,6 +29,7 @@ const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
               <Card type="tests" env="MM_stage2" tests />
               <Card type="tests" env="MM_us" tests />
               <Card type="tests" env="MM_eu" tests />
+              <Card type="ssp_deploy" env="deployers" />
             </Slide>,
 
             <Slide key="3">
