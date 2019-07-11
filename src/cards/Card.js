@@ -35,6 +35,7 @@ class Card extends Component {
       timestamp: (data[env] && data[env].timestamp) || 0,
       version: (data[env] && data[env].version) || 'n/a',
       tag: (data[env] && data[env].tag) || 'n/a',
+      browsers,
       threadsRunning,
       [env]: data,
       status
