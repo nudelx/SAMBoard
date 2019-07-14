@@ -777,6 +777,7 @@ label[for='lon'] {
 
 .deployerlist {
   display: inline-block;
+  width: 50%;
 }
 
 .deployerlist li {
