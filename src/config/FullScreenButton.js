@@ -42,9 +42,8 @@ export default class FullScreen extends React.Component {
     }
   }
 
-  run = () => {
+  run = () =>
     this.state.fullScreen ? this.closeFullscreen() : this.fullScreen()
-  }
 
   render() {
     return (
