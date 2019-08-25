@@ -5,9 +5,6 @@ export default class FullScreen extends React.Component {
     fullScreen: null
   }
   closeFullscreen = () => {
-    this.setState(() => ({
-      fullScreen: false
-    }))
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if (document.mozCancelFullScreen) {
@@ -20,13 +17,13 @@ export default class FullScreen extends React.Component {
       /* IE/Edge */
       document.msExitFullscreen()
     }
+
+    this.setState(() => ({
+      fullScreen: false
+    }))
   }
 
   fullScreen = () => {
-    this.setState(() => ({
-      fullScreen: true
-    }))
-
     const body = document.querySelector('body')
     if (body.requestFullscreen) {
       body.requestFullscreen()
@@ -40,6 +37,10 @@ export default class FullScreen extends React.Component {
       /* IE/Edge */
       body.msRequestFullscreen()
     }
+
+    this.setState(() => ({
+      fullScreen: true
+    }))
   }
 
   run = () =>
