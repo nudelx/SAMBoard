@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ConfigBox from './configBox'
 import BurgerButton from './burgerButton'
+import FullScreen from './FullScreenButton'
 class Config extends Component {
   state = {
     active: false,
@@ -34,6 +35,7 @@ class Config extends Component {
     return (
       <div>
         <BurgerButton onClick={this.setActive} />
+        <FullScreen />
         {active && (
           <ConfigBox
             toggleCarousel={toggleCarousel}
