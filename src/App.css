@@ -817,8 +817,8 @@ label[for='lon'] {
   height: 20px;
   position: absolute;
   right: 180px;
-  top: 28px;
+  top: 20px;
   color: #bbc9cc;
-  font-size: 23px;
+  font-size: 30px;
   cursor: pointer;
 }
