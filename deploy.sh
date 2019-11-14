@@ -5,7 +5,7 @@ git pull
 git checkout gh-pages
 git pull
 git merge -X theirs master
-node updateVersion
+# node updateVersion
 git commit -am "version update $(date)"
 rm -rf static/
 yarn build
