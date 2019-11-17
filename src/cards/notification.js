@@ -19,7 +19,7 @@ export default class Notification extends Component {
     const { samboardKey } = this.state
     const ver = require('../vesrion_data.json')
     const old = JSON.parse(localStorage.getItem(samboardKey)) || {}
-    if (ver.version && ver.version !== old.version) {
+    if (ver && ver.version && ver.version !== old.version) {
       this.setState({ show: true, ver })
       localStorage.setItem(samboardKey, JSON.stringify(ver))
       this.activateSlide()
