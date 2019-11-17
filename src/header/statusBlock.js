@@ -1,19 +1,30 @@
-import React from 'react'
-import { ENV_NAMES } from '../tools/envNames'
+import React, { Component } from 'react'
+import { fetch_env_names } from "../tools/envNames";
 
-const StatusBlock = ({ data, envName }) => {
-  data = data || {}
-  const { dirty, user } = data[envName] || 0
-  const classStatus = dirty ? 'busy' : 'free'
-  const displayStatus = dirty ? 'dirty' : 'clean'
-  const displayUser = user
-  return (
-    <div className={'statusBlock'}>
-      <div className={'st-name'}>{ENV_NAMES[envName]}</div>
-      <div className={`st-value ${classStatus}`}>{displayStatus}</div>
-      {dirty && <div className={'st-user busy'}>{displayUser}</div>}
-    </div>
-  )
+export default class StatusBlock extends Component {
+  state = { envs: {} }
+
+  componentDidMount() {
+    fetch_env_names(this.handleEnvs)
+  }
+
+  handleEnvs = (envs) => {
+    this.setState({ envs })
+  }
+
+  render() {
+    const { data, envName } = this.props
+    const stateData = data || {}
+    const { dirty, user } = stateData[envName] || 0;
+    const classStatus = dirty ? 'busy' : 'free'
+    const displayStatus = dirty ? 'dirty' : 'clean'
+    const displayUser = user
+    return (
+      <div className={'statusBlock'}>
+        <div className={'st-name'}>{this.state.envs[envName]}</div>
+        <div className={`st-value ${classStatus}`}>{displayStatus}</div>
+        {dirty && <div className={'st-user busy'}>{displayUser}</div>}
+      </div>
+    )
+  }
 }
-
-export default StatusBlock
