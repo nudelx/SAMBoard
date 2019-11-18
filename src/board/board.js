@@ -4,7 +4,7 @@ import Carousel from './Carousel'
 import Slide from './Slide'
 import Header from '../header/header'
 import '../App.css'
-import BugCard from '../cards/BugCard'
+// import BugCard from '../cards/BugCard'
 
 const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
   return (
@@ -31,12 +31,12 @@ const Board = ({ enableCarousel, setTotalSlides, showOnlySlide }) => {
               <Card type="ssp_deploy" env="deployers" />
             </Slide>,
 
-            <Slide key="3">
-              <BugCard type="SSP_BLOCK" env="SSP BLOCKERS" />
-              <BugCard type="SSF_BLOCK" env="SSF BLOCKERS" />
-              <BugCard type="SSF_ALL" env="SSF BUGS IN QUEUE" />
-              <BugCard type="SSP_ALL" env="SSP BUGS IN QUEUE" />
-            </Slide>
+            // <Slide key="3">
+            //   <BugCard type="SSP_BLOCK" env="SSP BLOCKERS" />
+            //   <BugCard type="SSF_BLOCK" env="SSF BLOCKERS" />
+            //   <BugCard type="SSF_ALL" env="SSF BUGS IN QUEUE" />
+            //   <BugCard type="SSP_ALL" env="SSP BUGS IN QUEUE" />
+            // </Slide>
           ]
         }}
       </Carousel>

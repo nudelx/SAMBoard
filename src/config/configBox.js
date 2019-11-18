@@ -5,7 +5,7 @@ import Buttons from './buttons'
 const SLIDES = {
   0: 'SSF',
   1: 'SSP',
-  2: 'Bugs'
+  // 2: 'Bugs'
 }
 
 const makeOptions = value => {
