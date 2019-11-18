@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import cred from './fbcred.json'
 const fbConnect = () => {
   firebase.initializeApp(cred)
